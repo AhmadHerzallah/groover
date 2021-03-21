@@ -1,0 +1,101 @@
+.search__div {
+  display: grid;
+  justify-content: center;
+}
+
+.search__title {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.search__btn {
+  background: #ededed url(../assets/icons/search.svg) no-repeat 9px center;
+  padding: 9px 10px 9px 32px;
+  margin-top: 20px;
+  display: block;
+  width: 150px;
+  height: 40px;
+
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+.search__form {
+  display: flex;
+  /* justify-content: center;
+  align-items: center; */
+}
+
+@media (min-width: 762px) {
+  .search__btn {
+    background: #ededed url(../assets/icons/search.svg) no-repeat 9px center;
+    padding: 9px 10px 9px 32px;
+    margin-top: 20px;
+    display: block;
+    margin-right: 160px;
+    width: 280px;
+    margin-left: -3px;
+
+    margin-left: 18px;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+  }
+
+  .search__btn:focus {
+    width: 400px;
+    background-color: #fff;
+    border-color: #66cc75;
+
+    -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
+    -moz-box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
+    box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
+  }
+  .search__btn:hover {
+    width: 400px;
+    background-color: #fff;
+    border-color: #66cc75;
+
+    -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
+    -moz-box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
+    box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
+  }
+}
+
+@media (min-width: 682px) {
+  .search__state {
+    align-self: flex-end;
+    padding-top: 29px;
+    font-size: 19px;
+    width: 100px;
+  }
+}
+
+.search__state {
+  align-self: flex-end;
+  padding-top: 29px;
+  font-size: 19px;
+  width: 100px;
+}
+
+.search__swtiches {
+  display: inline-flex;
+  align-items: center;
+}
+
+.search__current {
+  border-color: #66cc75;
+  /* text-shadow: 0 0 5px rgba(109, 207, 246, 0.5); */
+  text-shadow: 0 0 5px rgba(129, 92, 240, 0.5);
+}
