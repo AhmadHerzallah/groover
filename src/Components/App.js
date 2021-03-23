@@ -12,7 +12,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Search from './Search';
 import Home from './Home';
-
+import Login from './Login';
 function App({ initialTheme = 'light' }) {
   const [theme, setTheme] = useState(() => {
     let localValue = window.localStorage.getItem('theme');
@@ -39,6 +39,12 @@ function App({ initialTheme = 'light' }) {
   const handleClick = (e) => {
     setClick(!click);
   };
+  const listId = 'PL_TWHDjv1CGTCa8RsFHgpcSKfHGO_w6Zl';
+  const type = 'list';
+
+  const nowPlaying = `https://www.youtube.com/embed/videoseries?${type}=${listId}&autoplay=1&mute=1&controls=0&fs=1`;
+
+  // firebase //
 
   return (
     <>
@@ -46,13 +52,13 @@ function App({ initialTheme = 'light' }) {
         {/* bool ? true : false */}
         <GlobalStyles />
         <Router>
-          <div class="fullscreen-bg">
+          <div className="fullscreen-bg">
             <iframe
-              src="https://www.youtube.com/embed/videoseries?list=PL_TWHDjv1CGTCa8RsFHgpcSKfHGO_w6Zl&autoplay=1&mute=1&controls=0&fs=1"
-              frameborder="0"
+              src={nowPlaying}
+              frameBorder="0"
               className="fullscreen-bg__video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
+              allowFullScreen
               title="bg"
             ></iframe>
           </div>
@@ -88,16 +94,22 @@ function App({ initialTheme = 'light' }) {
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
                   <Link to="/">
-                    <a href="!#" class="nav-link" role="button">
+                    <a href="!#" className="nav-link" role="button">
                       Home
                     </a>
                   </Link>
                   <Link to="/search">
-                    <a href="!#" class="nav-link" role="button">
+                    <a href="!#" className="nav-link" role="button">
                       Search
                     </a>
                   </Link>
                 </Nav>
+                <Link to="/login">
+                  <a href="!#" className="nav-link login__btn" role="button">
+                    Login
+                  </a>
+                </Link>
+
                 <button
                   style={{
                     background: `${
@@ -129,6 +141,7 @@ function App({ initialTheme = 'light' }) {
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/search" exact component={Search} />
+              <Route path="/login" exact component={Login} />
             </Switch>
           </div>
         </Router>

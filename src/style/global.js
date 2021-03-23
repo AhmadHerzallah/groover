@@ -39,6 +39,16 @@ export const GlobalStyles = createGlobalStyle`
   .navbar-nav a{
     color: ${({ theme }) => theme.text} !important;
   }
+  .nav-link{
+    color: ${({ theme }) => theme.text} !important;
+    font-size: 20px;
+  }
+
+  .login__btn {
+    color: ${({ theme }) => theme.text} !important;
+    ${'' /* font-size: 1rem; */}
+  }
+
   .navbar-brand a {
     color: ${({ theme }) => theme.text} !important;
     text-decoration: none;

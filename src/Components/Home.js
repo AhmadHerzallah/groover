@@ -18,7 +18,13 @@ const Home = () => {
             </p>
           </Col>
           <Col md={4} sm={12} className="part2">
-            <p>Bla bla bla bla bla bla bla</p>
+            <p>Special thanks to:</p>
+            <ul>
+              <li>Spotify API</li>
+              <li>styled-components</li>
+              <li>react-bootstrap</li>
+              <li>Jdenticon</li>
+            </ul>
           </Col>
         </Row>
       </Container>
