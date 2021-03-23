@@ -26,9 +26,10 @@
   -moz-border-radius: 5px;
 }
 .search__form {
-  display: flex;
+  /* display: flex; */
   /* justify-content: center;
   align-items: center; */
+  margin-left: 260px;
 }
 
 @media (min-width: 762px) {
@@ -99,3 +100,82 @@
   /* text-shadow: 0 0 5px rgba(109, 207, 246, 0.5); */
   text-shadow: 0 0 5px rgba(129, 92, 240, 0.5);
 }
+.results li {
+  list-style: none;
+}
+
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-right: 100px;
+  margin-left: 100px;
+  margin-top: 20px;
+}
+
+/* Card */
+
+.search__results__item {
+  background-color: #242629;
+  width: 250px;
+  text-align: center;
+  height: 325px;
+  margin-left: 30px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.search__results__item__track {
+  background-color: #242629;
+  width: 250px;
+  text-align: center;
+  height: 400px;
+  position: relative;
+  margin-left: 30px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.search__results__item__wrapper {
+  padding-top: 10px;
+  color: #94a1b2 !important;
+}
+
+.search__results__img {
+  text-align: center;
+}
+
+.search__results__img__self {
+  border-radius: 100px;
+  text-align: center;
+  filter: drop-shadow(-9px 6px 27px rgba(0, 0, 0, 0.8));
+}
+
+.search__results__name {
+  color: #fffffe !important;
+  text-align: center;
+  padding-top: 10px;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.search__results__spotify {
+  color: #fffffe;
+  font-weight: 500;
+}
+
+.search__results__spotify__player {
+  position: absolute;
+  bottom: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.search__results__spotify__player iframe {
+  justify-content: flex-end;
+}
+
+/* .search__results__artists {
+  height: 50px;
+} */

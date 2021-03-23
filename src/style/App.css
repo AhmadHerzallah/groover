@@ -44,3 +44,7 @@ video {
   font-size: 25px;
   font-style: italic;
 }
+
+.navbar-nav a:hover {
+  text-decoration: none !important;
+}
