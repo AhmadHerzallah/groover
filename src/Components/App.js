@@ -10,9 +10,14 @@ import { Sun, Moon, Menu, X } from 'react-feather';
 import '../style/App.css';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+
 import Search from './Search';
 import Home from './Home';
 import Login from './Login';
+import Profile from './Profile';
+
+import firebase from 'firebase';
+
 function App({ initialTheme = 'light' }) {
   const [theme, setTheme] = useState(() => {
     let localValue = window.localStorage.getItem('theme');
@@ -45,6 +50,14 @@ function App({ initialTheme = 'light' }) {
   const nowPlaying = `https://www.youtube.com/embed/videoseries?${type}=${listId}&autoplay=1&mute=1&controls=0&fs=1`;
 
   // firebase //
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const authObserver = firebase.auth().onAuthStateChanged((user) => {
+      setUser(user);
+    });
+    return authObserver;
+  });
 
   return (
     <>
@@ -93,23 +106,22 @@ function App({ initialTheme = 'light' }) {
 
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                  <Link to="/">
-                    <a href="!#" className="nav-link" role="button">
-                      Home
-                    </a>
+                  <Link to="/" className="nav-link">
+                    Home
                   </Link>
-                  <Link to="/search">
-                    <a href="!#" className="nav-link" role="button">
-                      Search
-                    </a>
+                  <Link to="/search" className="nav-link">
+                    Search
                   </Link>
                 </Nav>
-                <Link to="/login">
-                  <a href="!#" className="nav-link login__btn" role="button">
+                {user ? (
+                  <Link to="/profile" className="nav-link login__btn">
+                    Profile
+                  </Link>
+                ) : (
+                  <Link to="/login" className="nav-link login__btn">
                     Login
-                  </a>
-                </Link>
-
+                  </Link>
+                )}
                 <button
                   style={{
                     background: `${
@@ -142,6 +154,7 @@ function App({ initialTheme = 'light' }) {
               <Route path="/" exact component={Home} />
               <Route path="/search" exact component={Search} />
               <Route path="/login" exact component={Login} />
+              <Route path="/profile" exact component={Profile} />
             </Switch>
           </div>
         </Router>

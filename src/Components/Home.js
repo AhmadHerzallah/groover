@@ -14,7 +14,7 @@ const Home = () => {
               Welcome to <span className={Style.title__name}>Groover</span>
             </h1>
             <p className={Style.header__brief}>
-              We provide you data about your favorite artist.
+              We provide you with data about your favorite artist.
             </p>
           </Col>
           <Col md={4} sm={12} className="part2">
@@ -24,6 +24,7 @@ const Home = () => {
               <li>styled-components</li>
               <li>react-bootstrap</li>
               <li>Jdenticon</li>
+              <li>Firebase</li>
             </ul>
           </Col>
         </Row>

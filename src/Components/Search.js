@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/jsx-no-target-blank */
 import React, { useEffect, useState } from 'react';
 import Style from '../style/search.module.css';
 import Form from 'react-bootstrap/Form';
@@ -15,12 +17,13 @@ const Search = () => {
   const [trackData, setTrackData] = useState({});
   useEffect(() => {
     switcher ? getDataArtist() : getDataTrack();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [flag]);
   const handleSwitchChange = () => {
     setSwitcher(!switcher);
   };
   const token =
-    'BQCv2VJ72NHXitWllXQ8FnoF1OQWvqp7qzkE6ph3MW3fRzTI2Vr6Rd65sxtUF7mArifWDy6q_U_-lQxLGfcTnp-5a3LPodFOE_R_4to3RA0JUR7ZbhG5Uy58QznncmdKty986ItBn1bNw_Ce7XTJ3qviyU84OwvZt8AWB0JcDkJ_H1Px5g';
+    'BQD7YH8NvPQdFr8KeO1UToFOzFAsk5-kK8j8PaU0uHhioKI64cR8jAP2k7U6iM7YCU12qt1Z1GC2LcF1h8yZeoDNgWQycv546nDTd0YQMj0SDY961hQrde_OU5YmX0eREil_TejQccCh8pnvOEyHKS5EvP1BOCqUuXC776JvQK6k1IU7eg';
   const getDataArtist = async () => {
     const res = await fetch(
       `https://api.spotify.com/v1/search?q=${query}&type=artist&limit=10&access_token=${token}`,
@@ -110,7 +113,7 @@ const Search = () => {
                     {res.genres.map((elem) => (
                       <span>
                         {elem}{' '}
-                        {res.genres.length == res.genres.indexOf(elem) + 1
+                        {res.genres.length === res.genres.indexOf(elem) + 1
                           ? null
                           : ', '}
                       </span>
@@ -156,7 +159,8 @@ const Search = () => {
                         {res.artists.map((elem) => (
                           <span>
                             {elem.name}{' '}
-                            {res.artists.length == res.artists.indexOf(elem) + 1
+                            {res.artists.length ===
+                            res.artists.indexOf(elem) + 1
                               ? null
                               : ', '}
                           </span>
