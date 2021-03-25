@@ -1,17 +1,17 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-no-target-blank */
-import React, { useEffect, useState } from 'react';
-import Style from '../style/search.module.css';
-import Form from 'react-bootstrap/Form';
-import Switch from 'react-switch';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Container from 'react-bootstrap/Container';
-import Jdenticon from 'react-jdenticon';
+import React, { useEffect, useState } from "react";
+import Style from "../style/search.module.css";
+import Form from "react-bootstrap/Form";
+import Switch from "react-switch";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
+import Jdenticon from "react-jdenticon";
 
 const Search = () => {
   const [switcher, setSwitcher] = useState(true);
-  const [query, setQuery] = useState('JuiceWRLD');
+  const [query, setQuery] = useState("JuiceWRLD");
   const [flag, setFlag] = useState(false);
   const [artistData, setArtistData] = useState({});
   const [trackData, setTrackData] = useState({});
@@ -23,11 +23,12 @@ const Search = () => {
     setSwitcher(!switcher);
   };
 
-  const token = "BQDR45qGJg4ZV6CABanQLgYxTSD7GpNf8_Jsnj-XiSlxdUZUQsP5eq09BEPplPxrkZ3ihbUJEfwExVC5jdNIW74H5noNIr_9hM0nn67oXZ9KDql65LtaBu4AM5mQsnPJbee-3WWG_MEAD5SKfx1NPRvjr7XUcvMMktDtqhSFtyp37n4cJA"
+  const token =
+    "BQA-gsqCGsfeg63jYm-SkwXOV9dpTzpiLMzEs4qQqG9M9HVjHfYnRJuLUIE8Wc9LjffOV-_R7soXAh7M4rE40jLvhoDENfqqf2kSwLiyC8rY9hSu2dfRkVjnl_t5uXl3F2Yl0z4FKcCQIQTaW7sc2hC6sMSHQJnkTz_Aws1VkKnTiNZXrA";
 
   const getDataArtist = async () => {
     const res = await fetch(
-      `https://api.spotify.com/v1/search?q=${query}&type=artist&limit=10&access_token=${token}`,
+      `https://api.spotify.com/v1/search?q=${query}&type=artist&limit=10&access_token=${token}`
     );
     const data = await res.json();
     // console.log('searching..');
@@ -36,16 +37,34 @@ const Search = () => {
 
   const getDataTrack = async () => {
     const res = await fetch(
-      `https://api.spotify.com/v1/search?q=${query}&type=track&limit=10&access_token=${token}`,
+      `https://api.spotify.com/v1/search?q=${query}&type=track&limit=10&access_token=${token}`
     );
     const data = await res.json();
     // console.log('searching..');
     setTrackData(data);
   };
 
-  // console.log(data && data.artist);
+  function searchA({ initialArtist = "Juice WRLD" }) {
+    const [Artist, setArtist] = useState(() => {
+      let localArtist = window.localStorage.getItem("ArtistsHistory");
+      if (localArtist) {
+        return JSON.parse(localArtist);
+      }
+      return initialArtist;
+    });
+  }
+  // const changeAhistory = () => {
+  //   artistlist.push(query);
+  //   console.log(artistlist);
+  //   return localStorage.setItem("ArtistsHistory", JSON.stringify(artistlist));
+  // };
+  // const changeThistory = () => {
+  //   tracklist.push(query);
+  //   return localStorage.setItem("TraksHistory", JSON.stringify(tracklist));
+  // };
   const handleSubmit = (e) => {
     e.preventDefault();
+    // switcher ? changeAhistory() : changeThistory();
     setFlag(!flag);
     // console.log(`searched: ${query}`);
   };
@@ -63,9 +82,9 @@ const Search = () => {
             <Col md={3} sm={12}>
               <div className={Style.search__swtiches}>
                 <p className={Style.search__state}>
-                  Type:{' '}
+                  Type:{" "}
                   <span className={Style.search__current}>
-                    {switcher ? 'Artist' : 'Track'}
+                    {switcher ? "Artist" : "Track"}
                   </span>
                 </p>
                 <Switch
@@ -113,17 +132,17 @@ const Search = () => {
                   <li>
                     {res.genres.map((elem) => (
                       <span>
-                        {elem}{' '}
+                        {elem}{" "}
                         {res.genres.length === res.genres.indexOf(elem) + 1
                           ? null
-                          : ', '}
+                          : ", "}
                       </span>
                     ))}
                   </li>
                   <li>
                     <span className={Style.search__results__spotify}>
                       Spotify:
-                    </span>{' '}
+                    </span>{" "}
                     <a href={res.external_urls.spotify} target="_blank">
                       {res.name}
                     </a>
@@ -159,24 +178,24 @@ const Search = () => {
                       <li className={Style.search__results__artists}>
                         {res.artists.map((elem) => (
                           <span>
-                            {elem.name}{' '}
+                            {elem.name}{" "}
                             {res.artists.length ===
                             res.artists.indexOf(elem) + 1
                               ? null
-                              : ', '}
+                              : ", "}
                           </span>
                         ))}
                       </li>
                       <li className={Style.search__results__spotify__player}>
-                        {console.log(res.uri.split(':'))}
+                        {console.log(res.uri.split(":"))}
                         <iframe
                           src={`https://open.spotify.com/embed/${
-                            res.uri.split(':')[1]
-                          }/${res.uri.split(':')[2]}`}
+                            res.uri.split(":")[1]
+                          }/${res.uri.split(":")[2]}`}
                           width="240"
                           title="Spotify"
                           height="80"
-                          style={{ borderRadius: '5px' }}
+                          style={{ borderRadius: "5px" }}
                           frameborder="0"
                           allowtransparency="true"
                           allow="encrypted-media"
