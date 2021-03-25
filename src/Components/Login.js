@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import StyleFirebaseUI from 'react-firebaseui/StyledFirebaseAuth';
@@ -5,13 +6,20 @@ import fire from '../fire';
 import firebase from 'firebase';
 import LoginPage from './LoginPage';
 import { Redirect } from 'react-router-dom';
+
+const db = firebase.database();
+
+const rootRef = db.ref('users');
+
 const configUi = {
   signInFlow: 'popup',
   signInOptions: [
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
   ],
-  signInSuccessUrl: '/profile',
+
+  // signInSuccessUrl: '/profile',
+
   callbacks: {
     signInSuccessWithAuthResults: () => {
       return false;
@@ -30,11 +38,29 @@ const signOut = () => {
       console.log(`Error: ${err}`);
     });
 };
+function writeUserData(userId, name, email, imageUrl) {
+  firebase
+    .database()
+    .ref('users/' + userId)
+    .set({
+      username: name,
+      email: email,
+      photo: imageUrl,
+    });
+}
 
 const Login = () => {
   useEffect(() => {
     const authObserver = firebase.auth().onAuthStateChanged((user) => {
       setUser(user);
+      if (user !== null) {
+        writeUserData(
+          user.uid,
+          user.displayName,
+          user.email,
+          user.photoURL ? user.photoURL : '',
+        );
+      }
     });
     return authObserver;
   });

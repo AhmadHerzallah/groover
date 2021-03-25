@@ -34,7 +34,23 @@ function App({ initialTheme = 'light' }) {
       setTheme('light');
     }
   };
+  // const database = firebase.database();
 
+  // const getDataFromRealtimeDatabase = () => {
+  //   database
+  //     .child('users')
+  //     .get()
+  //     .then(function (snapshot) {
+  //       if (snapshot.exists()) {
+  //         console.log(snapshot.val());
+  //       } else {
+  //         console.log('No data available');
+  //       }
+  //     })
+  //     .catch(function (error) {
+  //       console.error(error);
+  //     });
+  // };
   useEffect(() => {
     window.localStorage.setItem('theme', JSON.stringify(theme));
   }, [theme]);
