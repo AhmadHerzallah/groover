@@ -22,9 +22,10 @@ const Search = () => {
   const handleSwitchChange = () => {
     setSwitcher(!switcher);
   };
+  const token =
+    'BQAj8PioTHGpDVd8TEoqL_XI47SNtfuNpVrMIdXkLUchb5ithPJgEAZZZHaE1D_52aRBFzX2diDk4BfZ0hdivYBFq8ybjEK50exd-v3nH8fXgqgrhH8am3XrxsGLnij20HDcxp92b87DPM-4pNNmA1PJbaJCNiS1U2paUkOfKzndHbzdRw';
 
-  const token = "BQDR45qGJg4ZV6CABanQLgYxTSD7GpNf8_Jsnj-XiSlxdUZUQsP5eq09BEPplPxrkZ3ihbUJEfwExVC5jdNIW74H5noNIr_9hM0nn67oXZ9KDql65LtaBu4AM5mQsnPJbee-3WWG_MEAD5SKfx1NPRvjr7XUcvMMktDtqhSFtyp37n4cJA"
-
+  // the fetch is not working because u r a woman
   const getDataArtist = async () => {
     const res = await fetch(
       `https://api.spotify.com/v1/search?q=${query}&type=artist&limit=10&access_token=${token}`,
@@ -34,6 +35,7 @@ const Search = () => {
     setArtistData(data);
   };
 
+  // the fetch is not working because u r a woman
   const getDataTrack = async () => {
     const res = await fetch(
       `https://api.spotify.com/v1/search?q=${query}&type=track&limit=10&access_token=${token}`,
@@ -42,10 +44,39 @@ const Search = () => {
     // console.log('searching..');
     setTrackData(data);
   };
-
-  // console.log(data && data.artist);
+  let artistlist = [];
+  let tracklist = [];
+  const changeAhistory = () => {
+    if (localStorage.getItem('AH') != null) {
+      if (Array.isArray(JSON.parse(localStorage.getItem('AH')))) {
+        artistlist = JSON.parse([localStorage.getItem('AH')]);
+        artistlist.push(query);
+      } else {
+        artistlist = [JSON.parse(localStorage.getItem('AH'))];
+        artistlist.push(query);
+      }
+      localStorage.setItem('AH', JSON.stringify(artistlist));
+    } else {
+      localStorage.setItem('AH', JSON.stringify(query));
+    }
+  };
+  const changeThistory = () => {
+    if (localStorage.getItem('TH') != null) {
+      if (Array.isArray(JSON.parse(localStorage.getItem('TH')))) {
+        tracklist = JSON.parse([localStorage.getItem('TH')]);
+        tracklist.push(query);
+      } else {
+        tracklist = [JSON.parse(localStorage.getItem('TH'))];
+        tracklist.push(query);
+      }
+      localStorage.setItem('TH', JSON.stringify(tracklist));
+    } else {
+      localStorage.setItem('TH', JSON.stringify(query));
+    }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
+    switcher ? changeAhistory() : changeThistory();
     setFlag(!flag);
     // console.log(`searched: ${query}`);
   };
