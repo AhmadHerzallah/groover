@@ -24,7 +24,7 @@ const Search = () => {
   };
 
   const token =
-    "BQA-gsqCGsfeg63jYm-SkwXOV9dpTzpiLMzEs4qQqG9M9HVjHfYnRJuLUIE8Wc9LjffOV-_R7soXAh7M4rE40jLvhoDENfqqf2kSwLiyC8rY9hSu2dfRkVjnl_t5uXl3F2Yl0z4FKcCQIQTaW7sc2hC6sMSHQJnkTz_Aws1VkKnTiNZXrA";
+    "BQAobH14qd0XbmyHA3FrZ9roj866WwJ-YUK5JE9RCXrJeccqGF5Di5Fguht-bopv_N8Cm3CbnZuB_j2WxV4PHZKa2aheiytSByFyuxdBNG-izDRPAeApjwpfQfCwHGmpg7cHEUPUjmu0dveqMyv7VE0NYOGhEUIjtjPBWavDOnNqMKNjtA";
 
   const getDataArtist = async () => {
     const res = await fetch(
@@ -43,28 +43,39 @@ const Search = () => {
     // console.log('searching..');
     setTrackData(data);
   };
-
-  function searchA({ initialArtist = "Juice WRLD" }) {
-    const [Artist, setArtist] = useState(() => {
-      let localArtist = window.localStorage.getItem("ArtistsHistory");
-      if (localArtist) {
-        return JSON.parse(localArtist);
+  let artistlist = [];
+  let tracklist = [];
+  const changeAhistory = () => {
+    if (localStorage.getItem("AH") != null) {
+      if (Array.isArray(JSON.parse(localStorage.getItem("AH")))) {
+        artistlist = JSON.parse([localStorage.getItem("AH")]);
+        artistlist.push(query);
+      } else {
+        artistlist = [JSON.parse(localStorage.getItem("AH"))];
+        artistlist.push(query);
       }
-      return initialArtist;
-    });
-  }
-  // const changeAhistory = () => {
-  //   artistlist.push(query);
-  //   console.log(artistlist);
-  //   return localStorage.setItem("ArtistsHistory", JSON.stringify(artistlist));
-  // };
-  // const changeThistory = () => {
-  //   tracklist.push(query);
-  //   return localStorage.setItem("TraksHistory", JSON.stringify(tracklist));
-  // };
+      localStorage.setItem("AH", JSON.stringify(artistlist));
+    } else {
+      localStorage.setItem("AH", JSON.stringify(query));
+    }
+  };
+  const changeThistory = () => {
+    if (localStorage.getItem("TH") != null) {
+      if (Array.isArray(JSON.parse(localStorage.getItem("TH")))) {
+        tracklist = JSON.parse([localStorage.getItem("TH")]);
+        tracklist.push(query);
+      } else {
+        tracklist = [JSON.parse(localStorage.getItem("TH"))];
+        tracklist.push(query);
+      }
+      localStorage.setItem("TH", JSON.stringify(tracklist));
+    } else {
+      localStorage.setItem("TH", JSON.stringify(query));
+    }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    // switcher ? changeAhistory() : changeThistory();
+    switcher ? changeAhistory() : changeThistory();
     setFlag(!flag);
     // console.log(`searched: ${query}`);
   };
