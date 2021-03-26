@@ -36,7 +36,7 @@ const Profile = () => {
   let storageRef = storage.ref();
 
   let imageRef = storageRef.child(`images/${user && user.uid}/profile.png`);
-
+  let defaultImageRef = storageRef.child(`images/defaultDark.svg`);
   /* Get Image from Storage */
   const ImageGetter = () => {
     imageRef
@@ -106,7 +106,6 @@ const Profile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(uploadedImage.current.files[0].name);
     let type = uploadedImage.current.files[0].type;
     let metadata = {
       contentType: type,
@@ -172,8 +171,8 @@ const Profile = () => {
     <>
       {user ? (
         <Container>
-          {data.photo ? (
-            <img src={data.photo} alt={`${data && data.username}'s profile`} />
+          {photo ? (
+            <img src={photo} alt={`${data && data.username}'s profile`} />
           ) : (
             <img src={phoroUrl} alt="default profile" width="120" />
           )}
