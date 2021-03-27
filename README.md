@@ -4,6 +4,10 @@
   <a href="https://twitter.com/itsahmd25" target="_blank">
     <img alt="Twitter: itsahmd25" src="https://img.shields.io/twitter/follow/itsahmd25.svg?style=social" />
   </a>
+  <a href="https://twitter.com/HosnyMew" target="_blank">
+    <img alt="Twitter: HosnyMew" src="https://img.shields.io/twitter/follow/HosnyMew.svg?style=social" />
+  </a>
+
 </p>
 
 > We provide you with data about your favorite Artist / Track.
