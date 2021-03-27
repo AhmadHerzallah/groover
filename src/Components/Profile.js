@@ -25,6 +25,7 @@ const Profile = () => {
   const db = firebase.database();
   const [data, setData] = useState({});
   const [phoroUrl, setPhotoUrl] = useState('');
+  const [image, setImage] = useState();
   const uploadedImage = useRef('');
   let dataFromDatabase;
 
@@ -47,12 +48,16 @@ const Profile = () => {
       .catch((error) => {
         switch (error.code) {
           case 'storage/object-not-found':
+            console.log('object-not-found');
             break;
           case 'storage/unauthorized':
+            console.log('unauthorized');
             break;
           case 'storage/canceled':
+            console.log('object-not-found');
             break;
           case 'storage/unknown':
+            console.log('object-not-found');
             break;
         }
       });
@@ -68,6 +73,10 @@ const Profile = () => {
       .then(function (snapshot) {
         if (snapshot.exists()) {
           setData(snapshot.val());
+          setTimeout(() => {
+            console.log(data);
+          }, 3000);
+          setPhotoUrl(snapshot.val().photo);
         } else {
           console.log('No data available');
         }
@@ -112,7 +121,65 @@ const Profile = () => {
     };
     let uploadTask = storageRef
       .child('images/' + user.uid + '/profile')
-      .put(uploadedImage.current.files[0], metadata);
+      .put(uploadedImage.current.files[0], metadata)
+      .then((data) => {
+        data.ref.getDownloadURL().then((url) => {
+          // do whatever you want with url
+          users.child(user.uid).update({
+            photo: url,
+          });
+
+          setPhotoUrl(url);
+        });
+      });
+  };
+
+  return (
+    <>
+      {user ? (
+        <Container>
+          {phoroUrl ? (
+            <img src={phoroUrl} alt={`${data && data.username}'s profile`} />
+          ) : (
+            <img src={phoroUrl} alt="default profile" width="120" />
+          )}
+          {users && console.log(users.child(user.uid).get)}
+          <p>Hey, {data && data.username}</p>
+          <p>Email: {data && data.email}</p>
+          <p>
+            photoUrl:{' '}
+            {data && data.photo === '' ? "There's no image" : data.photo}
+          </p>
+          <button onClick={signOut}>Signout</button>
+          <p>
+            {firebase.auth().currentUser && firebase.auth().currentUser.uid}
+          </p>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="file"
+              ref={uploadedImage}
+              accept="image/*"
+              value={image}
+            />
+            <input type="submit" value="Upload" />
+          </form>
+        </Container>
+      ) : (
+        <Container>
+          <p>
+            Sorry, you have to <a href="/login">login</a> to see your profile.
+          </p>
+        </Container>
+      )}
+    </>
+  );
+};
+
+export default Profile;
+// ahmad: i'll figure out a way to use the code below.
+
+/*
+
     uploadTask.on(
       firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
       (snapshot) => {
@@ -140,14 +207,16 @@ const Profile = () => {
       () => {
         // Upload completed successfully, now we can get the download URL
         uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
-          console.log('File available at', downloadURL);
+          console.log('line ~: 143  File available at', downloadURL);
+
           users.child(user.uid).update({
             photo: downloadURL,
           });
           imageRef
             .getDownloadURL()
             .then((url) => {
-              setPhotoUrl(url);
+              setPhotoUrl(downloadURL);
+              console.log('line ~: 151 - File available at', url);
             })
             .catch((error) => {
               switch (error.code) {
@@ -162,44 +231,10 @@ const Profile = () => {
               }
             });
         });
-        setUser(null);
+        // setUser(null);
+        obServer();
       },
     );
-  };
 
-  return (
-    <>
-      {user ? (
-        <Container>
-          {photo ? (
-            <img src={photo} alt={`${data && data.username}'s profile`} />
-          ) : (
-            <img src={phoroUrl} alt="default profile" width="120" />
-          )}
-          <p>Hey, {data && data.username}</p>
-          <p>Email: {data && data.email}</p>
-          <p>
-            photoUrl:{' '}
-            {data && data.photo === '' ? "There's no image" : data.photo}
-          </p>
-          <button onClick={signOut}>Signout</button>
-          <p>
-            {firebase.auth().currentUser && firebase.auth().currentUser.uid}
-          </p>
-          <form onSubmit={handleSubmit}>
-            <input type="file" ref={uploadedImage} accept="image/*" />
-            <input type="submit" value="Upload" />
-          </form>
-        </Container>
-      ) : (
-        <Container>
-          <p>
-            Sorry, you have to <a href="/login">login</a> to see your profile.
-          </p>
-        </Container>
-      )}
-    </>
-  );
-};
 
-export default Profile;
+    */
