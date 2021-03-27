@@ -25,10 +25,6 @@
 - Twitter: [@HosnyMew](https://twitter.com/HosnyMew)
 - Github: [@hosny-Alkhatib](https://github.com/hosny-Alkhatib)
 
-## 🤝 Contributing
-
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/AhmadHerzallah/groover/issues). You can also take a look at the [contributing guide](https://github.com/AhmadHerzallah/groover/blob/master/CONTRIBUTING.md).
-
 ## TODO:
 
 - [ ] Add profile page for earch user. - 70% by Ahmad.
@@ -39,6 +35,10 @@ Contributions, issues and feature requests are welcome!<br />Feel free to check 
 ## Bugs to fix:
 
 No bugs were till now.
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/AhmadHerzallah/groover/issues). You can also take a look at the [contributing guide](https://github.com/AhmadHerzallah/groover/blob/master/CONTRIBUTING.md).
 
 ## Show your support
 
