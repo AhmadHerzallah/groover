@@ -66,31 +66,33 @@ const Login = () => {
       setUser(user);
       let data;
 
-      users
-        .child(user.uid)
-        .get()
-        .then(function (snapshot) {
-          if (snapshot.exists()) {
-            data = snapshot.val();
-            if (user !== null) {
-              writeUserData(
-                user.uid,
-                user.displayName,
-                user.email,
-                snapshot.val().photo === ''
-                  ? user.photoURL
-                  : ['dontupdateimg', snapshot.val().photo],
-              );
-            }
+      user &&
+        users
+          .child(user.uid)
+          .get()
+          .then(function (snapshot) {
+            if (snapshot.exists()) {
+              data = snapshot.val();
+              if (user !== null) {
+                writeUserData(
+                  user.uid,
+                  // just a comment
+                  user.displayName,
+                  user.email,
+                  snapshot.val().photo === ''
+                    ? user.photoURL
+                    : ['dontupdateimg', snapshot.val().photo],
+                );
+              }
 
-            console.log(data);
-          } else {
-            console.log('No data available');
-          }
-        })
-        .catch(function (error) {
-          console.error(error);
-        });
+              console.log(data);
+            } else {
+              console.log('No data available');
+            }
+          })
+          .catch(function (error) {
+            console.error(error);
+          });
     });
     return authObserver;
   });
