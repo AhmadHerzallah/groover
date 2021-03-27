@@ -76,7 +76,6 @@ const Login = () => {
               if (user !== null) {
                 writeUserData(
                   user.uid,
-                  // just a comment
                   user.displayName,
                   user.email,
                   snapshot.val().photo === ''
