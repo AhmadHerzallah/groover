@@ -1,3 +1,4 @@
+/* eslint-disable no-lone-blocks */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
@@ -18,15 +19,12 @@ const configUi = {
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
   ],
 
-  // signInSuccessUrl: '/profile',
-
   callbacks: {
     signInSuccessWithAuthResults: () => {
       return false;
     },
   },
 };
-
 const signOut = () => {
   firebase
     .auth()
@@ -39,28 +37,60 @@ const signOut = () => {
     });
 };
 function writeUserData(userId, name, email, imageUrl) {
-  firebase
-    .database()
-    .ref('users/' + userId)
-    .set({
-      username: name,
-      email: email,
-      photo: imageUrl,
-    });
+  if (imageUrl[0] === 'dontupdateimg') {
+    firebase
+      .database()
+      .ref('users/' + userId)
+      .set({
+        username: name,
+        email: email,
+        photo: imageUrl[1],
+      });
+    console.log("I won't update that user's image, I swear!");
+  } else {
+    firebase
+      .database()
+      .ref('users/' + userId)
+      .set({
+        username: name,
+        email: email,
+        photo: imageUrl,
+      });
+  }
 }
+const users = db.ref('users');
 
 const Login = () => {
   useEffect(() => {
     const authObserver = firebase.auth().onAuthStateChanged((user) => {
       setUser(user);
-      if (user !== null) {
-        writeUserData(
-          user.uid,
-          user.displayName,
-          user.email,
-          user.photoURL ? user.photoURL : '',
-        );
-      }
+      let data;
+
+      users
+        .child(user.uid)
+        .get()
+        .then(function (snapshot) {
+          if (snapshot.exists()) {
+            data = snapshot.val();
+            if (user !== null) {
+              writeUserData(
+                user.uid,
+                user.displayName,
+                user.email,
+                snapshot.val().photo === ''
+                  ? user.photoURL
+                  : ['dontupdateimg', snapshot.val().photo],
+              );
+            }
+
+            console.log(data);
+          } else {
+            console.log('No data available');
+          }
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
     });
     return authObserver;
   });
@@ -78,7 +108,7 @@ const Login = () => {
 };
 
 export default Login;
-// eslint-disable-next-line no-lone-blocks
+// ahmad: i'll figure out a way to use the code below.
 {
   /*
   // const [user, setUser] = useState('');
