@@ -29,6 +29,17 @@
 
 Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/AhmadHerzallah/groover/issues). You can also take a look at the [contributing guide](https://github.com/AhmadHerzallah/groover/blob/master/CONTRIBUTING.md).
 
+## TODO:
+
+- [ ] Add profile page for earch user. - 70% by Ahmad.
+- [ ] Add lyrics for each track.
+- [ ] Add dynamic page for each artist.
+- [ ] Add Search History - 60% by Hosny.
+
+## Bugs to fix:
+
+No bugs were till now.
+
 ## Show your support
 
 Give a ⭐️ if this project helped you!
