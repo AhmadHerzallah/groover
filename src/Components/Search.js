@@ -23,7 +23,7 @@ const Search = () => {
     setSwitcher(!switcher);
   };
   const token =
-    'BQAj8PioTHGpDVd8TEoqL_XI47SNtfuNpVrMIdXkLUchb5ithPJgEAZZZHaE1D_52aRBFzX2diDk4BfZ0hdivYBFq8ybjEK50exd-v3nH8fXgqgrhH8am3XrxsGLnij20HDcxp92b87DPM-4pNNmA1PJbaJCNiS1U2paUkOfKzndHbzdRw';
+    'BQB7RfoH1wjve103nSstISDQCYy_zOsXF_T4jLoVcRhv4L4ln5Us0iFwUt2aVUTkWIJDMqBr6FYWT_vAEavv_by1r34HD5JY3iiKIU1i7fKRL1yh-Lk_IUoZZfvv6U_vMBDaR-cIKFFJWxFHPUIKr9fbakOog4W7pa2suAH60IArZ-Qaxg';
 
   // the fetch is not working because u r a woman
   const getDataArtist = async () => {

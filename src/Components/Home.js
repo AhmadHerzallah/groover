@@ -3,7 +3,9 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Style from '../style/home.module.css';
-const Home = () => {
+const Home = ({ mute, handleMuteChange }) => {
+  console.log(mute);
+
   return (
     <div className={Style.home__header}>
       {/* <h1>Home</h1> */}
@@ -19,6 +21,8 @@ const Home = () => {
           </Col>
           <Col md={4} sm={12} className="part2">
             <p>Special thanks to:</p>
+            <button onClick={handleMuteChange}>click to change the prop</button>
+
             <ul>
               <li>Spotify API</li>
               <li>styled-components</li>
