@@ -115,6 +115,9 @@ const Search = () => {
                 placeholder="Search..."
                 className={Style.search__btn}
                 value={query}
+                onFocus={() => {
+                  console.log('Focused');
+                }}
                 onChange={handleValueChange}
               ></input>
             </Col>
