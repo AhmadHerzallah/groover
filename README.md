@@ -1,6 +1,9 @@
 <h1 align="center">Welcome to Groover 👋</h1>
 <p>
+  <img alt="Deepsource" src="https://deepsource.io/gh/AhmadHerzallah/groover.svg/?label=active+issues&show_trend=true" />
+
   <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
+
   <a href="https://twitter.com/itsahmd25" target="_blank">
     <img alt="Twitter: itsahmd25" src="https://img.shields.io/twitter/follow/itsahmd25.svg?style=social" />
   </a>
@@ -8,7 +11,7 @@
     <img alt="Twitter: HosnyMew" src="https://img.shields.io/twitter/follow/HosnyMew.svg?style=social" />
   </a>
 </p>
-[![DeepSource](https://deepsource.io/gh/AhmadHerzallah/groover.svg/?label=active+issues&show_trend=true)](https://deepsource.io/gh/AhmadHerzallah/groover/?ref=repository-badge)
+
 > We provide you with data about your favorite Artist / Track.
 
 ## Author
