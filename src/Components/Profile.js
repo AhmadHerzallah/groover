@@ -7,6 +7,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Container } from 'react-bootstrap';
 import fire from '../fire';
+import Style from '../style/profile.module.css';
 import firebase from 'firebase';
 import {
   BrowserRouter as Router,
@@ -139,7 +140,11 @@ const Profile = () => {
       {user ? (
         <Container>
           {phoroUrl ? (
-            <img src={phoroUrl} alt={`${data && data.username}'s profile`} />
+            <img
+              src={phoroUrl}
+              className={Style.profile__image}
+              alt={`${data && data.username}'s profile`}
+            />
           ) : (
             <img src={phoroUrl} alt="default profile" width="120" />
           )}

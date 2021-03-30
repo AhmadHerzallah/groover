@@ -162,6 +162,9 @@ const Search = () => {
                 }
                 className={Style.search__btn}
                 value={query}
+                onFocus={() => {
+                  console.log("Focused");
+                }}
                 onChange={handleValueChange}
                 id="search_bar"
                 onFocus={handleFocus()}
@@ -174,7 +177,7 @@ const Search = () => {
           {switcher ? (
             artistData.artists &&
             artistData.artists.items.map((res) => (
-              <div className={Style.search__results__item}>
+              <div className={Style.search__results__item} key={res.id}>
                 <div className={Style.search__results__item__wrapper}>
                   {res.images[2] ? (
                     <li className={Style.search__results__img}>
