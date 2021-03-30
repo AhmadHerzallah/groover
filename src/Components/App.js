@@ -30,7 +30,7 @@ function App({ initialTheme = 'light' }) {
   const [click, setClick] = useState(true);
   const [mute, setMute] = useState('mute');
   const handleMuteChange = () => {
-    if (mute == 'mute') {
+    if (mute === 'mute') {
       setMute('not muted');
     } else {
       setMute('mute');

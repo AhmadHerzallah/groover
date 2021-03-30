@@ -22,9 +22,7 @@ const Search = () => {
   const handleSwitchChange = () => {
     setSwitcher(!switcher);
   };
-  const token =
-    'BQB7RfoH1wjve103nSstISDQCYy_zOsXF_T4jLoVcRhv4L4ln5Us0iFwUt2aVUTkWIJDMqBr6FYWT_vAEavv_by1r34HD5JY3iiKIU1i7fKRL1yh-Lk_IUoZZfvv6U_vMBDaR-cIKFFJWxFHPUIKr9fbakOog4W7pa2suAH60IArZ-Qaxg';
-
+  const token = "BQAMSnvUneCs6HtnXD719PSGBaTbf1Cn-zPclxArJ7xAYJWG1tKDs3IzXVZnKe5hFXjhY0SuIrBoiMQy5JL5QHlWldIY0g8wNG_nbVcK_blKQ34YJCktmQmVDTrZ5HWTUplLxof-OXavMRGXS-yVAmsNtUJXWY1lGPUTQLEpJye8N65rDA"
   // the fetch is not working because u r a woman
   const getDataArtist = async () => {
     const res = await fetch(
@@ -85,6 +83,7 @@ const Search = () => {
     setQuery(e.target.value);
     // console.log(query);
   };
+  // just a comment
   return (
     <Container>
       <div className={Style.search__div}>

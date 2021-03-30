@@ -35,7 +35,7 @@ video {
   background: transparent !important;
   width: 100%;
   background-size: cover;
-  filter: blur(15px) brightness(0.3);
+  filter: blur(10px) brightness(0.3);
   transform: scale(1);
 }
 
