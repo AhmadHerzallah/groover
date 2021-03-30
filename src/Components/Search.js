@@ -23,7 +23,7 @@ const Search = () => {
     setSwitcher(!switcher);
   };
   const token =
-    "BQB6OPizaT2RalW4nOKoEuRx0Dq5W1uwTd5Yph2pVM2dzdp_LY4vy6G6rkN12q1Rr04PLdFR1vwoP3uUifa5c_Uh2UOmuTQ7mVl5K7POQLEU__UqDCW9KD7ZpQTDU0vXjRb8zZUqifxA71I1jEKkuaLmypu2MB874baPTHn1tGd6Vk3M7Q";
+    "BQAGPmvfq8tYc_-M7nF-Np8zlxLnihyyo_VsTuK5Y03ebC3ZiKEwJv892FTc7I-Zm84NYcWuB1289VePC5KUZKIOS_ocoqwLpJopiinzhYBk6qMWB-MJCGg_YFx51lR67mcwRBDnUynI0V0wleXpdd1syZySp0R8E8W4V-iJqmHAQUTu_Q";
 
   // the fetch is not working because u r a woman
   const getDataArtist = async () => {
@@ -96,7 +96,7 @@ const Search = () => {
     if (len <= 10) {
       len2 = 0;
     } else {
-      len2 = len - 10;
+      len2 = len - 11;
     }
     for (let i = len - 1; i >= len2; i--) {
       if (history.includes(Artists[i]) === false) {
@@ -116,7 +116,7 @@ const Search = () => {
     if (len3 <= 10) {
       len4 = 0;
     } else {
-      len4 = len3 - 10;
+      len4 = len3 - 11;
     }
     for (let i = len3 - 1; i >= len4; i--) {
       if (history.includes(Tracks[i]) === false) {
@@ -128,7 +128,7 @@ const Search = () => {
   };
   const handleFocus = () => {
     switcher ? isArtist() : isTrack();
-    return <h1>{history[0]}</h1>;
+    console.log(history);
   };
   return (
     <Container>
@@ -173,7 +173,6 @@ const Search = () => {
           </Row>
         </form>
         <div className={Style.results}>
-          {/* {history && history.map((historyItem) => <h1>{historyItem}</h1>)} */}
           {switcher ? (
             artistData.artists &&
             artistData.artists.items.map((res) => (
