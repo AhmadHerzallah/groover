@@ -104,7 +104,7 @@ const Search = () => {
         // console.log(Artists[i]);
       }
     }
-    console.log(history);
+    // console.log(history);
   };
   const isTrack = () => {
     // history = [];
@@ -125,7 +125,7 @@ const Search = () => {
     //   }
     // }
     // console.log(history);
-    localStorage.setItem("TH", "up up and away");
+    // localStorage.setItem("TH", "up up and away");
   };
   const handleFocus = () => {
     switcher ? isArtist() : isTrack();
