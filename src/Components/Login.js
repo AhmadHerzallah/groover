@@ -5,7 +5,6 @@ import { Container } from 'react-bootstrap';
 import StyleFirebaseUI from 'react-firebaseui/StyledFirebaseAuth';
 import fire from '../fire';
 import firebase from 'firebase';
-import LoginPage from './LoginPage';
 import { Redirect } from 'react-router-dom';
 
 const db = firebase.database();

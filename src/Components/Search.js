@@ -22,7 +22,8 @@ const Search = () => {
   const handleSwitchChange = () => {
     setSwitcher(!switcher);
   };
-  const token = "BQAMSnvUneCs6HtnXD719PSGBaTbf1Cn-zPclxArJ7xAYJWG1tKDs3IzXVZnKe5hFXjhY0SuIrBoiMQy5JL5QHlWldIY0g8wNG_nbVcK_blKQ34YJCktmQmVDTrZ5HWTUplLxof-OXavMRGXS-yVAmsNtUJXWY1lGPUTQLEpJye8N65rDA"
+  const token =
+    'BQB_WPnY5IY7YGb9Kre-X1ZW5JOcO5PqWptvOInW77QeVPo296eVbHWqpLkNXttT2ZySN2meEf0IX4H8y8P5qyqFmbx2V4RxOpRNBsIdw6wRzHzAtjySWXRzn8fuq5CL-nvk_oq9TRNP6JKm9urzHkXo2BEX8NHXUM5MMDh8hqSOJtbbDQ';
   // the fetch is not working because u r a woman
   const getDataArtist = async () => {
     const res = await fetch(
@@ -126,7 +127,7 @@ const Search = () => {
           {switcher ? (
             artistData.artists &&
             artistData.artists.items.map((res) => (
-              <div className={Style.search__results__item}>
+              <div className={Style.search__results__item} key={res.id}>
                 <div className={Style.search__results__item__wrapper}>
                   {res.images[2] ? (
                     <li className={Style.search__results__img}>
