@@ -7,6 +7,7 @@ import { lightTheme, darkTheme } from '../style/theme';
 import { GlobalStyles } from '../style/global';
 import { Sun, Moon, Menu, X } from 'react-feather';
 // import video from '../assets/videos/theweeknd.mp4';
+
 import '../style/App.css';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -26,6 +27,15 @@ function App({ initialTheme = 'light' }) {
     }
     return initialTheme;
   });
+  const [click, setClick] = useState(true);
+  const [mute, setMute] = useState('mute');
+  const handleMuteChange = () => {
+    if (mute === 'mute') {
+      setMute('not muted');
+    } else {
+      setMute('mute');
+    }
+  };
 
   const toggleTheme = () => {
     if (theme === 'light') {
@@ -34,28 +44,9 @@ function App({ initialTheme = 'light' }) {
       setTheme('light');
     }
   };
-  // const database = firebase.database();
-
-  // const getDataFromRealtimeDatabase = () => {
-  //   database
-  //     .child('users')
-  //     .get()
-  //     .then(function (snapshot) {
-  //       if (snapshot.exists()) {
-  //         console.log(snapshot.val());
-  //       } else {
-  //         console.log('No data available');
-  //       }
-  //     })
-  //     .catch(function (error) {
-  //       console.error(error);
-  //     });
-  // };
   useEffect(() => {
     window.localStorage.setItem('theme', JSON.stringify(theme));
   }, [theme]);
-
-  const [click, setClick] = useState(true);
 
   const handleClick = (e) => {
     setClick(!click);
@@ -63,7 +54,7 @@ function App({ initialTheme = 'light' }) {
   const listId = 'PL_TWHDjv1CGTCa8RsFHgpcSKfHGO_w6Zl';
   const type = 'list';
 
-  const nowPlaying = `https://www.youtube.com/embed/videoseries?${type}=${listId}&autoplay=1&mute=1&controls=0&fs=1`;
+  const nowPlaying = `https://www.youtube.com/embed/videoseries?${type}=${listId}&autoplay=1&mute=0&controls=0&fs=1`;
 
   // firebase //
   const [user, setUser] = useState(null);
@@ -81,7 +72,12 @@ function App({ initialTheme = 'light' }) {
         {/* bool ? true : false */}
         <GlobalStyles />
         <Router>
-          <div className="fullscreen-bg">
+          <div
+            onLoad={(e) => {
+              console.log(e.volume);
+            }}
+            className="fullscreen-bg"
+          >
             <iframe
               src={nowPlaying}
               frameBorder="0"
@@ -128,6 +124,9 @@ function App({ initialTheme = 'light' }) {
                   <Link to="/search" className="nav-link">
                     Search
                   </Link>
+                  <Link to="/search" className="nav-link">
+                    mute: {mute}
+                  </Link>
                 </Nav>
                 {user ? (
                   <Link to="/profile" className="nav-link login__btn">
@@ -167,7 +166,9 @@ function App({ initialTheme = 'light' }) {
             </Navbar>
 
             <Switch>
-              <Route path="/" exact component={Home} />
+              <Route path="/" exact>
+                <Home mute={mute} handleMuteChange={handleMuteChange} />
+              </Route>
               <Route path="/search" exact component={Search} />
               <Route path="/login" exact component={Login} />
               <Route path="/profile" exact component={Profile} />
@@ -180,3 +181,25 @@ function App({ initialTheme = 'light' }) {
 }
 
 export default App;
+
+/*
+38 - 54
+  // const database = firebase.database();
+
+  // const getDataFromRealtimeDatabase = () => {
+  //   database
+  //     .child('users')
+  //     .get()
+  //     .then(function (snapshot) {
+  //       if (snapshot.exists()) {
+  //         console.log(snapshot.val());
+  //       } else {
+  //         console.log('No data available');
+  //       }
+  //     })
+  //     .catch(function (error) {
+  //       console.error(error);
+  //     });
+  // };
+
+  */
