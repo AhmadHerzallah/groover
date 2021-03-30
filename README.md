@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to Groover 👋</h1>
 <p>
-  <img alt="Deepsource" src="https://deepsource.io/gh/AhmadHerzallah/groover.svg/?label=active+issues&show_trend=true" />
+<a href="https://deepsource.io/gh/AhmadHerzallah/groover/?ref=repository-badge" target="_blank"><img alt="DeepSource" title="DeepSource" src="https://deepsource.io/gh/AhmadHerzallah/groover.svg/?label=active+issues&show_trend=true"/></a>
 
   <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
 
