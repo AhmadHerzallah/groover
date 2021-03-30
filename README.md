@@ -7,9 +7,8 @@
   <a href="https://twitter.com/HosnyMew" target="_blank">
     <img alt="Twitter: HosnyMew" src="https://img.shields.io/twitter/follow/HosnyMew.svg?style=social" />
   </a>
-
 </p>
-
+[![DeepSource](https://deepsource.io/gh/AhmadHerzallah/groover.svg/?label=active+issues&show_trend=true)](https://deepsource.io/gh/AhmadHerzallah/groover/?ref=repository-badge)
 > We provide you with data about your favorite Artist / Track.
 
 ## Author
