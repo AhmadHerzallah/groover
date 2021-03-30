@@ -107,29 +107,28 @@ const Search = () => {
     // console.log(history);
   };
   const isTrack = () => {
-    // history = [];
-    // let Tracks = JSON.parse([localStorage.getItem("TH")]);
-    // let len3 = Tracks.length;
-    // // console.log(Tracks);
-    // let len4 = 0;
-    // // console.log(len);
-    // if (len3 <= 10) {
-    //   len4 = 0;
-    // } else {
-    //   len4 = len3 - 10;
-    // }
-    // for (let i = len3 - 1; i >= len4; i--) {
-    //   if (history.includes(Tracks[i]) === false) {
-    //     history.push(Tracks[i]);
-    //     // console.log(Tracks[i]);
-    //   }
-    // }
+    history = [];
+    let Tracks = JSON.parse([localStorage.getItem("TH")]);
+    let len3 = Tracks.length;
+    // console.log(Tracks);
+    let len4 = 0;
+    // console.log(len);
+    if (len3 <= 10) {
+      len4 = 0;
+    } else {
+      len4 = len3 - 10;
+    }
+    for (let i = len3 - 1; i >= len4; i--) {
+      if (history.includes(Tracks[i]) === false) {
+        history.push(Tracks[i]);
+        // console.log(Tracks[i]);
+      }
+    }
     // console.log(history);
-    // localStorage.setItem("TH", "up up and away");
   };
   const handleFocus = () => {
     switcher ? isArtist() : isTrack();
-    history.map((historyItem) => <h1 key={historyItem}>{historyItem}</h1>);
+    return <h1>{history[0]}</h1>;
   };
   return (
     <Container>
