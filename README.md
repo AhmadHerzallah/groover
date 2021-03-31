@@ -33,6 +33,7 @@
 - [ ] Add lyrics for each track.
 - [ ] Add dynamic page for each artist.
 - [ ] Add Search History - 60% by Hosny.
+- [ ] Filter search results.
 
 ## Bugs to fix:
 
