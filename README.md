@@ -37,7 +37,7 @@
 
 ## Bugs to fix:
 
-No bugs were till now.
+No bugs were found till now.
 
 ## 🤝 Contributing
 
