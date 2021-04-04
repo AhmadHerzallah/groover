@@ -16,6 +16,7 @@ import Search from './Search';
 import Home from './Home';
 import Login from './Login';
 import Profile from './Profile';
+import Grinder from './Grinder';
 
 import firebase from 'firebase';
 
@@ -127,6 +128,9 @@ function App({ initialTheme = 'light' }) {
                   <Link to="/search" className="nav-link">
                     mute: {mute}
                   </Link>
+                  <Link to="/grinder" className="nav-link">
+                    Grinder
+                  </Link>
                 </Nav>
                 {user ? (
                   <Link to="/profile" className="nav-link login__btn">
@@ -172,6 +176,7 @@ function App({ initialTheme = 'light' }) {
               <Route path="/search" exact component={Search} />
               <Route path="/login" exact component={Login} />
               <Route path="/profile" exact component={Profile} />
+              <Route path="/grinder" exact component={Grinder} />
             </Switch>
           </div>
         </Router>
