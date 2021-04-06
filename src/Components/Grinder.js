@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import fire from '../fire';
 import firebase from 'firebase';
 import { Container } from 'react-bootstrap';
-
+import Style from '../style/grinder.module.css';
 const Grinder = () => {
   const [user, setUser] = useState(null);
   const obServer = () => {
@@ -26,10 +26,42 @@ const Grinder = () => {
     );
   }
 
+  const handleDragStart = (e) => {
+    e.target.style.transform = 'rotate(10deg)';
+    console.log(e.pageX, e.pageY);
+  };
+
+  const handleDragEnd = (e) => {
+    e.target.style.transform = 'rotate(0deg)';
+    console.log(e.pageX, e.pageY);
+  };
+  const handleDrag = (e) => {
+    // Grinder.js:31 673 314
+    // default X: 673, 314
+    if (e.pageX > 750 && e.pageX > 0) {
+      e.target.style.transform = 'rotate(10deg)';
+    } else if (e.pageX < 680 && e.pageX > 0) {
+      e.target.style.transform = 'rotate(-10deg)';
+    } else {
+      e.target.style.transform = 'rotate(0deg)';
+    }
+  };
+
   return (
     <>
       <Container>
-        <h1>Grinder!</h1>
+        <div className={Style.grinder_main}>
+          <h1 className={`text-center`}>Grinder!</h1>
+          <div className={`${Style.grinder__container}`}>
+            <div
+              className={`${Style.box}`}
+              draggable
+              onDrag={handleDrag}
+              // onDragStart={handleDragStart}
+              onDragEnd={handleDragEnd}
+            ></div>
+          </div>
+        </div>
       </Container>
     </>
   );

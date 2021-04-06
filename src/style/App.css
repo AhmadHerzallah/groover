@@ -35,7 +35,8 @@ video {
   background: transparent !important;
   width: 100%;
   background-size: cover;
-  filter: blur(10px) brightness(0.3);
+  /* filter: blur(10px) brightness(0.3); */
+  filter: blur(7px) brightness(0.3) saturate(0.5) hue-rotate(45deg);
   transform: scale(1);
 }
 
@@ -47,4 +48,13 @@ video {
 
 .navbar-nav a:hover {
   text-decoration: none !important;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+.box__swiping {
+  transform: rotate(15deg);
+  transition: all 150ms;
 }
