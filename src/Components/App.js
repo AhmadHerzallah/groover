@@ -7,7 +7,6 @@ import { lightTheme, darkTheme } from '../style/theme';
 import { GlobalStyles } from '../style/global';
 import { Sun, Moon, Menu, X } from 'react-feather';
 // import video from '../assets/videos/theweeknd.mp4';
-
 import '../style/App.css';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -73,12 +72,7 @@ function App({ initialTheme = 'light' }) {
         {/* bool ? true : false */}
         <GlobalStyles />
         <Router>
-          <div
-            onLoad={(e) => {
-              console.log(e.volume);
-            }}
-            className="fullscreen-bg"
-          >
+          <div className="fullscreen-bg">
             <iframe
               src={nowPlaying}
               frameBorder="0"
