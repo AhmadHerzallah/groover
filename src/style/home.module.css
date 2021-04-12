@@ -21,11 +21,12 @@
 .header__brief {
   font-weight: 500 !important;
   color: #94a1b2;
+  margin-left: 5px;
   /* opacity: 0.8; */
 }
 
 .title__name {
-  font-weight: 700 !important;
+  font-weight: bold !important;
   animation: example 600ms infinite;
 
   font-style: 'Courgette' !important;
@@ -62,3 +63,11 @@
     margin-top: 150px;
   }
 }
+
+.card .title {
+  font-size: 35px;
+}
+
+/* .card .artist {
+  font-size: 35px;
+} */

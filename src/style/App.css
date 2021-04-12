@@ -1,7 +1,10 @@
 @import url('../assets/fonts/TTNormsPro/stylesheet.css');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 * {
-  font-family: 'TT Norms Pro';
+  /* font-family: 'TT Norms Pro'; */
+  font-family: 'Inter';
+  font-weight: bold;
 }
 
 video {
