@@ -23,7 +23,7 @@ const Search = () => {
     setSwitcher(!switcher);
   };
   const token =
-    'BQDWyAE376-3ZpAcFfFvFHwcGDPxoqqT4r5dGw-2Jtef5XlARmGAQ3ATG9qnhjoKGkG-brk2HU8xMshjOMWuu0vKi0fN7K0DLm-lI9beHoAGeVX01wofRNfdpqtr90depXIttps1EFG6Fnu3X23KX69_7D4Py57jrjddyN5ittbwHn6MKQ';
+    'BQBEP2m36VqmBIZwEW9fkQ8AFUR3kK2vopDGqQIe9fTiCkLeO1CMyM-vCkNj3uSoQko7T6KzQo6WmShVW26L4YLpnnxPswiouGxnWKHHDFyNAvYjS7deHZ0UvjiTuzOVnVVdc6CahaCHwWSgPXwSUjxOoNRwvrCZ2p6ZkA2YshJ7yqAGLw';
 
   const getDataArtist = async () => {
     const res = await fetch(
@@ -208,7 +208,6 @@ const Search = () => {
                       {res.name}
                     </a>
                   </li>
-                  {/* <span>{console.log(res)}</span> */}
                 </div>
               </div>
             ))

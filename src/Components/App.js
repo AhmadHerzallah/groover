@@ -28,14 +28,6 @@ function App({ initialTheme = 'light' }) {
     return initialTheme;
   });
   const [click, setClick] = useState(true);
-  const [mute, setMute] = useState('mute');
-  const handleMuteChange = () => {
-    if (mute === 'mute') {
-      setMute('not muted');
-    } else {
-      setMute('mute');
-    }
-  };
 
   const toggleTheme = () => {
     if (theme === 'light') {
@@ -119,9 +111,6 @@ function App({ initialTheme = 'light' }) {
                   <Link to="/search" className="nav-link">
                     Search
                   </Link>
-                  <Link to="/search" className="nav-link">
-                    mute: {mute}
-                  </Link>
                   <Link to="/grinder" className="nav-link">
                     Grinder
                   </Link>
@@ -165,7 +154,7 @@ function App({ initialTheme = 'light' }) {
 
             <Switch>
               <Route path="/" exact>
-                <Home mute={mute} handleMuteChange={handleMuteChange} />
+                <Home />
               </Route>
               <Route path="/search" exact component={Search} />
               <Route path="/login" exact component={Login} />

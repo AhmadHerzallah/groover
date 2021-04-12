@@ -1,11 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Style from '../style/home.module.css';
-const Home = ({ mute, handleMuteChange }) => {
-  console.log(mute);
-
+const Home = () => {
   const allMoods = [
     {
       moods: ['Hyped'],
