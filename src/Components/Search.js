@@ -23,7 +23,7 @@ const Search = () => {
     setSwitcher(!switcher);
   };
   const token =
-    'BQAcsmDve4mQCsgoPbjVTfucdy9eD4j0guqWVPC6hdgqcdRXvOegQapyY06FribVMFrCIxIeZzfBjO4nYZzyLg9MJRpmRCgXIdWwhxEFMQC7xtiY6lbfFZ3we4M0AU43gtfbAtK8VhftoeRUksaUUEW7TUlaVI_djvNOFEcHX0vEfUjHmw';
+    'BQDWyAE376-3ZpAcFfFvFHwcGDPxoqqT4r5dGw-2Jtef5XlARmGAQ3ATG9qnhjoKGkG-brk2HU8xMshjOMWuu0vKi0fN7K0DLm-lI9beHoAGeVX01wofRNfdpqtr90depXIttps1EFG6Fnu3X23KX69_7D4Py57jrjddyN5ittbwHn6MKQ';
 
   const getDataArtist = async () => {
     const res = await fetch(
