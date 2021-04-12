@@ -93,13 +93,15 @@ const Home = ({ mute, handleMuteChange }) => {
                   {allMoods[mood] &&
                     allMoods[mood].artist.map((rnmood) => (
                       <ul>
-                        <li>{rnmood}</li>
+                        <li>- {rnmood}</li>
                       </ul>
                     ))}
                 </div>
               </div>
               <div className={Style.changeMood}>
-                <button onClick={randomMood}>into another mood?</button>
+                <button className={Style.changeMoodBtn} onClick={randomMood}>
+                  into another mood?
+                </button>
               </div>
             </div>
           </Col>
