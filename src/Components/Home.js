@@ -28,6 +28,7 @@ const Home = ({ mute, handleMuteChange }) => {
         'Bad Bunny',
         'Don Toliver',
         'Boogie wit da hoodie',
+        'The Weeknd',
       ],
     },
     {
@@ -88,12 +89,14 @@ const Home = ({ mute, handleMuteChange }) => {
               </h1>
               <div className={Style.artist}>
                 Go and listen to:
-                {allMoods[mood] &&
-                  allMoods[mood].artist.map((rnmood) => (
-                    <ul>
-                      <li>{rnmood}</li>
-                    </ul>
-                  ))}
+                <div className={Style.allArtist}>
+                  {allMoods[mood] &&
+                    allMoods[mood].artist.map((rnmood) => (
+                      <ul>
+                        <li>{rnmood}</li>
+                      </ul>
+                    ))}
+                </div>
               </div>
               <div className={Style.changeMood}>
                 <button onClick={randomMood}>into another mood?</button>

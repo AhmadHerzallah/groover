@@ -66,8 +66,14 @@
 
 .card .title {
   font-size: 35px;
+  height: 80px;
 }
 
-/* .card .artist {
-  font-size: 35px;
-} */
+.card .artist {
+  width: 100%;
+  height: 100px;
+}
+
+.changeMood {
+  margin-top: 150px;
+}
