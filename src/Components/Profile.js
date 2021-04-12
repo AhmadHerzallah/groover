@@ -134,7 +134,15 @@ const Profile = () => {
         });
       });
   };
-
+  const hours = new Date().getHours();
+  let greet = null;
+  if (hours >= 12 && hours <= 17) {
+    greet = 'afternoon';
+  } else if (hours >= 17) {
+    greet = 'evening';
+  } else {
+    greet = 'morning';
+  }
   return (
     <>
       {user ? (
@@ -148,8 +156,9 @@ const Profile = () => {
           ) : (
             <img src={phoroUrl} alt="default profile" width="120" />
           )}
-          {users && console.log(users.child(user.uid).get)}
-          <p>Hey, {data && data.username}</p>
+          <p className={Style.greetUser}>
+            Good {greet && greet}, {data && data.username}
+          </p>
           <p>Email: {data && data.email}</p>
           <p>
             photoUrl:{' '}

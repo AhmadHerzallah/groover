@@ -1,6 +1,6 @@
 /* eslint-disable no-lone-blocks */
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import StyleFirebaseUI from 'react-firebaseui/StyledFirebaseAuth';
 import fire from '../fire';
@@ -62,6 +62,7 @@ const users = db.ref('users');
 const Login = () => {
   useEffect(() => {
     const authObserver = firebase.auth().onAuthStateChanged((user) => {
+      setUser(user);
       let data;
 
       user &&
@@ -81,13 +82,10 @@ const Login = () => {
                     : ['dontupdateimg', snapshot.val().photo],
                 );
               }
-              setUser(user);
 
               console.log(data);
             } else {
               console.log('No data available');
-              // errorMsg.current.innerText = 'Sorry, no Data available';
-              setUser(null);
             }
           })
           .catch(function (error) {
@@ -97,7 +95,6 @@ const Login = () => {
     return authObserver;
   });
   const [user, setUser] = useState(null);
-  const errorMsg = useRef(null);
   if (user) {
     return <Redirect to="/profile" />;
   } else {
@@ -105,7 +102,6 @@ const Login = () => {
       <Container>
         <h1>Login / Register</h1>
         <StyleFirebaseUI uiConfig={configUi} firebaseAuth={firebase.auth()} />
-        <p ref={errorMsg}></p>
       </Container>
     );
   }
