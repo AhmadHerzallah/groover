@@ -5,7 +5,7 @@ import { Container } from 'react-bootstrap';
 import StyleFirebaseUI from 'react-firebaseui/StyledFirebaseAuth';
 import fire from '../fire';
 import firebase from 'firebase';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 
 const db = firebase.database();
 
@@ -84,6 +84,7 @@ const Login = () => {
               }
 
               console.log(data);
+              history.push('/profile');
             } else {
               console.log('No data available');
             }
@@ -94,17 +95,14 @@ const Login = () => {
     });
     return authObserver;
   });
+  const history = useHistory();
   const [user, setUser] = useState(null);
-  if (user) {
-    return <Redirect to="/profile" />;
-  } else {
-    return (
-      <Container>
-        <h1>Login / Register</h1>
-        <StyleFirebaseUI uiConfig={configUi} firebaseAuth={firebase.auth()} />
-      </Container>
-    );
-  }
+  return (
+    <Container>
+      <h1>Login / Register</h1>
+      <StyleFirebaseUI uiConfig={configUi} firebaseAuth={firebase.auth()} />
+    </Container>
+  );
 };
 
 export default Login;
