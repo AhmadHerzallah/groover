@@ -29,15 +29,16 @@
 
 ## TODO:
 
-- [ ] Add profile page for earch user. - 70% by Ahmad.
+- [ ] Add profile page for earch user. - 80% by Ahmad.
 - [ ] Add lyrics for each track.
 - [ ] Add dynamic page for each artist.
 - [ ] Add Search History - 60% by Hosny.
 - [ ] Filter search results.
+- [ ] Grinder
 
 ## Bugs to fix:
 
-No bugs were found till now.
+- [ ] load the page and then load the user's data.
 
 ## 🤝 Contributing
 
