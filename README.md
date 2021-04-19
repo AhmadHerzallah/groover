@@ -38,7 +38,7 @@
 
 ## Bugs to fix:
 
-- [ ] load the page and then load the user's data.
+- [ ] show default profile page and then show user's data.
 
 ## 🤝 Contributing
 
