@@ -108,13 +108,15 @@ const Grinder = () => {
                     style={{ backgroundImage: 'url(' + character.url + ')' }}
                     className="card"
                   >
-                    <h3>{character.name}</h3>
+                    <h3 style={{ color: '#000' }}>{character.name}</h3>
                   </div>
                 </TinderCard>
               ))}
             </div>
             <div className="buttons">
               <button onClick={() => swipe('left')}>Swipe left!</button>
+              <button onClick={() => swipe('up')}>Swipe up!</button>
+
               <button onClick={() => swipe('right')}>Swipe right!</button>
             </div>
             {lastDirection ? (
