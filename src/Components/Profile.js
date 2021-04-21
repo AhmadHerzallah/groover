@@ -93,6 +93,7 @@ const Profile = () => {
   const obServer = () => {
     const authObserver = firebase.auth().onAuthStateChanged((user) => {
       setUser(user);
+      console.log(user);
     });
     user && user.uid && getDataFromDatabase();
     return authObserver;
