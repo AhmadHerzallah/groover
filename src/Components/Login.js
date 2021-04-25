@@ -35,16 +35,9 @@ const signOut = () => {
       console.log(`Error: ${err}`);
     });
 };
+let flag = false;
 function writeUserData(userId, name, email, imageUrl) {
-  if (imageUrl[0] === 'dontupdateimg') {
-    firebase
-      .database()
-      .ref('users/' + userId)
-      .set({
-        username: name,
-        email: email,
-        photo: imageUrl[1],
-      });
+  if (flag === true) {
     console.log("I won't update that user's image, I swear!");
   } else {
     firebase
@@ -74,7 +67,8 @@ const Login = () => {
               data = snapshot.val();
               if (user !== null) {
                 writeUserData(
-                  user.uid,
+                  snapshot.val().uid === '' ? user.uid : (flag = true),
+
                   user.displayName,
                   user.email,
                   snapshot.val().photo === ''
