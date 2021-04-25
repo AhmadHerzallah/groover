@@ -121,12 +121,10 @@ const Grinder = () => {
             </div>
             {lastDirection ? (
               <h2 key={lastDirection} className="infoText">
-                You swiped {lastDirection}
+                Swiped {lastDirection}
               </h2>
             ) : (
-              <h2 className="infoText">
-                Swipe a card or press a button to get started!
-              </h2>
+              <h2 className="infoText">Start Swipin' !</h2>
             )}
           </div>
         </div>
