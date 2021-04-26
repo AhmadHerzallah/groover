@@ -8461,6 +8461,11 @@ p-retry@^3.0.1:
   dependencies:
     retry "^0.12.0"
 
+p-sleep@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/p-sleep/-/p-sleep-1.1.0.tgz#a6c9333059b5103c3c0e46bcbba95a1f7969095b"
+  integrity sha512-bwP3GKZirBUYMtiUuBrheLUQdRXVeE/pmHOaLpNJzNfAD4b5AjDn6l823brXcQFade4G/g7GMNQ3KV86E8EaEw==
+
 p-try@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/p-try/-/p-try-1.0.0.tgz#cbc79cdbaf8fd4228e13f621f2b1a237c1b207b3"
@@ -9904,6 +9909,13 @@ react-switch@^6.0.0:
   integrity sha512-QV3/6eRK5/5epdQzIqvDAHRoGLbCv/wDpHUi6yBMXY1Xco5XGuIZxvB49PHoV1v/SpEgOCJLD/Zo43iic+aEIw==
   dependencies:
     prop-types "^15.7.2"
+
+react-tinder-card@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/react-tinder-card/-/react-tinder-card-1.4.0.tgz#9b733fc6c2a134b6d58c1d113eeeb6254b5e62e2"
+  integrity sha512-sE9pj0AyJ3TO9vsxQmTRDmrcvndLD6PFgSBvYDCIEkYIC00TDU7KqcjVkIMQTUvpwxPXCj00RXRqF1hWs4YJ6Q==
+  dependencies:
+    p-sleep "^1.1.0"
 
 react-transition-group@^4.4.1:
   version "4.4.1"

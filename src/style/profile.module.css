@@ -3,3 +3,8 @@
   width: 180px;
   height: 180px;
 }
+
+.greetUser {
+  font-size: 30px;
+  width: 25%;
+}

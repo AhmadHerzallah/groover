@@ -15,7 +15,9 @@
   display: block;
   width: 150px;
   height: 40px;
-
+  /* padding-left: 50%; */
+  /* padding-right: 50%; */
+  text-align: center;
   border: none;
   outline: none;
   border-radius: 5px;
@@ -29,7 +31,8 @@
   /* display: flex; */
   /* justify-content: center;
   align-items: center; */
-  margin-left: 260px;
+  /* margin-left: 29% !important; */
+  padding-left: 150px;
 }
 
 @media (min-width: 762px) {
@@ -53,7 +56,6 @@
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
   }
-
   .search__btn:focus {
     width: 400px;
     background-color: #fff;
@@ -72,6 +74,13 @@
     -moz-box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
     box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
   }
+  .search__form {
+    /* display: flex; */
+    /* justify-content: center;
+    align-items: center; */
+    /* margin-left: 29% !important; */
+    padding-left: 150px !important;
+  }
 }
 
 @media (min-width: 682px) {
@@ -87,7 +96,7 @@
   align-self: flex-end;
   padding-top: 29px;
   font-size: 19px;
-  width: 100px;
+  width: 150px;
 }
 
 .search__swtiches {
@@ -117,7 +126,13 @@
 /* Card */
 
 .search__results__item {
-  background-color: #242629;
+  /*  */
+
+  background: rgba(0, 0, 0, 0.45);
+  box-shadow: 0 8px 32px 0 rgba(133, 133, 133, 0.37);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 10px; /* background-color: #242629; */
   width: 250px;
   text-align: center;
   height: 325px;
@@ -128,6 +143,7 @@
 
 .search__results__item__track {
   background-color: #242629;
+
   width: 250px;
   text-align: center;
   height: 400px;

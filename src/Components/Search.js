@@ -22,10 +22,10 @@ const Search = () => {
   const handleSwitchChange = () => {
     setSwitcher(!switcher);
   };
-  const token =
-    "BQAwaj6BEG4A2mOTYIsEpEyWeSNJRFOSpg2n1p0tvXszuU7jbGAyxgdTgxMx_2ZHsoGeUTvdb6t0IzujDDR7Fhi55ff11URsR668iX9t76rn9KopcTaECfOKiyBe_VNxrrhsGUdOgdD3bF7_jZmhlpJEOyaG5Myv7U4dtvikvsXF4hOGZA";
 
-  // the fetch is not working because u r a woman
+  const token =
+    "BQAB50hUgUzAmSnJpm33XTXgVrBuZ48c10kJoaMuaAXlsUCx8vy62DgoquMpkBeF4923JX6iq2E3o2tPli71TJ3B7Z_zp-Uov6y_4Kh5G8k5AQRm64z4ognCO7xdKVdvmYuxItRcYdBKGG1kKe4tjra9UWrrHnQiao2Ik5CTbC5r-xGzgg";
+
   const getDataArtist = async () => {
     const res = await fetch(
       `https://api.spotify.com/v1/search?q=${query}&type=artist&limit=10&access_token=${token}`
@@ -35,7 +35,6 @@ const Search = () => {
     setArtistData(data);
   };
 
-  // the fetch is not working because u r a woman
   const getDataTrack = async () => {
     const res = await fetch(
       `https://api.spotify.com/v1/search?q=${query}&type=track&limit=10&access_token=${token}`
@@ -85,6 +84,52 @@ const Search = () => {
     setQuery(e.target.value);
     // console.log(query);
   };
+  let history = [];
+  const isArtist = () => {
+    history = [];
+    let Artists = JSON.parse([localStorage.getItem("AH")]);
+    let len = Artists.length;
+    // console.log(Artists);
+    let len2 = 0;
+    // console.log(len);
+    if (len <= 10) {
+      len2 = 0;
+    } else {
+      len2 = len - 10;
+    }
+    for (let i = len - 1; i >= len2; i--) {
+      if (history.includes(Artists[i]) === false) {
+        history.push(Artists[i]);
+        // console.log(Artists[i]);
+      }
+    }
+    // console.log(history);
+  };
+  const isTrack = () => {
+    // history = [];
+    // let Tracks = JSON.parse([localStorage.getItem("TH")]);
+    // let len3 = Tracks.length;
+    // // console.log(Tracks);
+    // let len4 = 0;
+    // // console.log(len);
+    // if (len3 <= 10) {
+    //   len4 = 0;
+    // } else {
+    //   len4 = len3 - 10;
+    // }
+    // for (let i = len3 - 1; i >= len4; i--) {
+    //   if (history.includes(Tracks[i]) === false) {
+    //     history.push(Tracks[i]);
+    //     // console.log(Tracks[i]);
+    //   }
+    // }
+    // console.log(history);
+    // localStorage.setItem("TH", "up up and away");
+  };
+  const handleFocus = () => {
+    switcher ? isArtist() : isTrack();
+    history.map((historyItem) => <h1 key={historyItem}>{historyItem}</h1>);
+  };
   return (
     <Container>
       <div className={Style.search__div}>
@@ -112,22 +157,24 @@ const Search = () => {
             </Col>
             <Col md={9} sm={12}>
               <input
-                placeholder="Search..."
+                placeholder={
+                  switcher ? "Search for an Artist" : "Search for Track"
+                }
                 className={Style.search__btn}
                 value={query}
-                onFocus={() => {
-                  console.log("Focused");
-                }}
                 onChange={handleValueChange}
+                id="search_bar"
+                onFocus={handleFocus()}
               ></input>
             </Col>
           </Row>
         </form>
         <div className={Style.results}>
+          {/* {history && history.map((historyItem) => <h1>{historyItem}</h1>)} */}
           {switcher ? (
             artistData.artists &&
             artistData.artists.items.map((res) => (
-              <div className={Style.search__results__item}>
+              <div className={Style.search__results__item} key={res.id}>
                 <div className={Style.search__results__item__wrapper}>
                   {res.images[2] ? (
                     <li className={Style.search__results__img}>
@@ -162,7 +209,6 @@ const Search = () => {
                       {res.name}
                     </a>
                   </li>
-                  {/* <span>{console.log(res)}</span> */}
                 </div>
               </div>
             ))

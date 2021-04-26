@@ -5,8 +5,7 @@ import { Container } from 'react-bootstrap';
 import StyleFirebaseUI from 'react-firebaseui/StyledFirebaseAuth';
 import fire from '../fire';
 import firebase from 'firebase';
-import LoginPage from './LoginPage';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 
 const db = firebase.database();
 
@@ -36,17 +35,10 @@ const signOut = () => {
       console.log(`Error: ${err}`);
     });
 };
+let flag = false;
 function writeUserData(userId, name, email, imageUrl) {
-  if (imageUrl[0] === 'dontupdateimg') {
-    firebase
-      .database()
-      .ref('users/' + userId)
-      .set({
-        username: name,
-        email: email,
-        photo: imageUrl[1],
-      });
-    console.log("I won't update that user's image, I swear!");
+  if (flag === true) {
+    console.log("Don't update data");
   } else {
     firebase
       .database()
@@ -75,16 +67,16 @@ const Login = () => {
               data = snapshot.val();
               if (user !== null) {
                 writeUserData(
-                  user.uid,
+                  snapshot.val().uid === '' ? user.uid : (flag = true),
+
                   user.displayName,
                   user.email,
-                  snapshot.val().photo === ''
-                    ? user.photoURL
-                    : ['dontupdateimg', snapshot.val().photo],
+                  user.photoURL,
                 );
               }
 
               console.log(data);
+              history.push('/profile');
             } else {
               console.log('No data available');
             }
@@ -95,17 +87,14 @@ const Login = () => {
     });
     return authObserver;
   });
+  const history = useHistory();
   const [user, setUser] = useState(null);
-  if (user) {
-    return <Redirect to="/profile" />;
-  } else {
-    return (
-      <Container>
-        <h1>Login / Register</h1>
-        <StyleFirebaseUI uiConfig={configUi} firebaseAuth={firebase.auth()} />
-      </Container>
-    );
-  }
+  return (
+    <Container>
+      <h1>Login / Register</h1>
+      <StyleFirebaseUI uiConfig={configUi} firebaseAuth={firebase.auth()} />
+    </Container>
+  );
 };
 
 export default Login;

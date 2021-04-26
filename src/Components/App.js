@@ -7,7 +7,6 @@ import { lightTheme, darkTheme } from '../style/theme';
 import { GlobalStyles } from '../style/global';
 import { Sun, Moon, Menu, X } from 'react-feather';
 // import video from '../assets/videos/theweeknd.mp4';
-
 import '../style/App.css';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -16,6 +15,7 @@ import Search from './Search';
 import Home from './Home';
 import Login from './Login';
 import Profile from './Profile';
+import Grinder from './Grinder';
 
 import firebase from 'firebase';
 
@@ -28,14 +28,6 @@ function App({ initialTheme = 'light' }) {
     return initialTheme;
   });
   const [click, setClick] = useState(true);
-  const [mute, setMute] = useState('mute');
-  const handleMuteChange = () => {
-    if (mute == 'mute') {
-      setMute('not muted');
-    } else {
-      setMute('mute');
-    }
-  };
 
   const toggleTheme = () => {
     if (theme === 'light') {
@@ -72,12 +64,7 @@ function App({ initialTheme = 'light' }) {
         {/* bool ? true : false */}
         <GlobalStyles />
         <Router>
-          <div
-            onLoad={(e) => {
-              console.log(e.volume);
-            }}
-            className="fullscreen-bg"
-          >
+          <div className="fullscreen-bg">
             <iframe
               src={nowPlaying}
               frameBorder="0"
@@ -124,8 +111,8 @@ function App({ initialTheme = 'light' }) {
                   <Link to="/search" className="nav-link">
                     Search
                   </Link>
-                  <Link to="/search" className="nav-link">
-                    mute: {mute}
+                  <Link to="/grinder" className="nav-link">
+                    Grinder
                   </Link>
                 </Nav>
                 {user ? (
@@ -167,11 +154,12 @@ function App({ initialTheme = 'light' }) {
 
             <Switch>
               <Route path="/" exact>
-                <Home mute={mute} handleMuteChange={handleMuteChange} />
+                <Home />
               </Route>
               <Route path="/search" exact component={Search} />
               <Route path="/login" exact component={Login} />
               <Route path="/profile" exact component={Profile} />
+              <Route path="/grinder" exact component={Grinder} />
             </Switch>
           </div>
         </Router>

@@ -23,10 +23,12 @@ const Profile = () => {
   // Hooks
 
   const [user, setUser] = useState(null);
+  const [status, setStatus] = useState('idle');
   const db = firebase.database();
   const [data, setData] = useState({});
   const [phoroUrl, setPhotoUrl] = useState('');
   const [image, setImage] = useState();
+  const [progress, setProgress] = useState(0);
   const uploadedImage = useRef('');
   let dataFromDatabase;
 
@@ -75,7 +77,7 @@ const Profile = () => {
         if (snapshot.exists()) {
           setData(snapshot.val());
           setTimeout(() => {
-            console.log(data);
+            console.log('data', data);
           }, 3000);
           setPhotoUrl(snapshot.val().photo);
         } else {
@@ -92,13 +94,22 @@ const Profile = () => {
     email = data.email;
   const obServer = () => {
     const authObserver = firebase.auth().onAuthStateChanged((user) => {
-      setUser(user);
+      if (user) {
+        setUser(user);
+        setStatus('approved');
+      } else {
+        setUser(user);
+        setStatus('rejected');
+      }
+      console.log(`user:`, user);
     });
     user && user.uid && getDataFromDatabase();
     return authObserver;
   };
   useEffect(() => {
-    obServer();
+    setTimeout(() => {
+      obServer();
+    }, 1500);
   }, [user]);
 
   const signOut = () => {
@@ -122,62 +133,95 @@ const Profile = () => {
     };
     let uploadTask = storageRef
       .child('images/' + user.uid + '/profile')
-      .put(uploadedImage.current.files[0], metadata)
-      .then((data) => {
-        data.ref.getDownloadURL().then((url) => {
-          // do whatever you want with url
+      .put(uploadedImage.current.files[0], metadata);
+
+    uploadTask.on(
+      'state_changed',
+      (snapshot) => {
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log('Upload is ' + progress + '% done');
+        switch (snapshot.state) {
+          case firebase.storage.TaskState.PAUSED:
+            console.log('Upload is paused');
+            break;
+          case firebase.storage.TaskState.RUNNING:
+            console.log('Upload is running');
+            break;
+        }
+      },
+      (err) => {
+        console.log('error: ', err);
+      },
+      (data) => {
+        uploadTask.snapshot.ref.getDownloadURL().then((url) => {
+          console.log(data);
           users.child(user.uid).update({
             photo: url,
           });
-
           setPhotoUrl(url);
         });
-      });
+      },
+    );
   };
 
-  return (
-    <>
-      {user ? (
-        <Container>
-          {phoroUrl ? (
-            <img
-              src={phoroUrl}
-              className={Style.profile__image}
-              alt={`${data && data.username}'s profile`}
-            />
-          ) : (
-            <img src={phoroUrl} alt="default profile" width="120" />
-          )}
-          {users && console.log(users.child(user.uid).get)}
-          <p>Hey, {data && data.username}</p>
-          <p>Email: {data && data.email}</p>
-          <p>
-            photoUrl:{' '}
-            {data && data.photo === '' ? "There's no image" : data.photo}
-          </p>
-          <button onClick={signOut}>Signout</button>
-          <p>
-            {firebase.auth().currentUser && firebase.auth().currentUser.uid}
-          </p>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="file"
-              ref={uploadedImage}
-              accept="image/*"
-              value={image}
-            />
-            <input type="submit" value="Upload" />
-          </form>
-        </Container>
-      ) : (
-        <Container>
-          <p>
-            Sorry, you have to <a href="/login">login</a> to see your profile.
-          </p>
-        </Container>
-      )}
-    </>
-  );
+  const hours = new Date().getHours();
+  let greet = null;
+  if (hours >= 12 && hours <= 17) {
+    greet = 'afternoon';
+  } else if (hours >= 17) {
+    greet = 'evening';
+  } else {
+    greet = 'morning';
+  }
+  if (status === 'idle') {
+    return (
+      <Container>
+        <h1>Loading...</h1>
+      </Container>
+    );
+  } else if (status === 'approved') {
+    return (
+      <Container>
+        {phoroUrl ? (
+          <img
+            src={phoroUrl}
+            className={Style.profile__image}
+            alt={`${data && data.username}'s profile`}
+          />
+        ) : (
+          <img src={phoroUrl} alt="default profile" width="120" />
+        )}
+        <p className={Style.greetUser}>
+          Good {greet && greet}, {data && data.username}
+        </p>
+        <p>Email: {data && data.email}</p>
+        <p>
+          photoUrl:{' '}
+          {data && data.photo === '' ? "There's no image" : data.photo}
+        </p>
+        <button onClick={signOut}>Signout</button>
+        <p>{firebase.auth().currentUser && firebase.auth().currentUser.uid}</p>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="file"
+            ref={uploadedImage}
+            accept="image/*"
+            value={image}
+          />
+          <input type="submit" value="Upload" />
+          <meter min="0" max="100" value="50" />
+        </form>
+      </Container>
+    );
+  } else {
+    return (
+      <Container>
+        <p>
+          Sorry, you have to <a href="/login">login</a> to see your profile.
+        </p>
+      </Container>
+    );
+  }
 };
 
 export default Profile;
