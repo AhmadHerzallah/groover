@@ -38,7 +38,7 @@ const signOut = () => {
 let flag = false;
 function writeUserData(userId, name, email, imageUrl) {
   if (flag === true) {
-    console.log("I won't update that user's image, I swear!");
+    console.log("Don't update data");
   } else {
     firebase
       .database()
