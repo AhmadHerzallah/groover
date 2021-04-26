@@ -140,6 +140,7 @@ const Profile = () => {
       (snapshot) => {
         var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         console.log('Upload is ' + progress + '% done');
+
         switch (snapshot.state) {
           case firebase.storage.TaskState.PAUSED:
             console.log('Upload is paused');
@@ -160,7 +161,7 @@ const Profile = () => {
           });
           setPhotoUrl(url);
         });
-      },
+      }
     );
   };
 
@@ -189,7 +190,7 @@ const Profile = () => {
             alt={`${data && data.username}'s profile`}
           />
         ) : (
-          <img src={phoroUrl} alt="default profile" width="120" />
+          <img src={phoroUrl} alt='default profile' width='120' />
         )}
         <p className={Style.greetUser}>
           Good {greet && greet}, {data && data.username}
@@ -203,13 +204,13 @@ const Profile = () => {
         <p>{firebase.auth().currentUser && firebase.auth().currentUser.uid}</p>
         <form onSubmit={handleSubmit}>
           <input
-            type="file"
+            type='file'
             ref={uploadedImage}
-            accept="image/*"
+            accept='image/*'
             value={image}
           />
-          <input type="submit" value="Upload" />
-          <meter min="0" max="100" value="50" />
+          <input type='submit' value='Upload' />
+          <meter min='0' max='100' value='50' />
         </form>
       </Container>
     );
@@ -217,7 +218,7 @@ const Profile = () => {
     return (
       <Container>
         <p>
-          Sorry, you have to <a href="/login">login</a> to see your profile.
+          Sorry, you have to <a href='/login'>login</a> to see your profile.
         </p>
       </Container>
     );
