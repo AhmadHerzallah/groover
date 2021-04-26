@@ -28,6 +28,7 @@ const Profile = () => {
   const [data, setData] = useState({});
   const [phoroUrl, setPhotoUrl] = useState('');
   const [image, setImage] = useState();
+  const [progress, setProgress] = useState(0);
   const uploadedImage = useRef('');
   let dataFromDatabase;
 
@@ -132,18 +133,82 @@ const Profile = () => {
     };
     let uploadTask = storageRef
       .child('images/' + user.uid + '/profile')
-      .put(uploadedImage.current.files[0], metadata)
-      .then((data) => {
-        data.ref.getDownloadURL().then((url) => {
-          // do whatever you want with url
+      .put(uploadedImage.current.files[0], metadata);
+
+    uploadTask.on(
+      'state_changed',
+      (snapshot) => {
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log('Upload is ' + progress + '% done');
+        switch (snapshot.state) {
+          case firebase.storage.TaskState.PAUSED:
+            console.log('Upload is paused');
+            break;
+          case firebase.storage.TaskState.RUNNING:
+            console.log('Upload is running');
+            break;
+        }
+      },
+      (err) => {
+        console.log('error: ', err);
+      },
+      (data) => {
+        uploadTask.snapshot.ref.getDownloadURL().then((url) => {
+          console.log(data);
           users.child(user.uid).update({
             photo: url,
           });
-
           setPhotoUrl(url);
         });
-      });
+      },
+    );
+    // .then((data) => {
+    //   data.ref.getDownloadURL().then((url) => {
+    //     console.log(data);
+    //     users.child(user.uid).update({
+    //       photo: url,
+    //     });
+
+    //     setPhotoUrl(url);
+    //   });
+    // });
   };
+
+  /*
+
+
+      .on(
+        'state_changed',
+        (snapshot) => {
+          var progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log('Upload is ' + progress + '% done');
+          switch (snapshot.state) {
+            case firebase.storage.TaskState.PAUSED:
+              console.log('Upload is paused');
+              break;
+            case firebase.storage.TaskState.RUNNING:
+              console.log('Upload is running');
+              break;
+          }
+        },
+        (error) => {
+          console.log('error');
+          console.log('error msg:', error);
+        },
+        (data) => {
+          data.ref.getDownloadURL().then((url) => {
+            // do whatever you want with url
+            users.child(user.uid).update({
+              photo: url,
+            });
+
+            setPhotoUrl(url);
+          });
+        },
+      );
+
+  */
   const hours = new Date().getHours();
   let greet = null;
   if (hours >= 12 && hours <= 17) {
@@ -189,6 +254,7 @@ const Profile = () => {
             value={image}
           />
           <input type="submit" value="Upload" />
+          <meter min="0" max="100" value="50" />
         </form>
       </Container>
     );
