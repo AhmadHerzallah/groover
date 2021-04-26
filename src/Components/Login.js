@@ -71,9 +71,7 @@ const Login = () => {
 
                   user.displayName,
                   user.email,
-                  snapshot.val().photo === ''
-                    ? user.photoURL
-                    : ['dontupdateimg', snapshot.val().photo],
+                  user.photoURL,
                 );
               }
 
