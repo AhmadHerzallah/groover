@@ -162,53 +162,8 @@ const Profile = () => {
         });
       },
     );
-    // .then((data) => {
-    //   data.ref.getDownloadURL().then((url) => {
-    //     console.log(data);
-    //     users.child(user.uid).update({
-    //       photo: url,
-    //     });
-
-    //     setPhotoUrl(url);
-    //   });
-    // });
   };
 
-  /*
-
-
-      .on(
-        'state_changed',
-        (snapshot) => {
-          var progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log('Upload is ' + progress + '% done');
-          switch (snapshot.state) {
-            case firebase.storage.TaskState.PAUSED:
-              console.log('Upload is paused');
-              break;
-            case firebase.storage.TaskState.RUNNING:
-              console.log('Upload is running');
-              break;
-          }
-        },
-        (error) => {
-          console.log('error');
-          console.log('error msg:', error);
-        },
-        (data) => {
-          data.ref.getDownloadURL().then((url) => {
-            // do whatever you want with url
-            users.child(user.uid).update({
-              photo: url,
-            });
-
-            setPhotoUrl(url);
-          });
-        },
-      );
-
-  */
   const hours = new Date().getHours();
   let greet = null;
   if (hours >= 12 && hours <= 17) {
