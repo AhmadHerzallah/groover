@@ -1,10 +1,49 @@
-@import url('../assets/fonts/TTNormsPro/stylesheet.css');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 * {
   /* font-family: 'TT Norms Pro'; */
   font-family: 'Inter';
   font-weight: bold;
+}
+.cursor {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #fefefe;
+  border-radius: 100%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: all 150ms ease;
+  transition-property: opacity, background-color, transform, mix-blend-mode;
+
+  z-index: 9999;
+  mix-blend-mode: difference;
+}
+
+.cursor--hidden {
+  opacity: 0;
+}
+
+.cursor--clicked {
+  transform: translate(-50%, -50%) scale(0.9);
+  background-color: #fefefe;
+}
+.cursor--link-hovered {
+  transform: translate(-50%, -50%) scale(1.25);
+  background-color: #fefefe;
+}
+
+a {
+  /* text-decoration: underline; */
+  cursor: none;
+  pointer-events: none;
+  color: #fefefe;
+}
+
+html,
+body {
+  cursor: none;
+  /* background-color: #121212; */
 }
 
 video {
