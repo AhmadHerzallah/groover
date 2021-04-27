@@ -33,10 +33,13 @@
   background-color: #fefefe;
 }
 
+.nav-link {
+  cursor: none;
+}
+
 a {
   /* text-decoration: underline; */
   cursor: none;
-  pointer-events: none;
   color: #fefefe;
 }
 

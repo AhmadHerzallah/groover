@@ -68,6 +68,8 @@ const Cursor = () => {
   });
   const isMobile = () => {
     const ua = navigator.userAgent;
+    console.log(navigator);
+    console.log(ua);
     return /Android|Mobi/i.test(ua);
   };
   if (typeof navigator !== 'undefined' && isMobile()) return null;
