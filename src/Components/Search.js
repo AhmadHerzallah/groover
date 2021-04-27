@@ -22,10 +22,11 @@ const Search = () => {
   const handleSwitchChange = () => {
     setSwitcher(!switcher);
   };
-  
-	const token = "BQAB50hUgUzAmSnJpm33XTXgVrBuZ48c10kJoaMuaAXlsUCx8vy62DgoquMpkBeF4923JX6iq2E3o2tPli71TJ3B7Z_zp-Uov6y_4Kh5G8k5AQRm64z4ognCO7xdKVdvmYuxItRcYdBKGG1kKe4tjra9UWrrHnQiao2Ik5CTbC5r-xGzgg"
 
-	const getDataArtist = async () => {
+  const token =
+    'BQB_DoaolQElZ3gWbmfOSJljcDJSGA00cgKlPka2JiomRY_wyWnv_0N1wRj6n2vcVk8hNy9CCPdB1OkuCEtCJ4mfWgyMghDm_bVnoUMgteW3mkF1TdldrGZ3t049HhW4AXjnRIjehxHtMcrBK33OYM9oCWhdcGrcpYl1Raz_0sU_NJGBLg';
+
+  const getDataArtist = async () => {
     const res = await fetch(
       `https://api.spotify.com/v1/search?q=${query}&type=artist&limit=10&access_token=${token}`,
     );

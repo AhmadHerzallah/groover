@@ -16,6 +16,7 @@ import Home from './Home';
 import Login from './Login';
 import Profile from './Profile';
 import Grinder from './Grinder';
+import Cursor from './Cursor';
 
 import firebase from 'firebase';
 
@@ -28,6 +29,14 @@ function App({ initialTheme = 'light' }) {
     return initialTheme;
   });
   const [click, setClick] = useState(true);
+  const [cursorXY, setCursorXY] = useState({ x: -100, y: -100 });
+  useEffect(() => {
+    const moveCursor = (e) => {
+      const x = e.clientX - 16;
+      const y = e.clientY - 16;
+      setCursorXY({ x, y });
+    };
+  }, []);
 
   const toggleTheme = () => {
     if (theme === 'light') {
@@ -163,6 +172,7 @@ function App({ initialTheme = 'light' }) {
             </Switch>
           </div>
         </Router>
+        <Cursor />
       </ThemeProvider>
     </>
   );
