@@ -24,7 +24,7 @@ const Search = () => {
   };
 
   const token =
-    'BQB_DoaolQElZ3gWbmfOSJljcDJSGA00cgKlPka2JiomRY_wyWnv_0N1wRj6n2vcVk8hNy9CCPdB1OkuCEtCJ4mfWgyMghDm_bVnoUMgteW3mkF1TdldrGZ3t049HhW4AXjnRIjehxHtMcrBK33OYM9oCWhdcGrcpYl1Raz_0sU_NJGBLg';
+    'BQCzGVrJMUvCUAubIU9ZPwdSzRIKKRlieRj1-5_8Zo_gVkmp8G72ngyNCJildKxsZhujbXdHWw_6rj4hK2CnGCdZ2LtYy61I5ffEmxnBJOVEJWrofxqu0-fRLk-zYyugfESioOjzEDgWe8eHXlvwiS7poic8bF0RPEKbaPJHuO277tbEgQ';
 
   const getDataArtist = async () => {
     const res = await fetch(
