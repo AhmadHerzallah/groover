@@ -39,6 +39,10 @@ const Cursor = () => {
       el.addEventListener('mouseover', () => setLinkHovered(true));
       el.addEventListener('mouseout', () => setLinkHovered(false));
     });
+    document.querySelectorAll('span').forEach((el) => {
+      el.addEventListener('mouseover', () => setLinkHovered(true));
+      el.addEventListener('mouseout', () => setLinkHovered(false));
+    });
   };
 
   const onMouseLeave = () => {
