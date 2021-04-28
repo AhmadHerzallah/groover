@@ -1,16 +1,29 @@
+// #region import
+
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../style/App.css';
 
 import React, { useState, useEffect } from 'react';
+
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+
+// Import ThemeProvider from Styled-components
 import { ThemeProvider } from 'styled-components';
+
+// Import Light and Dark theme from ../style/theme
 import { lightTheme, darkTheme } from '../style/theme';
+
+// Import Global Style
 import { GlobalStyles } from '../style/global';
+
+// Import icons
 import { Sun, Moon, Menu, X } from 'react-feather';
-// import video from '../assets/videos/theweeknd.mp4';
-import '../style/App.css';
+
+// Import Nav & Navbar from react-bootstrap
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 
+// Import Components
 import Search from './Search';
 import Home from './Home';
 import Login from './Login';
@@ -20,24 +33,35 @@ import Cursor from './Cursor';
 
 import firebase from 'firebase';
 
-function App({ initialTheme = 'light' }) {
+//#endregion
+
+// we'll write comments to be: Documentation and Clarification comments
+
+function App({ initialTheme = 'dark' }) {
+  // Initialize a new state for managing theme
   const [theme, setTheme] = useState(() => {
+    /* 
+    
+    define a new variable to localStorage which
+    get key 'theme' from localStorage
+
+    */
     let localValue = window.localStorage.getItem('theme');
+    // check if key 'theme' is aleady
+    // declared in localStorage
     if (localValue) {
+      // return parse localValue
+      // JSON.parse: adds " " to the value.
       return JSON.parse(localValue);
     }
+    // else, return the initialTheme
+    // which is dark (Ln: 34)
     return initialTheme;
   });
+  // Initialize state to handle burger menu
   const [click, setClick] = useState(true);
-  const [cursorXY, setCursorXY] = useState({ x: -100, y: -100 });
-  useEffect(() => {
-    const moveCursor = (e) => {
-      const x = e.clientX - 16;
-      const y = e.clientY - 16;
-      setCursorXY({ x, y });
-    };
-  }, []);
 
+  // function to control the theme value
   const toggleTheme = () => {
     if (theme === 'light') {
       setTheme('dark');
@@ -45,21 +69,29 @@ function App({ initialTheme = 'light' }) {
       setTheme('light');
     }
   };
+
+  // * change key 'theme' in localStorage based on
+  // * theme value.
+  // * so everytime the theme value change
+  // * it will change the theme value in localStorage
   useEffect(() => {
     window.localStorage.setItem('theme', JSON.stringify(theme));
   }, [theme]);
 
+  // function to handle burger menu click
   const handleClick = (e) => {
     setClick(!click);
   };
+  // declare video background data
   const listId = 'PL_TWHDjv1CGTCa8RsFHgpcSKfHGO_w6Zl';
   const type = 'list';
-
   const nowPlaying = `https://www.youtube.com/embed/videoseries?${type}=${listId}&autoplay=1&mute=0&controls=0&fs=1`;
 
-  // firebase //
+  /* firebase */
+  // Initialize state for user.
   const [user, setUser] = useState(null);
 
+  // get user data from firebase.auth()
   useEffect(() => {
     const authObserver = firebase.auth().onAuthStateChanged((user) => {
       setUser(user);
@@ -70,7 +102,6 @@ function App({ initialTheme = 'light' }) {
   return (
     <>
       <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-        {/* bool ? true : false */}
         <GlobalStyles />
         <Router>
           <div className="fullscreen-bg">
@@ -179,25 +210,3 @@ function App({ initialTheme = 'light' }) {
 }
 
 export default App;
-
-/*
-38 - 54
-  // const database = firebase.database();
-
-  // const getDataFromRealtimeDatabase = () => {
-  //   database
-  //     .child('users')
-  //     .get()
-  //     .then(function (snapshot) {
-  //       if (snapshot.exists()) {
-  //         console.log(snapshot.val());
-  //       } else {
-  //         console.log('No data available');
-  //       }
-  //     })
-  //     .catch(function (error) {
-  //       console.error(error);
-  //     });
-  // };
-
-  */
