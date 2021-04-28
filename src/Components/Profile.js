@@ -141,13 +141,8 @@ const Profile = () => {
       'state_changed',
       (snapshot) => {
         var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-<<<<<<< HEAD
-        console.log('Upload is ' + progress + '% done');
-
-=======
         setUploadProgress(progress);
         console.log(progress);
->>>>>>> de27cff13ec6951a42eeb3334d96996c52e3c25d
         switch (snapshot.state) {
           case firebase.storage.TaskState.PAUSED:
             console.log('Upload is paused');
@@ -215,32 +210,27 @@ const Profile = () => {
             accept='image/*'
             value={image}
           />
-<<<<<<< HEAD
           <input type='submit' value='Upload' />
-          <meter min='0' max='100' value='50' />
-=======
-          <input type="submit" value="Upload" />
-          <svg viewBox="0 0 36 36" class="circular-chart">
+          <svg viewBox='0 0 36 36' class='circular-chart'>
             <path
-              class="circle"
+              class='circle'
               stroke-dasharray={`${uploadProgress}, 100`}
-              d="M18 2.0845
+              d='M18 2.0845
       a 15.9155 15.9155 0 0 1 0 31.831
-      a 15.9155 15.9155 0 0 1 0 -31.831"
+      a 15.9155 15.9155 0 0 1 0 -31.831'
             />
             <text
-              x="50%"
-              y="50%"
-              text-anchor="middle"
-              fill="white"
-              font-size="5px"
-              font-family="Arial"
-              dy=".3em"
+              x='50%'
+              y='50%'
+              text-anchor='middle'
+              fill='white'
+              font-size='5px'
+              font-family='Arial'
+              dy='.3em'
             >
               {parseInt(uploadProgress)}%
             </text>
           </svg>
->>>>>>> de27cff13ec6951a42eeb3334d96996c52e3c25d
         </form>
       </Container>
     );
