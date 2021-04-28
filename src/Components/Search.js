@@ -24,7 +24,11 @@ const Search = () => {
   };
 
   const token =
+<<<<<<< HEAD
     "BQAB50hUgUzAmSnJpm33XTXgVrBuZ48c10kJoaMuaAXlsUCx8vy62DgoquMpkBeF4923JX6iq2E3o2tPli71TJ3B7Z_zp-Uov6y_4Kh5G8k5AQRm64z4ognCO7xdKVdvmYuxItRcYdBKGG1kKe4tjra9UWrrHnQiao2Ik5CTbC5r-xGzgg";
+=======
+    'BQCzGVrJMUvCUAubIU9ZPwdSzRIKKRlieRj1-5_8Zo_gVkmp8G72ngyNCJildKxsZhujbXdHWw_6rj4hK2CnGCdZ2LtYy61I5ffEmxnBJOVEJWrofxqu0-fRLk-zYyugfESioOjzEDgWe8eHXlvwiS7poic8bF0RPEKbaPJHuO277tbEgQ';
+>>>>>>> de27cff13ec6951a42eeb3334d96996c52e3c25d
 
   const getDataArtist = async () => {
     const res = await fetch(
