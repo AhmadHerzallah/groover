@@ -24,7 +24,7 @@ const Search = () => {
   };
 
   const token =
-    'BQB_DoaolQElZ3gWbmfOSJljcDJSGA00cgKlPka2JiomRY_wyWnv_0N1wRj6n2vcVk8hNy9CCPdB1OkuCEtCJ4mfWgyMghDm_bVnoUMgteW3mkF1TdldrGZ3t049HhW4AXjnRIjehxHtMcrBK33OYM9oCWhdcGrcpYl1Raz_0sU_NJGBLg';
+    'BQCeDEvcuo74U29w-tsBqGT49YE1d8JecvHCOpE23v55r3m3RMYThYuqm6G7sweY5FgBE0pNVpzIOv5IZUFOLHI3XI3x50r3QgiuqSsKbgezW8vDifhuZG-s_kZoW4wwurSbFe83AWkO7qjx7Q9YTrdkLeAAoWDguXgqUZe_6b7YeUueEw';
 
   const getDataArtist = async () => {
     const res = await fetch(
@@ -85,26 +85,26 @@ const Search = () => {
     // console.log(query);
   };
   let history = [];
-  const isArtist = () => {
-    history = [];
-    let Artists = JSON.parse([localStorage.getItem('AH')]);
-    let len = Artists.length;
-    // console.log(Artists);
-    let len2 = 0;
-    // console.log(len);
-    if (len <= 10) {
-      len2 = 0;
-    } else {
-      len2 = len - 10;
-    }
-    for (let i = len - 1; i >= len2; i--) {
-      if (history.includes(Artists[i]) === false) {
-        history.push(Artists[i]);
-        // console.log(Artists[i]);
-      }
-    }
-    // console.log(history);
-  };
+  // const isArtist = () => {
+  //   history = [];
+  //   let Artists = JSON.parse([localStorage.getItem('AH')]);
+  //   let len = Artists.length;
+  //   // console.log(Artists);
+  //   let len2 = 0;
+  //   // console.log(len);
+  //   if (len <= 10) {
+  //     len2 = 0;
+  //   } else {
+  //     len2 = len - 10;
+  //   }
+  //   for (let i = len - 1; i >= len2; i--) {
+  //     if (history.includes(Artists[i]) === false) {
+  //       history.push(Artists[i]);
+  //       // console.log(Artists[i]);
+  //     }
+  //   }
+  //   // console.log(history);
+  // };
   const isTrack = () => {
     // history = [];
     // let Tracks = JSON.parse([localStorage.getItem("TH")]);
@@ -126,10 +126,10 @@ const Search = () => {
     // console.log(history);
     // localStorage.setItem("TH", "up up and away");
   };
-  const handleFocus = () => {
-    switcher ? isArtist() : isTrack();
-    history.map((historyItem) => <h1 key={historyItem}>{historyItem}</h1>);
-  };
+  // const handleFocus = () => {
+  //   switcher ? isArtist() : isTrack();
+  //   history.map((historyItem) => <h1 key={historyItem}>{historyItem}</h1>);
+  // };
   return (
     <Container>
       <div className={Style.search__div}>
@@ -152,6 +152,7 @@ const Search = () => {
                   onColor="#7f5af0"
                   checkedIcon={``}
                   width={60}
+                  aria-label="switcher"
                 />
               </div>
             </Col>
@@ -164,8 +165,9 @@ const Search = () => {
                 value={query}
                 onChange={handleValueChange}
                 id="search_bar"
-                onFocus={handleFocus()}
+                aria-label="search"
               ></input>
+              {/*                 onFocus={handleFocus()} */}
             </Col>
           </Row>
         </form>
@@ -176,39 +178,45 @@ const Search = () => {
             artistData.artists.items.map((res) => (
               <div className={Style.search__results__item} key={res.id}>
                 <div className={Style.search__results__item__wrapper}>
-                  {res.images[2] ? (
-                    <li className={Style.search__results__img}>
-                      <img
-                        className={Style.search__results__img__self}
-                        src={res.images[2].url}
-                        alt=""
-                      />
-                    </li>
-                  ) : (
-                    <li className={Style.search__results__img}>
-                      <Jdenticon size="140" value={res.name} />
-                    </li>
-                  )}
-                  <li className={Style.search__results__name}>{res.name}</li>
+                  <ul>
+                    {res.images[2] ? (
+                      <li className={Style.search__results__img}>
+                        <img
+                          className={Style.search__results__img__self}
+                          src={res.images[2].url}
+                          alt=""
+                        />
+                      </li>
+                    ) : (
+                      <li className={Style.search__results__img}>
+                        <Jdenticon size="140" value={res.name} />
+                      </li>
+                    )}
+                    <li className={Style.search__results__name}>{res.name}</li>
 
-                  <li>
-                    {res.genres.map((elem) => (
-                      <span>
-                        {elem}{' '}
-                        {res.genres.length === res.genres.indexOf(elem) + 1
-                          ? null
-                          : ', '}
-                      </span>
-                    ))}
-                  </li>
-                  <li>
-                    <span className={Style.search__results__spotify}>
-                      Spotify:
-                    </span>{' '}
-                    <a href={res.external_urls.spotify} target="_blank">
-                      {res.name}
-                    </a>
-                  </li>
+                    <li>
+                      {res.genres.map((elem) => (
+                        <span>
+                          {elem}{' '}
+                          {res.genres.length === res.genres.indexOf(elem) + 1
+                            ? null
+                            : ', '}
+                        </span>
+                      ))}
+                    </li>
+                    <li>
+                      <span className={Style.search__results__spotify}>
+                        Spotify:
+                      </span>{' '}
+                      <a
+                        href={res.external_urls.spotify}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        {res.name}
+                      </a>
+                    </li>
+                  </ul>
                 </div>
               </div>
             ))
@@ -218,50 +226,52 @@ const Search = () => {
                 trackData.tracks.items.map((res) => (
                   <div className={Style.search__results__item__track}>
                     <div className={Style.search__results__item__wrapper}>
-                      {res.album.images[1] ? (
-                        <li className={Style.search__results__img}>
-                          <img
-                            className={Style.search__results__img__self}
-                            src={res.album.images[1].url}
-                            alt=""
-                            width={150}
-                          />
-                        </li>
-                      ) : (
-                        <li className={Style.search__results__img}>
-                          <Jdenticon size="140" value={res.name} />
-                        </li>
-                      )}
+                      <ul>
+                        {res.album.images[1] ? (
+                          <li className={Style.search__results__img}>
+                            <img
+                              className={Style.search__results__img__self}
+                              src={res.album.images[1].url}
+                              alt=""
+                              width={150}
+                            />
+                          </li>
+                        ) : (
+                          <li className={Style.search__results__img}>
+                            <Jdenticon size="140" value={res.name} />
+                          </li>
+                        )}
 
-                      <li className={Style.search__results__name}>
-                        {res.name}
-                      </li>
-                      <li className={Style.search__results__artists}>
-                        {res.artists.map((elem) => (
-                          <span>
-                            {elem.name}{' '}
-                            {res.artists.length ===
-                            res.artists.indexOf(elem) + 1
-                              ? null
-                              : ', '}
-                          </span>
-                        ))}
-                      </li>
-                      <li className={Style.search__results__spotify__player}>
-                        {console.log(res.uri.split(':'))}
-                        <iframe
-                          src={`https://open.spotify.com/embed/${
-                            res.uri.split(':')[1]
-                          }/${res.uri.split(':')[2]}`}
-                          width="240"
-                          title="Spotify"
-                          height="80"
-                          style={{ borderRadius: '5px' }}
-                          frameborder="0"
-                          allowtransparency="true"
-                          allow="encrypted-media"
-                        ></iframe>
-                      </li>
+                        <li className={Style.search__results__name}>
+                          {res.name}
+                        </li>
+                        <li className={Style.search__results__artists}>
+                          {res.artists.map((elem) => (
+                            <span>
+                              {elem.name}{' '}
+                              {res.artists.length ===
+                              res.artists.indexOf(elem) + 1
+                                ? null
+                                : ', '}
+                            </span>
+                          ))}
+                        </li>
+                        <li className={Style.search__results__spotify__player}>
+                          {console.log(res.uri.split(':'))}
+                          <iframe
+                            src={`https://open.spotify.com/embed/${
+                              res.uri.split(':')[1]
+                            }/${res.uri.split(':')[2]}`}
+                            width="240"
+                            title="Spotify"
+                            height="80"
+                            style={{ borderRadius: '5px' }}
+                            frameborder="0"
+                            allowtransparency="true"
+                            allow="encrypted-media"
+                          ></iframe>
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 ))}
