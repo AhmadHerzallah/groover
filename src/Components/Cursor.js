@@ -1,9 +1,14 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+//#region import
+
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 
+//#endregion
+
 const Cursor = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [hidden, setHidden] = useState(false);
+  const [position, setPosition] = useState({ x: 0, y: 0 }); // cursor's position
+  const [hidden, setHidden] = useState(false); // cursor's
   const [clicked, setClicked] = useState(false);
   const [linkHovered, setLinkHovered] = useState(false);
 
@@ -70,12 +75,18 @@ const Cursor = () => {
     'cursor--clicked': clicked,
     'cursor--link-hovered': linkHovered,
   });
+
+  // function to check if the user's machine
+  // is a mobile or not.
   const isMobile = () => {
+    // get userAgent from browser.
     const ua = navigator.userAgent;
-    console.log(navigator);
-    console.log(ua);
+    // check if Android / Mobi word
+    // in userAgent and then return
+    // true / false.
     return /Android|Mobi/i.test(ua);
   };
+  // if it's mobile then don't return the cursor.
   if (typeof navigator !== 'undefined' && isMobile()) return null;
 
   return (
