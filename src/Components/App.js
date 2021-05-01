@@ -60,7 +60,6 @@ function App({ initialTheme = 'dark' }) {
   });
   // Initialize state to handle burger menu
   const [click, setClick] = useState(true);
-
   // function to control the theme value
   const toggleTheme = () => {
     if (theme === 'light') {
@@ -178,6 +177,7 @@ function App({ initialTheme = 'dark' }) {
                   }}
                   className="themeSwitcher"
                   onClick={toggleTheme}
+                  aria-label="theme"
                 >
                   {theme !== 'light' ? (
                     <>
