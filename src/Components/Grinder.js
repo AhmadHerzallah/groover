@@ -74,6 +74,14 @@ const Grinder = () => {
   }
 
   const swiped = (direction, nameToDelete) => {
+    // if (direction === 'left') {
+    //   var leftswaped = firebase.database.ref(user.id);
+    //   console.log(leftswaped);
+    // const users = firebase.database().child(user.id).set({
+    //   leftswaped: leftswaped,
+    // });
+    // }
+
     console.log('removing: ' + nameToDelete);
     setLastDirection(direction);
     alreadyRemoved.push(nameToDelete);

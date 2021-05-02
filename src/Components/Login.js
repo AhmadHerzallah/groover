@@ -149,7 +149,6 @@ const Login = () => {
     }
     return () => unregisterAuthObserver();
   });
-  const history = useHistory();
   const [user, setUser] = useState(null);
   return (
     <Container>
