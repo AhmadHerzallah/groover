@@ -32,6 +32,7 @@ const alreadyRemoved = [];
 let charactersState = db;
 
 const Grinder = () => {
+  const [isSignedIn, setIsSignedIn] = useState(false);
   const [user, setUser] = useState(null);
   const [characters, setCharacters] = useState(db);
   const [lastDirection, setLastDirection] = useState();
@@ -49,15 +50,24 @@ const Grinder = () => {
     });
     return authObserver;
   };
-  useEffect(() => {
-    obServer();
-  }, [user]);
+  // useEffect(() => {
+  //   obServer();
+  // }, [user]);
 
-  if (!user) {
+  useEffect(() => {
+    const unregisterAuthObserver = firebase
+      .auth()
+      .onAuthStateChanged((user) => {
+        setIsSignedIn(!!user);
+      });
+    return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
+  }, []);
+
+  if (!isSignedIn) {
     return (
       <Container>
         <p>
-          Sorry, you have to <a href="/login">login</a> to see your profile.
+          Sorry, you have to <a href='/login'>login</a> to see your profile.
         </p>
       </Container>
     );
@@ -95,36 +105,36 @@ const Grinder = () => {
         <div className={Style.grinder_main}>
           <h1 className={`text-center`}>Grinder!</h1>
           <div className={`${Style.grinder__container}`}>
-            <div className="cardContainer">
+            <div className='cardContainer'>
               {characters.map((character, index) => (
                 <TinderCard
                   ref={childRefs[index]}
-                  className="swipe"
+                  className='swipe'
                   key={character.name}
                   onSwipe={(dir) => swiped(dir, character.name)}
                   onCardLeftScreen={() => outOfFrame(character.name)}
                 >
                   <div
                     style={{ backgroundImage: 'url(' + character.url + ')' }}
-                    className="card"
+                    className='card'
                   >
                     <h3 style={{ color: '#000' }}>{character.name}</h3>
                   </div>
                 </TinderCard>
               ))}
             </div>
-            <div className="buttons">
+            <div className='buttons'>
               <button onClick={() => swipe('left')}>Swipe left!</button>
               <button onClick={() => swipe('up')}>Swipe up!</button>
 
               <button onClick={() => swipe('right')}>Swipe right!</button>
             </div>
             {lastDirection ? (
-              <h2 key={lastDirection} className="infoText">
+              <h2 key={lastDirection} className='infoText'>
                 Swiped {lastDirection}
               </h2>
             ) : (
-              <h2 className="infoText">Start Swipin' !</h2>
+              <h2 className='infoText'>Start Swipin' !</h2>
             )}
           </div>
         </div>
