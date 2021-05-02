@@ -32,6 +32,7 @@ const alreadyRemoved = [];
 let charactersState = db;
 
 const Grinder = () => {
+  const [isSignedIn, setIsSignedIn] = useState(false);
   const [user, setUser] = useState(null);
   const [characters, setCharacters] = useState(db);
   const [lastDirection, setLastDirection] = useState();
@@ -49,11 +50,20 @@ const Grinder = () => {
     });
     return authObserver;
   };
-  useEffect(() => {
-    obServer();
-  }, [user]);
+  // useEffect(() => {
+  //   obServer();
+  // }, [user]);
 
-  if (!user) {
+  useEffect(() => {
+    const unregisterAuthObserver = firebase
+      .auth()
+      .onAuthStateChanged((user) => {
+        setIsSignedIn(!!user);
+      });
+    return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
+  }, []);
+
+  if (!isSignedIn) {
     return (
       <Container>
         <p>
@@ -91,6 +101,7 @@ const Grinder = () => {
       }
     };
 
+<<<<<<< HEAD
     return (
       <>
         <Container>
@@ -118,6 +129,47 @@ const Grinder = () => {
               <div className='buttons'>
                 <button onClick={() => swipe('left')}>Swipe left!</button>
                 <button onClick={() => swipe('up')}>Swipe up!</button>
+=======
+  const swipe = (dir) => {
+    const cardsLeft = characters.filter(
+      (person) => !alreadyRemoved.includes(person.name),
+    );
+    if (cardsLeft.length) {
+      const toBeRemoved = cardsLeft[cardsLeft.length - 1].name; // Find the card object to be removed
+      const index = db.map((person) => person.name).indexOf(toBeRemoved); // Find the index of which to make the reference to
+      alreadyRemoved.push(toBeRemoved); // Make sure the next card gets removed next time if this card do not have time to exit the screen
+      childRefs[index].current.swipe(dir); // Swipe the card!
+    }
+  };
+
+  return (
+    <>
+      <Container>
+        <div className={Style.grinder_main}>
+          <h1 className={`text-center`}>Grinder!</h1>
+          <div className={`${Style.grinder__container}`}>
+            <div className='cardContainer'>
+              {characters.map((character, index) => (
+                <TinderCard
+                  ref={childRefs[index]}
+                  className='swipe'
+                  key={character.name}
+                  onSwipe={(dir) => swiped(dir, character.name)}
+                  onCardLeftScreen={() => outOfFrame(character.name)}
+                >
+                  <div
+                    style={{ backgroundImage: 'url(' + character.url + ')' }}
+                    className='card'
+                  >
+                    <h3 style={{ color: '#000' }}>{character.name}</h3>
+                  </div>
+                </TinderCard>
+              ))}
+            </div>
+            <div className='buttons'>
+              <button onClick={() => swipe('left')}>Swipe left!</button>
+              <button onClick={() => swipe('up')}>Swipe up!</button>
+>>>>>>> db9dd72b356609f4699f81828cfc792e12192789
 
                 <button onClick={() => swipe('right')}>Swipe right!</button>
               </div>
@@ -129,6 +181,16 @@ const Grinder = () => {
                 <h2 className='infoText'>Start Swipin' !</h2>
               )}
             </div>
+<<<<<<< HEAD
+=======
+            {lastDirection ? (
+              <h2 key={lastDirection} className='infoText'>
+                Swiped {lastDirection}
+              </h2>
+            ) : (
+              <h2 className='infoText'>Start Swipin' !</h2>
+            )}
+>>>>>>> db9dd72b356609f4699f81828cfc792e12192789
           </div>
         </Container>
       </>
