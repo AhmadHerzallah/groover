@@ -24,3 +24,8 @@ yarn-error.log*
 
 /.git
 
+<<<<<<< HEAD
+=======
+README2.md
+README2.md
+>>>>>>> f10caebfad7ff88e50878e79e4188c8e19a70221

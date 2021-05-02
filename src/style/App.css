@@ -1,4 +1,16 @@
+<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+=======
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Pacifico Regular'), local('Pacifico-Regular'),
+    url(https://fonts.gstatic.com/s/pacifico/v12/FwZY7-Qmy14u9lezJ-6H6MmBp0u-.woff2)
+      format('woff2');
+  font-display: swap;
+}
+>>>>>>> f10caebfad7ff88e50878e79e4188c8e19a70221
 
 * {
   /* font-family: 'TT Norms Pro'; */
@@ -150,6 +162,12 @@ video {
   height: 100%;
 }
 
+<<<<<<< HEAD
+=======
+.swipe:last-of-type {
+}
+
+>>>>>>> f10caebfad7ff88e50878e79e4188c8e19a70221
 .card h3 {
   position: absolute;
   bottom: 0;

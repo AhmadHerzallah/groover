@@ -24,11 +24,15 @@ const Search = () => {
   };
 
   const token =
+<<<<<<< HEAD
     'BQDZP-qEikoIM9_kC3t1TWqt5qb7ghAUDZhcW7jY_XSh2mRA2T0bOpsAwSMm7RNVDoqgHJzzFpy6DHLPlcM0qQN0QHBAXdIXm0KSMZskJR0JkV4fPB1v3qjhYktwZYmj7OP8oob4gPIU9rbNmtLZP_zHlLhRpV5lgyL9m_bZPM1pHnRWOg';
+=======
+    'BQCeDEvcuo74U29w-tsBqGT49YE1d8JecvHCOpE23v55r3m3RMYThYuqm6G7sweY5FgBE0pNVpzIOv5IZUFOLHI3XI3x50r3QgiuqSsKbgezW8vDifhuZG-s_kZoW4wwurSbFe83AWkO7qjx7Q9YTrdkLeAAoWDguXgqUZe_6b7YeUueEw';
+>>>>>>> f10caebfad7ff88e50878e79e4188c8e19a70221
 
   const getDataArtist = async () => {
     const res = await fetch(
-      `https://api.spotify.com/v1/search?q=${query}&type=artist&limit=10&access_token=${token}`
+      `https://api.spotify.com/v1/search?q=${query}&type=artist&limit=10&access_token=${token}`,
     );
     const data = await res.json();
     // console.log('searching..');
@@ -37,7 +41,7 @@ const Search = () => {
 
   const getDataTrack = async () => {
     const res = await fetch(
-      `https://api.spotify.com/v1/search?q=${query}&type=track&limit=10&access_token=${token}`
+      `https://api.spotify.com/v1/search?q=${query}&type=track&limit=10&access_token=${token}`,
     );
     const data = await res.json();
     // console.log('searching..');
@@ -53,6 +57,7 @@ const Search = () => {
       } else {
         artistlist = [JSON.parse(localStorage.getItem('AH'))];
         artistlist.push(query);
+<<<<<<< HEAD
       }
       localStorage.setItem('AH', JSON.stringify(artistlist));
     } else {
@@ -68,6 +73,23 @@ const Search = () => {
         tracklist = [JSON.parse(localStorage.getItem('TH'))];
         tracklist.push(query);
       }
+=======
+      }
+      localStorage.setItem('AH', JSON.stringify(artistlist));
+    } else {
+      localStorage.setItem('AH', JSON.stringify(query));
+    }
+  };
+  const changeThistory = () => {
+    if (localStorage.getItem('TH') != null) {
+      if (Array.isArray(JSON.parse(localStorage.getItem('TH')))) {
+        tracklist = JSON.parse([localStorage.getItem('TH')]);
+        tracklist.push(query);
+      } else {
+        tracklist = [JSON.parse(localStorage.getItem('TH'))];
+        tracklist.push(query);
+      }
+>>>>>>> f10caebfad7ff88e50878e79e4188c8e19a70221
       localStorage.setItem('TH', JSON.stringify(tracklist));
     } else {
       localStorage.setItem('TH', JSON.stringify(query));
@@ -85,6 +107,7 @@ const Search = () => {
     // console.log(query);
   };
   let history = [];
+<<<<<<< HEAD
   const isArtist = () => {
     history = [];
     let Artists = JSON.parse([localStorage.getItem('AH')]);
@@ -105,6 +128,28 @@ const Search = () => {
     }
     // console.log(history);
   };
+=======
+  // const isArtist = () => {
+  //   history = [];
+  //   let Artists = JSON.parse([localStorage.getItem('AH')]);
+  //   let len = Artists.length;
+  //   // console.log(Artists);
+  //   let len2 = 0;
+  //   // console.log(len);
+  //   if (len <= 10) {
+  //     len2 = 0;
+  //   } else {
+  //     len2 = len - 10;
+  //   }
+  //   for (let i = len - 1; i >= len2; i--) {
+  //     if (history.includes(Artists[i]) === false) {
+  //       history.push(Artists[i]);
+  //       // console.log(Artists[i]);
+  //     }
+  //   }
+  //   // console.log(history);
+  // };
+>>>>>>> f10caebfad7ff88e50878e79e4188c8e19a70221
   const isTrack = () => {
     // history = [];
     // let Tracks = JSON.parse([localStorage.getItem("TH")]);
@@ -126,10 +171,17 @@ const Search = () => {
     // console.log(history);
     // localStorage.setItem("TH", "up up and away");
   };
+<<<<<<< HEAD
   const handleFocus = () => {
     switcher ? isArtist() : isTrack();
     history.map((historyItem) => <h1 key={historyItem}>{historyItem}</h1>);
   };
+=======
+  // const handleFocus = () => {
+  //   switcher ? isArtist() : isTrack();
+  //   history.map((historyItem) => <h1 key={historyItem}>{historyItem}</h1>);
+  // };
+>>>>>>> f10caebfad7ff88e50878e79e4188c8e19a70221
   return (
     <Container>
       <div className={Style.search__div}>
@@ -152,6 +204,7 @@ const Search = () => {
                   onColor='#7f5af0'
                   checkedIcon={``}
                   width={60}
+                  aria-label="switcher"
                 />
               </div>
             </Col>
@@ -163,9 +216,15 @@ const Search = () => {
                 className={Style.search__btn}
                 value={query}
                 onChange={handleValueChange}
+<<<<<<< HEAD
                 id='search_bar'
                 onFocus={handleFocus()}
+=======
+                id="search_bar"
+                aria-label="search"
+>>>>>>> f10caebfad7ff88e50878e79e4188c8e19a70221
               ></input>
+              {/*                 onFocus={handleFocus()} */}
             </Col>
           </Row>
         </form>
@@ -176,6 +235,7 @@ const Search = () => {
             artistData.artists.items.map((res) => (
               <div className={Style.search__results__item} key={res.id}>
                 <div className={Style.search__results__item__wrapper}>
+<<<<<<< HEAD
                   {res.images[2] ? (
                     <li className={Style.search__results__img}>
                       <img
@@ -209,6 +269,47 @@ const Search = () => {
                       {res.name}
                     </a>
                   </li>
+=======
+                  <ul>
+                    {res.images[2] ? (
+                      <li className={Style.search__results__img}>
+                        <img
+                          className={Style.search__results__img__self}
+                          src={res.images[2].url}
+                          alt=""
+                        />
+                      </li>
+                    ) : (
+                      <li className={Style.search__results__img}>
+                        <Jdenticon size="140" value={res.name} />
+                      </li>
+                    )}
+                    <li className={Style.search__results__name}>{res.name}</li>
+
+                    <li>
+                      {res.genres.map((elem) => (
+                        <span>
+                          {elem}{' '}
+                          {res.genres.length === res.genres.indexOf(elem) + 1
+                            ? null
+                            : ', '}
+                        </span>
+                      ))}
+                    </li>
+                    <li>
+                      <span className={Style.search__results__spotify}>
+                        Spotify:
+                      </span>{' '}
+                      <a
+                        href={res.external_urls.spotify}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        {res.name}
+                      </a>
+                    </li>
+                  </ul>
+>>>>>>> f10caebfad7ff88e50878e79e4188c8e19a70221
                 </div>
               </div>
             ))
@@ -218,6 +319,7 @@ const Search = () => {
                 trackData.tracks.items.map((res) => (
                   <div className={Style.search__results__item__track}>
                     <div className={Style.search__results__item__wrapper}>
+<<<<<<< HEAD
                       {res.album.images[1] ? (
                         <li className={Style.search__results__img}>
                           <img
@@ -262,6 +364,54 @@ const Search = () => {
                           allow='encrypted-media'
                         ></iframe>
                       </li>
+=======
+                      <ul>
+                        {res.album.images[1] ? (
+                          <li className={Style.search__results__img}>
+                            <img
+                              className={Style.search__results__img__self}
+                              src={res.album.images[1].url}
+                              alt=""
+                              width={150}
+                            />
+                          </li>
+                        ) : (
+                          <li className={Style.search__results__img}>
+                            <Jdenticon size="140" value={res.name} />
+                          </li>
+                        )}
+
+                        <li className={Style.search__results__name}>
+                          {res.name}
+                        </li>
+                        <li className={Style.search__results__artists}>
+                          {res.artists.map((elem) => (
+                            <span>
+                              {elem.name}{' '}
+                              {res.artists.length ===
+                              res.artists.indexOf(elem) + 1
+                                ? null
+                                : ', '}
+                            </span>
+                          ))}
+                        </li>
+                        <li className={Style.search__results__spotify__player}>
+                          {console.log(res.uri.split(':'))}
+                          <iframe
+                            src={`https://open.spotify.com/embed/${
+                              res.uri.split(':')[1]
+                            }/${res.uri.split(':')[2]}`}
+                            width="240"
+                            title="Spotify"
+                            height="80"
+                            style={{ borderRadius: '5px' }}
+                            frameborder="0"
+                            allowtransparency="true"
+                            allow="encrypted-media"
+                          ></iframe>
+                        </li>
+                      </ul>
+>>>>>>> f10caebfad7ff88e50878e79e4188c8e19a70221
                     </div>
                   </div>
                 ))}
