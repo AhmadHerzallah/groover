@@ -56,31 +56,6 @@ const users = db.ref('users');
 const Login = () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   useEffect(() => {
-<<<<<<< HEAD
-    const authObserver = firebase.auth().onAuthStateChanged((user) => {
-      setUser(user);
-      let data;
-
-      user &&
-        users
-          .child(user.uid)
-          .get()
-          .then(function (snapshot) {
-            if (snapshot.exists()) {
-              data = snapshot.val();
-              if (user !== null) {
-                writeUserData(
-                  snapshot.val().uid === '' ? user.uid : (flag = true),
-
-                  user.displayName,
-                  user.email,
-                  user.photoURL
-                );
-              }
-
-              console.log(data);
-              history.push('/profile');
-=======
     //#region trash
 
     // const authObserver = firebase.auth().onAuthStateChanged((user) => {
@@ -161,10 +136,9 @@ const Login = () => {
                     : snapshot.val().email,
                   snapshot.val().photoURL === ''
                     ? firebase.auth().currentUser.photoURL
-                    : snapshot.val().photoURL,
+                    : snapshot.val().photoURL
                 );
               }
->>>>>>> f10caebfad7ff88e50878e79e4188c8e19a70221
             } else {
               console.log('No data available');
             }
@@ -172,13 +146,8 @@ const Login = () => {
           .catch(function (error) {
             console.error(error);
           });
-<<<<<<< HEAD
-    });
-    return authObserver;
-=======
     }
     return () => unregisterAuthObserver();
->>>>>>> f10caebfad7ff88e50878e79e4188c8e19a70221
   });
   const history = useHistory();
   const [user, setUser] = useState(null);

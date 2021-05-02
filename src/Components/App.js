@@ -60,10 +60,6 @@ function App({ initialTheme = 'dark' }) {
   });
   // Initialize state to handle burger menu
   const [click, setClick] = useState(true);
-<<<<<<< HEAD
-
-=======
->>>>>>> f10caebfad7ff88e50878e79e4188c8e19a70221
   // function to control the theme value
   const toggleTheme = () => {
     if (theme === 'light') {
@@ -107,25 +103,25 @@ function App({ initialTheme = 'dark' }) {
       <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
         <GlobalStyles />
         <Router>
-          <div className="fullscreen-bg">
+          <div className='fullscreen-bg'>
             <iframe
               src={nowPlaying}
-              frameBorder="0"
-              className="fullscreen-bg__video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              frameBorder='0'
+              className='fullscreen-bg__video'
+              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
               allowFullScreen
-              title="bg"
+              title='bg'
             ></iframe>
           </div>
 
-          <div className="conten">
-            <Navbar expand="lg">
+          <div className='conten'>
+            <Navbar expand='lg'>
               <Navbar.Brand>
-                <Link to="/">GROOVER</Link>
+                <Link to='/'>GROOVER</Link>
               </Navbar.Brand>
               <Navbar.Toggle
                 onClick={handleClick}
-                aria-controls="basic-navbar-nav"
+                aria-controls='basic-navbar-nav'
               >
                 <span>
                   {click ? (
@@ -146,24 +142,24 @@ function App({ initialTheme = 'dark' }) {
                 </span>
               </Navbar.Toggle>
 
-              <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="mr-auto">
-                  <Link to="/" className="nav-link">
+              <Navbar.Collapse id='basic-navbar-nav'>
+                <Nav className='mr-auto'>
+                  <Link to='/' className='nav-link'>
                     Home
                   </Link>
-                  <Link to="/search" className="nav-link">
+                  <Link to='/search' className='nav-link'>
                     Search
                   </Link>
-                  <Link to="/grinder" className="nav-link">
+                  <Link to='/grinder' className='nav-link'>
                     Grinder
                   </Link>
                 </Nav>
                 {user ? (
-                  <Link to="/profile" className="nav-link login__btn">
+                  <Link to='/profile' className='nav-link login__btn'>
                     Profile
                   </Link>
                 ) : (
-                  <Link to="/login" className="nav-link login__btn">
+                  <Link to='/login' className='nav-link login__btn'>
                     Login
                   </Link>
                 )}
@@ -179,9 +175,9 @@ function App({ initialTheme = 'dark' }) {
                     display: 'flex',
                     alignItems: 'center',
                   }}
-                  className="themeSwitcher"
+                  className='themeSwitcher'
                   onClick={toggleTheme}
-                  aria-label="theme"
+                  aria-label='theme'
                 >
                   {theme !== 'light' ? (
                     <>
@@ -189,7 +185,7 @@ function App({ initialTheme = 'dark' }) {
                     </>
                   ) : (
                     <>
-                      <Moon color="white" size={24} />{' '}
+                      <Moon color='white' size={24} />{' '}
                     </>
                   )}
                 </button>
@@ -197,13 +193,13 @@ function App({ initialTheme = 'dark' }) {
             </Navbar>
 
             <Switch>
-              <Route path="/" exact>
+              <Route path='/' exact>
                 <Home />
               </Route>
-              <Route path="/search" exact component={Search} />
-              <Route path="/login" exact component={Login} />
-              <Route path="/profile" exact component={Profile} />
-              <Route path="/grinder" exact component={Grinder} />
+              <Route path='/search' exact component={Search} />
+              <Route path='/login' exact component={Login} />
+              <Route path='/profile' exact component={Profile} />
+              <Route path='/grinder' exact component={Grinder} />
             </Switch>
           </div>
         </Router>

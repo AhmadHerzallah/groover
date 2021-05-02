@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-import React, { useState, useEffect } from 'react';
-import classNames from 'classnames';
-
-const Cursor = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [hidden, setHidden] = useState(false);
-=======
 /* eslint-disable react-hooks/exhaustive-deps */
 //#region import
 
@@ -17,7 +9,6 @@ import classNames from 'classnames';
 const Cursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 }); // cursor's position
   const [hidden, setHidden] = useState(false); // cursor's
->>>>>>> f10caebfad7ff88e50878e79e4188c8e19a70221
   const [clicked, setClicked] = useState(false);
   const [linkHovered, setLinkHovered] = useState(false);
 
@@ -84,12 +75,6 @@ const Cursor = () => {
     'cursor--clicked': clicked,
     'cursor--link-hovered': linkHovered,
   });
-<<<<<<< HEAD
-  const isMobile = () => {
-    const ua = navigator.userAgent;
-    return /Android|Mobi/i.test(ua);
-  };
-=======
 
   // function to check if the user's machine
   // is a mobile or not.
@@ -102,7 +87,6 @@ const Cursor = () => {
     return /Android|Mobi/i.test(ua);
   };
   // if it's mobile then don't return the cursor.
->>>>>>> f10caebfad7ff88e50878e79e4188c8e19a70221
   if (typeof navigator !== 'undefined' && isMobile()) return null;
 
   return (
