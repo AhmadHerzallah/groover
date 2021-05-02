@@ -68,8 +68,8 @@ const Profile = () => {
   // Storage
 
   // Get data from Realtime Database
-
   const getDataFromDatabase = () => {
+    console.log(users.child(user.uid)[email]);
     users
       .child(user.uid)
       .get()

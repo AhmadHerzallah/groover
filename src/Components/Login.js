@@ -71,7 +71,7 @@ const Login = () => {
 
                   user.displayName,
                   user.email,
-                  user.photoURL,
+                  user.photoURL
                 );
               }
 

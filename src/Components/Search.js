@@ -1,17 +1,17 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-no-target-blank */
-import React, { useEffect, useState } from "react";
-import Style from "../style/search.module.css";
-import Form from "react-bootstrap/Form";
-import Switch from "react-switch";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
-import Jdenticon from "react-jdenticon";
+import React, { useEffect, useState } from 'react';
+import Style from '../style/search.module.css';
+import Form from 'react-bootstrap/Form';
+import Switch from 'react-switch';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
+import Jdenticon from 'react-jdenticon';
 
 const Search = () => {
   const [switcher, setSwitcher] = useState(true);
-  const [query, setQuery] = useState("JuiceWRLD");
+  const [query, setQuery] = useState('JuiceWRLD');
   const [flag, setFlag] = useState(false);
   const [artistData, setArtistData] = useState({});
   const [trackData, setTrackData] = useState({});
@@ -24,11 +24,7 @@ const Search = () => {
   };
 
   const token =
-<<<<<<< HEAD
-    "BQAB50hUgUzAmSnJpm33XTXgVrBuZ48c10kJoaMuaAXlsUCx8vy62DgoquMpkBeF4923JX6iq2E3o2tPli71TJ3B7Z_zp-Uov6y_4Kh5G8k5AQRm64z4ognCO7xdKVdvmYuxItRcYdBKGG1kKe4tjra9UWrrHnQiao2Ik5CTbC5r-xGzgg";
-=======
-    'BQCzGVrJMUvCUAubIU9ZPwdSzRIKKRlieRj1-5_8Zo_gVkmp8G72ngyNCJildKxsZhujbXdHWw_6rj4hK2CnGCdZ2LtYy61I5ffEmxnBJOVEJWrofxqu0-fRLk-zYyugfESioOjzEDgWe8eHXlvwiS7poic8bF0RPEKbaPJHuO277tbEgQ';
->>>>>>> de27cff13ec6951a42eeb3334d96996c52e3c25d
+    'BQDZP-qEikoIM9_kC3t1TWqt5qb7ghAUDZhcW7jY_XSh2mRA2T0bOpsAwSMm7RNVDoqgHJzzFpy6DHLPlcM0qQN0QHBAXdIXm0KSMZskJR0JkV4fPB1v3qjhYktwZYmj7OP8oob4gPIU9rbNmtLZP_zHlLhRpV5lgyL9m_bZPM1pHnRWOg';
 
   const getDataArtist = async () => {
     const res = await fetch(
@@ -50,31 +46,31 @@ const Search = () => {
   let artistlist = [];
   let tracklist = [];
   const changeAhistory = () => {
-    if (localStorage.getItem("AH") != null) {
-      if (Array.isArray(JSON.parse(localStorage.getItem("AH")))) {
-        artistlist = JSON.parse([localStorage.getItem("AH")]);
+    if (localStorage.getItem('AH') != null) {
+      if (Array.isArray(JSON.parse(localStorage.getItem('AH')))) {
+        artistlist = JSON.parse([localStorage.getItem('AH')]);
         artistlist.push(query);
       } else {
-        artistlist = [JSON.parse(localStorage.getItem("AH"))];
+        artistlist = [JSON.parse(localStorage.getItem('AH'))];
         artistlist.push(query);
       }
-      localStorage.setItem("AH", JSON.stringify(artistlist));
+      localStorage.setItem('AH', JSON.stringify(artistlist));
     } else {
-      localStorage.setItem("AH", JSON.stringify(query));
+      localStorage.setItem('AH', JSON.stringify(query));
     }
   };
   const changeThistory = () => {
-    if (localStorage.getItem("TH") != null) {
-      if (Array.isArray(JSON.parse(localStorage.getItem("TH")))) {
-        tracklist = JSON.parse([localStorage.getItem("TH")]);
+    if (localStorage.getItem('TH') != null) {
+      if (Array.isArray(JSON.parse(localStorage.getItem('TH')))) {
+        tracklist = JSON.parse([localStorage.getItem('TH')]);
         tracklist.push(query);
       } else {
-        tracklist = [JSON.parse(localStorage.getItem("TH"))];
+        tracklist = [JSON.parse(localStorage.getItem('TH'))];
         tracklist.push(query);
       }
-      localStorage.setItem("TH", JSON.stringify(tracklist));
+      localStorage.setItem('TH', JSON.stringify(tracklist));
     } else {
-      localStorage.setItem("TH", JSON.stringify(query));
+      localStorage.setItem('TH', JSON.stringify(query));
     }
   };
   const handleSubmit = (e) => {
@@ -91,7 +87,7 @@ const Search = () => {
   let history = [];
   const isArtist = () => {
     history = [];
-    let Artists = JSON.parse([localStorage.getItem("AH")]);
+    let Artists = JSON.parse([localStorage.getItem('AH')]);
     let len = Artists.length;
     // console.log(Artists);
     let len2 = 0;
@@ -143,17 +139,17 @@ const Search = () => {
             <Col md={3} sm={12}>
               <div className={Style.search__swtiches}>
                 <p className={Style.search__state}>
-                  Type:{" "}
+                  Type:{' '}
                   <span className={Style.search__current}>
-                    {switcher ? "Artist" : "Track"}
+                    {switcher ? 'Artist' : 'Track'}
                   </span>
                 </p>
                 <Switch
                   onChange={handleSwitchChange}
                   checked={switcher}
-                  className="react-switch"
+                  className='react-switch'
                   uncheckedIcon={``}
-                  onColor="#7f5af0"
+                  onColor='#7f5af0'
                   checkedIcon={``}
                   width={60}
                 />
@@ -162,12 +158,12 @@ const Search = () => {
             <Col md={9} sm={12}>
               <input
                 placeholder={
-                  switcher ? "Search for an Artist" : "Search for Track"
+                  switcher ? 'Search for an Artist' : 'Search for Track'
                 }
                 className={Style.search__btn}
                 value={query}
                 onChange={handleValueChange}
-                id="search_bar"
+                id='search_bar'
                 onFocus={handleFocus()}
               ></input>
             </Col>
@@ -185,12 +181,12 @@ const Search = () => {
                       <img
                         className={Style.search__results__img__self}
                         src={res.images[2].url}
-                        alt=""
+                        alt=''
                       />
                     </li>
                   ) : (
                     <li className={Style.search__results__img}>
-                      <Jdenticon size="140" value={res.name} />
+                      <Jdenticon size='140' value={res.name} />
                     </li>
                   )}
                   <li className={Style.search__results__name}>{res.name}</li>
@@ -198,18 +194,18 @@ const Search = () => {
                   <li>
                     {res.genres.map((elem) => (
                       <span>
-                        {elem}{" "}
+                        {elem}{' '}
                         {res.genres.length === res.genres.indexOf(elem) + 1
                           ? null
-                          : ", "}
+                          : ', '}
                       </span>
                     ))}
                   </li>
                   <li>
                     <span className={Style.search__results__spotify}>
                       Spotify:
-                    </span>{" "}
-                    <a href={res.external_urls.spotify} target="_blank">
+                    </span>{' '}
+                    <a href={res.external_urls.spotify} target='_blank'>
                       {res.name}
                     </a>
                   </li>
@@ -227,13 +223,13 @@ const Search = () => {
                           <img
                             className={Style.search__results__img__self}
                             src={res.album.images[1].url}
-                            alt=""
+                            alt=''
                             width={150}
                           />
                         </li>
                       ) : (
                         <li className={Style.search__results__img}>
-                          <Jdenticon size="140" value={res.name} />
+                          <Jdenticon size='140' value={res.name} />
                         </li>
                       )}
 
@@ -243,27 +239,27 @@ const Search = () => {
                       <li className={Style.search__results__artists}>
                         {res.artists.map((elem) => (
                           <span>
-                            {elem.name}{" "}
+                            {elem.name}{' '}
                             {res.artists.length ===
                             res.artists.indexOf(elem) + 1
                               ? null
-                              : ", "}
+                              : ', '}
                           </span>
                         ))}
                       </li>
                       <li className={Style.search__results__spotify__player}>
-                        {console.log(res.uri.split(":"))}
+                        {console.log(res.uri.split(':'))}
                         <iframe
                           src={`https://open.spotify.com/embed/${
-                            res.uri.split(":")[1]
-                          }/${res.uri.split(":")[2]}`}
-                          width="240"
-                          title="Spotify"
-                          height="80"
-                          style={{ borderRadius: "5px" }}
-                          frameborder="0"
-                          allowtransparency="true"
-                          allow="encrypted-media"
+                            res.uri.split(':')[1]
+                          }/${res.uri.split(':')[2]}`}
+                          width='240'
+                          title='Spotify'
+                          height='80'
+                          style={{ borderRadius: '5px' }}
+                          frameborder='0'
+                          allowtransparency='true'
+                          allow='encrypted-media'
                         ></iframe>
                       </li>
                     </div>
