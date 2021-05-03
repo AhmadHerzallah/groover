@@ -5,7 +5,7 @@ import '../style/App.css';
 
 import React, { useState, useEffect } from 'react';
 
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 // Import ThemeProvider from Styled-components
 import { ThemeProvider } from 'styled-components';
@@ -82,15 +82,16 @@ function App({ initialTheme = 'dark' }) {
 
   /* firebase */
   // Initialize state for user.
-  const [user, setUser] = useState(null);
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
-  // get user data from firebase.auth()
   useEffect(() => {
-    const authObserver = firebase.auth().onAuthStateChanged((user) => {
-      setUser(user);
-    });
-    return authObserver;
-  });
+    const unregisterAuthObserver = firebase
+      .auth()
+      .onAuthStateChanged((user) => {
+        setIsSignedIn(!!user);
+      });
+    return () => unregisterAuthObserver();
+  }, []);
 
   return (
     <>
