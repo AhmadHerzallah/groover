@@ -24,7 +24,7 @@ const Search = () => {
   };
 
   const token =
-    'BQCeDEvcuo74U29w-tsBqGT49YE1d8JecvHCOpE23v55r3m3RMYThYuqm6G7sweY5FgBE0pNVpzIOv5IZUFOLHI3XI3x50r3QgiuqSsKbgezW8vDifhuZG-s_kZoW4wwurSbFe83AWkO7qjx7Q9YTrdkLeAAoWDguXgqUZe_6b7YeUueEw';
+    'BQD2kWmHvCT3J1LXo36OGNWQZfBcZYztdFTFHCaCvUw5x3P_yzcZRx0zAwfHMDU-6DaEAgToa14u0YLnG4VJC2_fY9RoOyI87_qeQI88son5KKT7Xx4KKL8ucb86t38x-lDE5ZVMlGW7PBYkiFMFC764hKRMTi09QurdW_4huLJx7AUSNA';
 
   const getDataArtist = async () => {
     const res = await fetch(
@@ -84,7 +84,7 @@ const Search = () => {
     setQuery(e.target.value);
     // console.log(query);
   };
-  let history = [];
+  // let history = [];
   // const isArtist = () => {
   //   history = [];
   //   let Artists = JSON.parse([localStorage.getItem('AH')]);
@@ -105,27 +105,27 @@ const Search = () => {
   //   }
   //   // console.log(history);
   // };
-  const isTrack = () => {
-    // history = [];
-    // let Tracks = JSON.parse([localStorage.getItem("TH")]);
-    // let len3 = Tracks.length;
-    // // console.log(Tracks);
-    // let len4 = 0;
-    // // console.log(len);
-    // if (len3 <= 10) {
-    //   len4 = 0;
-    // } else {
-    //   len4 = len3 - 10;
-    // }
-    // for (let i = len3 - 1; i >= len4; i--) {
-    //   if (history.includes(Tracks[i]) === false) {
-    //     history.push(Tracks[i]);
-    //     // console.log(Tracks[i]);
-    //   }
-    // }
-    // console.log(history);
-    // localStorage.setItem("TH", "up up and away");
-  };
+  // const isTrack = () => {
+  // history = [];
+  // let Tracks = JSON.parse([localStorage.getItem("TH")]);
+  // let len3 = Tracks.length;
+  // // console.log(Tracks);
+  // let len4 = 0;
+  // // console.log(len);
+  // if (len3 <= 10) {
+  //   len4 = 0;
+  // } else {
+  //   len4 = len3 - 10;
+  // }
+  // for (let i = len3 - 1; i >= len4; i--) {
+  //   if (history.includes(Tracks[i]) === false) {
+  //     history.push(Tracks[i]);
+  //     // console.log(Tracks[i]);
+  //   }
+  // }
+  // console.log(history);
+  // localStorage.setItem("TH", "up up and away");
+  // };
   // const handleFocus = () => {
   //   switcher ? isArtist() : isTrack();
   //   history.map((historyItem) => <h1 key={historyItem}>{historyItem}</h1>);

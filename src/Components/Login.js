@@ -121,26 +121,29 @@ const Login = () => {
           .get()
           .then(function (snapshot) {
             if (snapshot.exists()) {
-              if (user !== null) {
+              if (isSignedIn !== null) {
                 console.log(user);
                 writeUserData(
                   snapshot.val().uid === ''
                     ? firebase.auth().currentUser.uid
-                    : snapshot.val().uid,
+                    : (flag = true),
 
-                  snapshot.val().displayName === ''
-                    ? firebase.auth().currentUser.displayName
-                    : snapshot.val().displayName,
-                  snapshot.val().email === ''
-                    ? firebase.auth().currentUser.email
-                    : snapshot.val().email,
-                  snapshot.val().photoURL === ''
-                    ? firebase.auth().currentUser.photoURL
-                    : snapshot.val().photoURL
+                  firebase.auth().currentUser.displayName,
+                  firebase.auth().currentUser.email,
+                  firebase.auth().currentUser.photoURL
                 );
               }
             } else {
               console.log('No data available');
+              if (isSignedIn !== null) {
+                console.log(user);
+                writeUserData(
+                  firebase.auth().currentUser.uid,
+                  firebase.auth().currentUser.displayName,
+                  firebase.auth().currentUser.email,
+                  firebase.auth().currentUser.photoURL
+                );
+              }
             }
           })
           .catch(function (error) {
