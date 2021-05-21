@@ -6,8 +6,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Container } from 'react-bootstrap';
-import fire from '../fire';
-import Style from '../style/profile.module.css';
+import fire from '../../fire';
+import Style from '../../style/profile.module.css';
 import firebase from 'firebase';
 import {
   BrowserRouter as Router,
@@ -191,7 +191,7 @@ const Profile = () => {
             alt={`${data && data.username}'s profile`}
           />
         ) : (
-          <img src={phoroUrl} alt="default profile" width="120" />
+          <img src={phoroUrl} alt='default profile' width='120' />
         )}
         <p className={Style.greetUser}>
           Good {greet && greet}, {data && data.username}
@@ -205,28 +205,28 @@ const Profile = () => {
         <p>{firebase.auth().currentUser && firebase.auth().currentUser.uid}</p>
         <form onSubmit={handleSubmit}>
           <input
-            type="file"
+            type='file'
             ref={uploadedImage}
-            accept="image/*"
+            accept='image/*'
             value={image}
           />
-          <input type="submit" value="Upload" />
-          <svg viewBox="0 0 36 36" class="circular-chart">
+          <input type='submit' value='Upload' />
+          <svg viewBox='0 0 36 36' class='circular-chart'>
             <path
-              class="circle"
+              class='circle'
               stroke-dasharray={`${uploadProgress}, 100`}
-              d="M18 2.0845
+              d='M18 2.0845
       a 15.9155 15.9155 0 0 1 0 31.831
-      a 15.9155 15.9155 0 0 1 0 -31.831"
+      a 15.9155 15.9155 0 0 1 0 -31.831'
             />
             <text
-              x="50%"
-              y="50%"
-              text-anchor="middle"
-              fill="white"
-              font-size="5px"
-              font-family="Arial"
-              dy=".3em"
+              x='50%'
+              y='50%'
+              text-anchor='middle'
+              fill='white'
+              font-size='5px'
+              font-family='Arial'
+              dy='.3em'
             >
               {parseInt(uploadProgress)}%
             </text>
@@ -238,7 +238,7 @@ const Profile = () => {
     return (
       <Container>
         <p>
-          Sorry, you have to <a href="/login">login</a> to see your profile.
+          Sorry, you have to <a href='/login'>login</a> to see your profile.
         </p>
       </Container>
     );

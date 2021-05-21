@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import StyleFirebaseUI from 'react-firebaseui/StyledFirebaseAuth';
-import fire from '../fire';
+import fire from '../../fire';
 import firebase from 'firebase';
 import { Redirect, useHistory } from 'react-router-dom';
 

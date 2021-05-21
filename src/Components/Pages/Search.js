@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-no-target-blank */
 import React, { useEffect, useState } from 'react';
-import Style from '../style/search.module.css';
+import Style from '../../style/search.module.css';
 import Form from 'react-bootstrap/Form';
 import Switch from 'react-switch';
 import Col from 'react-bootstrap/Col';
@@ -9,7 +9,11 @@ import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Jdenticon from 'react-jdenticon';
 
+// Imports
+import ArtistCard from '../ArtistCard';
+
 const Search = () => {
+  //#region
   const [switcher, setSwitcher] = useState(true);
   const [query, setQuery] = useState('JuiceWRLD');
   const [flag, setFlag] = useState(false);
@@ -24,7 +28,7 @@ const Search = () => {
   };
 
   const token =
-    'BQCeDEvcuo74U29w-tsBqGT49YE1d8JecvHCOpE23v55r3m3RMYThYuqm6G7sweY5FgBE0pNVpzIOv5IZUFOLHI3XI3x50r3QgiuqSsKbgezW8vDifhuZG-s_kZoW4wwurSbFe83AWkO7qjx7Q9YTrdkLeAAoWDguXgqUZe_6b7YeUueEw';
+    'BQC8piIyql_ycEvVkyR-8B84MFjluh0y14L-hR5H8yDZdOT7RkebALvrk-UA8xBd4q1dbCinzVdNaHk7m9OwqGWoGTvIhrx5SM-bu4D8AQ5BTbkHwD7K6xUFfNDx3lDCpNksLqTxRnx7wbGj7-SsjdXEDBl7sDlgFCg0-DyZeF7YoITI8A';
 
   const getDataArtist = async () => {
     const res = await fetch(
@@ -130,6 +134,9 @@ const Search = () => {
   //   switcher ? isArtist() : isTrack();
   //   history.map((historyItem) => <h1 key={historyItem}>{historyItem}</h1>);
   // };
+
+  //#endregion
+
   return (
     <Container>
       <div className={Style.search__div}>
@@ -147,12 +154,12 @@ const Search = () => {
                 <Switch
                   onChange={handleSwitchChange}
                   checked={switcher}
-                  className="react-switch"
+                  className='react-switch'
                   uncheckedIcon={``}
-                  onColor="#7f5af0"
+                  onColor='#7f5af0'
                   checkedIcon={``}
                   width={60}
-                  aria-label="switcher"
+                  aria-label='switcher'
                 />
               </div>
             </Col>
@@ -164,8 +171,8 @@ const Search = () => {
                 className={Style.search__btn}
                 value={query}
                 onChange={handleValueChange}
-                id="search_bar"
-                aria-label="search"
+                id='search_bar'
+                aria-label='search'
               ></input>
               {/*                 onFocus={handleFocus()} */}
             </Col>
@@ -176,48 +183,8 @@ const Search = () => {
           {switcher ? (
             artistData.artists &&
             artistData.artists.items.map((res) => (
-              <div className={Style.search__results__item} key={res.id}>
-                <div className={Style.search__results__item__wrapper}>
-                  <ul>
-                    {res.images[2] ? (
-                      <li className={Style.search__results__img}>
-                        <img
-                          className={Style.search__results__img__self}
-                          src={res.images[2].url}
-                          alt=""
-                        />
-                      </li>
-                    ) : (
-                      <li className={Style.search__results__img}>
-                        <Jdenticon size="140" value={res.name} />
-                      </li>
-                    )}
-                    <li className={Style.search__results__name}>{res.name}</li>
-
-                    <li>
-                      {res.genres.map((elem) => (
-                        <span>
-                          {elem}{' '}
-                          {res.genres.length === res.genres.indexOf(elem) + 1
-                            ? null
-                            : ', '}
-                        </span>
-                      ))}
-                    </li>
-                    <li>
-                      <span className={Style.search__results__spotify}>
-                        Spotify:
-                      </span>{' '}
-                      <a
-                        href={res.external_urls.spotify}
-                        rel="noreferrer"
-                        target="_blank"
-                      >
-                        {res.name}
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+              <div>
+                <ArtistCard data={res} />
               </div>
             ))
           ) : (
@@ -232,13 +199,13 @@ const Search = () => {
                             <img
                               className={Style.search__results__img__self}
                               src={res.album.images[1].url}
-                              alt=""
+                              alt=''
                               width={150}
                             />
                           </li>
                         ) : (
                           <li className={Style.search__results__img}>
-                            <Jdenticon size="140" value={res.name} />
+                            <Jdenticon size='140' value={res.name} />
                           </li>
                         )}
 
@@ -262,13 +229,13 @@ const Search = () => {
                             src={`https://open.spotify.com/embed/${
                               res.uri.split(':')[1]
                             }/${res.uri.split(':')[2]}`}
-                            width="240"
-                            title="Spotify"
-                            height="80"
+                            width='240'
+                            title='Spotify'
+                            height='80'
                             style={{ borderRadius: '5px' }}
-                            frameborder="0"
-                            allowtransparency="true"
-                            allow="encrypted-media"
+                            frameborder='0'
+                            allowtransparency='true'
+                            allow='encrypted-media'
                           ></iframe>
                         </li>
                       </ul>
