@@ -6,8 +6,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Container } from 'react-bootstrap';
-import fire from '../fire';
-import Style from '../style/profile.module.css';
+import fire from '../../fire';
+import Style from '../../style/profile.module.css';
 import firebase from 'firebase';
 import {
   BrowserRouter as Router,

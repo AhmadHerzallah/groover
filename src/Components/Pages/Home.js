@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import Style from '../style/home.module.css';
+import Style from '../../style/home.module.css';
 const Home = () => {
   const allMoods = [
     {
@@ -69,7 +69,7 @@ const Home = () => {
               We provide you with data about your favorite artist.
             </p>
           </Col>
-          <Col md={4} sm={12} className="part2">
+          <Col md={4} sm={12} className='part2'>
             <div className={Style.card}>
               <h1 className={Style.title}>
                 Feeling{' '}

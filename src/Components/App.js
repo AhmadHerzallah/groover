@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // #region import
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -5,7 +6,7 @@ import '../style/App.css';
 
 import React, { useState, useEffect } from 'react';
 
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 // Import ThemeProvider from Styled-components
 import { ThemeProvider } from 'styled-components';
@@ -17,21 +18,15 @@ import { lightTheme, darkTheme } from '../style/theme';
 import { GlobalStyles } from '../style/global';
 
 // Import icons
-import { Sun, Moon, Menu, X } from 'react-feather';
 
 // Import Nav & Navbar from react-bootstrap
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
 
 // Import Components
-import Search from './Search';
-import Home from './Home';
-import Login from './Login';
-import Profile from './Profile';
-import Grinder from './Grinder';
 import Cursor from './Cursor';
-
+import NavBar from './Nav';
 import firebase from 'firebase';
+import VideoBackground from './VideoBackground';
+import Routes from './Routes';
 
 //#endregion
 
@@ -88,120 +83,30 @@ function App({ initialTheme = 'dark' }) {
 
   /* firebase */
   // Initialize state for user.
-  const [user, setUser] = useState(null);
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
-  // get user data from firebase.auth()
   useEffect(() => {
-    const authObserver = firebase.auth().onAuthStateChanged((user) => {
-      setUser(user);
-    });
-    return authObserver;
-  });
+    const unregisterAuthObserver = firebase
+      .auth()
+      .onAuthStateChanged((user) => {
+        setIsSignedIn(!!user);
+      });
+    return () => unregisterAuthObserver();
+  }, []);
 
   return (
     <>
       <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
         <GlobalStyles />
         <Router>
-          <div className='fullscreen-bg'>
-            <iframe
-              src={nowPlaying}
-              frameBorder='0'
-              className='fullscreen-bg__video'
-              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-              allowFullScreen
-              title='bg'
-            ></iframe>
-          </div>
-
-          <div className='conten'>
-            <Navbar expand='lg'>
-              <Navbar.Brand>
-                <Link to='/'>GROOVER</Link>
-              </Navbar.Brand>
-              <Navbar.Toggle
-                onClick={handleClick}
-                aria-controls='basic-navbar-nav'
-              >
-                <span>
-                  {click ? (
-                    <Menu
-                      size={32}
-                      color={
-                        theme === 'light' ? lightTheme.burger : darkTheme.burger
-                      }
-                    />
-                  ) : (
-                    <X
-                      size={32}
-                      color={
-                        theme === 'light' ? lightTheme.burger : darkTheme.burger
-                      }
-                    />
-                  )}
-                </span>
-              </Navbar.Toggle>
-
-              <Navbar.Collapse id='basic-navbar-nav'>
-                <Nav className='mr-auto'>
-                  <Link to='/' className='nav-link'>
-                    Home
-                  </Link>
-                  <Link to='/search' className='nav-link'>
-                    Search
-                  </Link>
-                  <Link to='/grinder' className='nav-link'>
-                    Grinder
-                  </Link>
-                </Nav>
-                {user ? (
-                  <Link to='/profile' className='nav-link login__btn'>
-                    Profile
-                  </Link>
-                ) : (
-                  <Link to='/login' className='nav-link login__btn'>
-                    Login
-                  </Link>
-                )}
-                <button
-                  style={{
-                    background: `${
-                      theme === 'light'
-                        ? lightTheme.switchbtn
-                        : darkTheme.switchbtn
-                    }`,
-                    border: 'none',
-                    borderRadius: '5px',
-                    display: 'flex',
-                    alignItems: 'center',
-                  }}
-                  className='themeSwitcher'
-                  onClick={toggleTheme}
-                  aria-label='theme'
-                >
-                  {theme !== 'light' ? (
-                    <>
-                      <Sun size={24} />
-                    </>
-                  ) : (
-                    <>
-                      <Moon color='white' size={24} />{' '}
-                    </>
-                  )}
-                </button>
-              </Navbar.Collapse>
-            </Navbar>
-
-            <Switch>
-              <Route path='/' exact>
-                <Home />
-              </Route>
-              <Route path='/search' exact component={Search} />
-              <Route path='/login' exact component={Login} />
-              <Route path='/profile' exact component={Profile} />
-              <Route path='/grinder' exact component={Grinder} />
-            </Switch>
-          </div>
+          <VideoBackground video={nowPlaying} />
+          <NavBar
+            theme={theme}
+            handleClick={handleClick}
+            click={click}
+            toggleTheme={toggleTheme}
+          />
+          <Routes />
         </Router>
         <Cursor />
       </ThemeProvider>

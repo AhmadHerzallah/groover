@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useMemo } from 'react';
-import fire from '../fire';
+import fire from '../../fire';
 import firebase from 'firebase';
 import { Container } from 'react-bootstrap';
-import Style from '../style/grinder.module.css';
+import Style from '../../style/grinder.module.css';
 import TinderCard from 'react-tinder-card';
 
 const db = [

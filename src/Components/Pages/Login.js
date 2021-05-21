@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import StyleFirebaseUI from 'react-firebaseui/StyledFirebaseAuth';
-import fire from '../fire';
+import fire from '../../fire';
 import firebase from 'firebase';
 import { Redirect, useHistory } from 'react-router-dom';
 
@@ -115,40 +115,43 @@ const Login = () => {
         setIsSignedIn(!!user);
       });
     if (isSignedIn) {
-      isSignedIn &&
-        users
-          .child(firebase.auth().currentUser.uid)
-          .get()
-          .then(function (snapshot) {
-            if (snapshot.exists()) {
-              if (isSignedIn !== null) {
-                console.log(user);
-                writeUserData(
-                  snapshot.val().uid === ''
-                    ? firebase.auth().currentUser.uid
-                    : (flag = true),
+      firebase
+        .database()
+        .ref('users/' + firebase.auth().currentUser.uid)
+        .get()
+        .then((snapshot) => {
+          firebase
+            .database()
+            .ref('users/' + firebase.auth().currentUser.uid)
+            .set({
+              username: firebase.auth().currentUser.displayName,
+              email: firebase.auth().currentUser.email,
+              photo: firebase.auth().currentUser.photoURL,
+            });
+        });
 
-                  firebase.auth().currentUser.displayName,
-                  firebase.auth().currentUser.email,
-                  firebase.auth().currentUser.photoURL
-                );
-              }
-            } else {
-              console.log('No data available');
-              if (isSignedIn !== null) {
-                console.log(user);
-                writeUserData(
-                  firebase.auth().currentUser.uid,
-                  firebase.auth().currentUser.displayName,
-                  firebase.auth().currentUser.email,
-                  firebase.auth().currentUser.photoURL
-                );
-              }
-            }
-          })
-          .catch(function (error) {
-            console.error(error);
-          });
+      // isSignedIn &&
+      //   users
+      //     .child(firebase.auth().currentUser.uid)
+      //     .get()
+      //     .then(function (snapshot) {
+      //       if (snapshot.exists()) {
+      //         if (user !== null) {
+      //           console.log(user);
+      //           writeUserData(
+      //             firebase.auth().currentUser.uid,
+      //             firebase.auth().currentUser.displayName,
+      //             firebase.auth().currentUser.email,
+      //             firebase.auth().currentUser.photoURL,
+      //           );
+      //         }
+      //       } else {
+      //         console.log('No data available');
+      //       }
+      //     })
+      //     .catch(function (error) {
+      //       console.error(error);
+      //     });
     }
     return () => unregisterAuthObserver();
   });

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-no-target-blank */
 import React, { useEffect, useState } from 'react';
-import Style from '../style/search.module.css';
+import Style from '../../style/search.module.css';
 import Form from 'react-bootstrap/Form';
 import Switch from 'react-switch';
 import Col from 'react-bootstrap/Col';
@@ -9,7 +9,11 @@ import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Jdenticon from 'react-jdenticon';
 
+// Imports
+import ArtistCard from '../ArtistCard';
+
 const Search = () => {
+  //#region
   const [switcher, setSwitcher] = useState(true);
   const [query, setQuery] = useState('JuiceWRLD');
   const [flag, setFlag] = useState(false);
@@ -130,6 +134,9 @@ const Search = () => {
   //   switcher ? isArtist() : isTrack();
   //   history.map((historyItem) => <h1 key={historyItem}>{historyItem}</h1>);
   // };
+
+  //#endregion
+
   return (
     <Container>
       <div className={Style.search__div}>
@@ -176,48 +183,8 @@ const Search = () => {
           {switcher ? (
             artistData.artists &&
             artistData.artists.items.map((res) => (
-              <div className={Style.search__results__item} key={res.id}>
-                <div className={Style.search__results__item__wrapper}>
-                  <ul>
-                    {res.images[2] ? (
-                      <li className={Style.search__results__img}>
-                        <img
-                          className={Style.search__results__img__self}
-                          src={res.images[2].url}
-                          alt=''
-                        />
-                      </li>
-                    ) : (
-                      <li className={Style.search__results__img}>
-                        <Jdenticon size='140' value={res.name} />
-                      </li>
-                    )}
-                    <li className={Style.search__results__name}>{res.name}</li>
-
-                    <li>
-                      {res.genres.map((elem) => (
-                        <span>
-                          {elem}{' '}
-                          {res.genres.length === res.genres.indexOf(elem) + 1
-                            ? null
-                            : ', '}
-                        </span>
-                      ))}
-                    </li>
-                    <li>
-                      <span className={Style.search__results__spotify}>
-                        Spotify:
-                      </span>{' '}
-                      <a
-                        href={res.external_urls.spotify}
-                        rel='noreferrer'
-                        target='_blank'
-                      >
-                        {res.name}
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+              <div>
+                <ArtistCard data={res} />
               </div>
             ))
           ) : (
