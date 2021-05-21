@@ -94,7 +94,7 @@ video {
 }
 
 .fullscreen-bg__video {
-  position: fixed;
+  /* position: fixed; */
   /* left: 22.5em; */
   top: 2.5em;
   height: 100%;
@@ -118,8 +118,13 @@ video {
 
 .navbar {
   margin-bottom: 20px;
+  background: none !important;
 }
 
+.navbar,
+.navbar-default {
+  background-image: none !important;
+}
 .box__swiping {
   transform: rotate(15deg);
   transition: all 150ms;

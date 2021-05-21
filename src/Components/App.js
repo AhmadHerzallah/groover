@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // #region import
 
 import 'bootstrap/dist/css/bootstrap.min.css';

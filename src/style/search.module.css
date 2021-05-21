@@ -125,14 +125,15 @@
 
 /* Card */
 
+/*
+
 .search__results__item {
-  /*  */
 
   background: rgba(0, 0, 0, 0.45);
   box-shadow: 0 8px 32px 0 rgba(133, 133, 133, 0.37);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border-radius: 10px; /* background-color: #242629; */
+  border-radius: 10px;  background-color: #242629; 
   width: 250px;
   text-align: center;
   height: 325px;
@@ -192,6 +193,15 @@
   justify-content: flex-end;
 }
 
-/* .search__results__artists {
+ .search__results__artists {
   height: 50px;
-} */
+} 
+
+.search_search__results__item__wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+*/
