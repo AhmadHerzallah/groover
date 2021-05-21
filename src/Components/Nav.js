@@ -58,15 +58,23 @@ const NavBar = ({ theme, handleClick, click, toggleTheme }) => {
               Profile
             </Link>
           ) : (
-            <Link to='/login' className='nav-link login__btn'>
-              Login
-            </Link>
+            <>
+              <Link to='/signup' className='nav-link login__btn'>
+                Signup
+              </Link>
+
+              <Link to='/login' className='nav-link login__btn'>
+                Login
+              </Link>
+            </>
           )}
-          <button
-            style={{
-              background: `${
+          {/*               background: `${
                 theme === 'light' ? lightTheme.switchbtn : darkTheme.switchbtn
               }`,
+ */}
+          <button
+            style={{
+              background: 'transparent',
               border: 'none',
               borderRadius: '5px',
               display: 'flex',
@@ -78,7 +86,7 @@ const NavBar = ({ theme, handleClick, click, toggleTheme }) => {
           >
             {theme !== 'light' ? (
               <>
-                <Sun size={24} />
+                <Sun color='white' size={24} />
               </>
             ) : (
               <>
