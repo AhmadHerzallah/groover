@@ -12,7 +12,7 @@ const ArtistCard = (props) => {
       ? setbackgroundImage1(props.data.images[1].url)
       : setbackgroundImage1('https://color-hex.org/colors/242629.png');
   }, [props.data]);
-  console.log(backgroundImage1);
+  // console.log(backgroundImage1);
   return (
     <div className={Style.search__results__item}>
       <div

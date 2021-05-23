@@ -28,7 +28,7 @@ const Search = () => {
   };
 
   const token =
-    'BQD2kWmHvCT3J1LXo36OGNWQZfBcZYztdFTFHCaCvUw5x3P_yzcZRx0zAwfHMDU-6DaEAgToa14u0YLnG4VJC2_fY9RoOyI87_qeQI88son5KKT7Xx4KKL8ucb86t38x-lDE5ZVMlGW7PBYkiFMFC764hKRMTi09QurdW_4huLJx7AUSNA';
+    'BQBwDLFk3BJuSnQuf4m_HgPF1lSW0zZDcyffzhb2IMJ2EZ8hUc6GuZTl3i6fchkuBoKyHCNn1PHV77NJt_qDWNl3z8TzIZoA2l-ACHX0l5_E3m3cqFqeFug0exZcqzCqJgHF7tVUQFO8QFdW4z6SQ29tWb3o9x95qr9wR9Hb6JqLUBbq3g';
 
   const getDataArtist = async () => {
     const res = await fetch(
@@ -224,7 +224,7 @@ const Search = () => {
                           ))}
                         </li>
                         <li className={Style.search__results__spotify__player}>
-                          {console.log(res.uri.split(':'))}
+                          {/* {console.log(res.uri.split(':'))} */}
                           <iframe
                             src={`https://open.spotify.com/embed/${
                               res.uri.split(':')[1]
