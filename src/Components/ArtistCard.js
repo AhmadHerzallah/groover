@@ -1,26 +1,62 @@
 import React from 'react';
+import Style from '../style/search.module.css';
+import { useState, useEffect } from 'react';
+import Jdenticon from 'react-jdenticon';
 
 const ArtistCard = (props) => {
-  console.log(props.data);
+  const [backgroundImage1, setbackgroundImage1] = useState(
+    'https://color-hex.org/colors/242629.png'
+  );
+  useEffect(() => {
+    props.data.images[1]
+      ? setbackgroundImage1(props.data.images[1].url)
+      : setbackgroundImage1('https://color-hex.org/colors/242629.png');
+  }, [props.data]);
+  console.log(backgroundImage1);
   return (
-    <div>
-      <h1>Hey</h1>
-      <p>{props.data.name}</p>
+    <div className={Style.search__results__item}>
+      <div
+        style={{
+          backgroundImage: `url(${backgroundImage1})`,
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          filter: 'blur(3.5px)',
+          zIndex: -1,
+        }}
+      ></div>
       {props.data.images[2] ? (
-        <div>
-          <img src={props.data.images[2].url} alt='' />
+        <div className={Style.search__results__item__wrapper}>
+          <img
+            src={props.data.images[2].url}
+            alt=''
+            className={Style.search__results__img__self}
+          />
         </div>
-      ) : null}
-
+      ) : (
+        <li className={Style.search__results__img}>
+          <Jdenticon size='140' value={props.data.name} />
+        </li>
+      )}
+      <p>{props.data.name}</p>
       <li>
-        {props.data.genres.map((elem) => (
-          <span>
-            {elem}{' '}
-            {props.data.genres.length === props.data.genres.indexOf(elem) + 1
-              ? null
-              : ', '}
-          </span>
-        ))}
+        {props.data.genres.length === 0 ? (
+          <span>no genres found</span>
+        ) : (
+          props.data.genres.map((elem) => (
+            <span>
+              {elem}{' '}
+              {props.data.genres.length === props.data.genres.indexOf(elem) + 1
+                ? null
+                : ', '}
+            </span>
+          ))
+        )}
       </li>
       <a
         href={props.data.external_urls.spotify}
