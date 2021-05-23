@@ -125,24 +125,21 @@
 
 /* Card */
 
-/*
-
 .search__results__item {
-
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.69);
   box-shadow: 0 8px 32px 0 rgba(133, 133, 133, 0.37);
   backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-radius: 10px;  background-color: #242629; 
+  /* -webkit-backdrop-filter: blur(8px); */
+  border-radius: 10px;
+  /* background-color: #242629; */
   width: 250px;
   text-align: center;
-  height: 325px;
+  height: 400px;
   margin-left: 30px;
   border-radius: 5px;
   margin-bottom: 20px;
 }
-
-.search__results__item__track {
+/* .search__results__item__track {
   background-color: #242629;
 
   width: 250px;
@@ -152,7 +149,7 @@
   margin-left: 30px;
   border-radius: 5px;
   margin-bottom: 20px;
-}
+} */
 
 .search__results__item__wrapper {
   padding-top: 10px;
@@ -181,7 +178,7 @@
   color: #fffffe;
   font-weight: 500;
 }
-
+/*
 .search__results__spotify__player {
   position: absolute;
   bottom: 15px;
@@ -200,8 +197,4 @@
 .search_search__results__item__wrapper {
   display: flex;
   justify-content: center;
-}
-
-
-
-*/
+}*/
