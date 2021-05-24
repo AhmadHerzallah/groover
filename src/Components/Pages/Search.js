@@ -10,7 +10,7 @@ import Container from 'react-bootstrap/Container';
 import Jdenticon from 'react-jdenticon';
 
 // Imports
-import ArtistCard from '../ArtistCard';
+import ArtistCard from '../SearchCards/ArtistCard';
 
 const Search = () => {
   //#region
@@ -28,11 +28,11 @@ const Search = () => {
   };
 
   const token =
-    'BQD2kWmHvCT3J1LXo36OGNWQZfBcZYztdFTFHCaCvUw5x3P_yzcZRx0zAwfHMDU-6DaEAgToa14u0YLnG4VJC2_fY9RoOyI87_qeQI88son5KKT7Xx4KKL8ucb86t38x-lDE5ZVMlGW7PBYkiFMFC764hKRMTi09QurdW_4huLJx7AUSNA';
+    'BQC5BTMhVIoqnkh5zcN8TxpqB8g9ygpmj2s4EneOPkCktA1WqrGhgAZNUUNO6Tv_7yXp_5iyKpMtlTlg3hLBunSTUiEEP77SkvWFkCkG2e8L0HkoH5cxMC-DQKQ8fdUBixPvL88gvSZDKEjC-y_qX6Mx-sasfAcPJGd0FZlSq-lHtJBKaA';
 
   const getDataArtist = async () => {
     const res = await fetch(
-      `https://api.spotify.com/v1/search?q=${query}&type=artist&limit=10&access_token=${token}`
+      `https://api.spotify.com/v1/search?q=${query}&type=artist&limit=10&access_token=${token}`,
     );
     const data = await res.json();
     // console.log('searching..');
@@ -41,7 +41,7 @@ const Search = () => {
 
   const getDataTrack = async () => {
     const res = await fetch(
-      `https://api.spotify.com/v1/search?q=${query}&type=track&limit=10&access_token=${token}`
+      `https://api.spotify.com/v1/search?q=${query}&type=track&limit=10&access_token=${token}`,
     );
     const data = await res.json();
     // console.log('searching..');
