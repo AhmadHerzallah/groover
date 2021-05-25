@@ -10,7 +10,7 @@ import Container from 'react-bootstrap/Container';
 import Jdenticon from 'react-jdenticon';
 
 // Imports
-import ArtistCard from '../ArtistCard';
+import ArtistCard from '../SearchCards/ArtistCard';
 
 const Search = () => {
   //#region
