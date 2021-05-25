@@ -141,7 +141,8 @@
 }
 
 .search__results__item__track {
-  background-color: #242629;
+  background-color: #19191d;
+  /* background-color: #242629; */
   width: 250px;
   height: 400px;
   position: relative;
@@ -160,9 +161,16 @@
   text-align: start;
 } */
 
-.search__results__img__self {
+.search__results__img__self_artists {
   border-radius: 50%;
-  margin-left: 10px;
+  /* margin-left: 10px; */
+  filter: drop-shadow(-9px 6px 27px rgba(0, 0, 0, 0.8));
+}
+
+.search__results__img__self_tracks {
+  border-radius: 50%;
+  /* margin-left: 10px; */
+  transform: translate(7%);
   filter: drop-shadow(-9px 6px 27px rgba(0, 0, 0, 0.8));
 }
 
@@ -170,9 +178,9 @@
   color: #fffffe !important;
   text-align: center;
   padding-top: 10px;
-  padding-right: 55px;
+  transform: translate(-8%);
   /* margin-left: 30px; */
-  font-size: 21px;
+  font-size: 17px;
   font-weight: 500;
 }
 .search__results__spotify {
@@ -181,7 +189,8 @@
 }
 
 .search__results__spotify__player {
-  text-align: left;
+  /* text-align: left; */
+  transform: translate(-14.3%, 15%);
   position: absolute;
   bottom: 15px;
   /* width: auto; */
@@ -198,8 +207,12 @@
 
 .search__results__artists {
   height: 50px;
+  font-size: 14px;
   padding-right: 55px;
+  min-width: 250px;
+  word-wrap: break-word;
   text-align: center;
+  transform: translate(-4%);
 }
 
 /* .search_search__results__item__wrapper {

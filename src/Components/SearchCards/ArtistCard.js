@@ -10,7 +10,7 @@ const ArtistCard = (props) => {
   useEffect(() => {
     props.data.images[1]
       ? setbackgroundImage1(props.data.images[1].url)
-      : setbackgroundImage1('https://color-hex.org/colors/242629.png');
+      : setbackgroundImage1('https://www.colorhexa.com/19191d.png');
   }, [props.data]);
   // console.log(backgroundImage1);
   return (
@@ -36,7 +36,7 @@ const ArtistCard = (props) => {
           <img
             src={props.data.images[2].url}
             alt=''
-            className={Style.search__results__img__self}
+            className={Style.search__results__img__self_artists}
           />
         </div>
       ) : (

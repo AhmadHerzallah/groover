@@ -11,6 +11,7 @@ import Jdenticon from 'react-jdenticon';
 
 // Imports
 import ArtistCard from '../SearchCards/ArtistCard';
+import TrackCard from '../SearchCards/TrackCard';
 
 const Search = () => {
   //#region
@@ -28,7 +29,7 @@ const Search = () => {
   };
 
   const token =
-    'BQCER-5_nYdCdzwTuvvczhTEIjc82EJXdpQCdJ6C7DCWqpEQjLcxNsBvlJgBI4HOmKbH4cOJeze1WWeJA6lVh5CWqr5z0wMKxHd4pVWR6aU6EX3o0TEBnvsiqDFlKgtQlW0XRgmyPQ0b5xUcnNXtQtd_Z5oJ9ZSQvEooReFzNxQM1Nca2w';
+    'BQDDPsnLE3IRbyEURjyQJsUioXJQy2L3iA3uY6zsGnP-CzrSy5S3wclDyY5mDN_k69x3gUATIFvFz6YTixcY1cultFpqhUxXh1VLyF5v-Ffi0moFfVTrMmKzkPq4JrPoXF0ZjOw7zBJyHm5U3Na8JuwoXcJIOnkRYF_24e8HJfU_a7CG_A';
 
   const getDataArtist = async () => {
     const res = await fetch(
@@ -190,57 +191,7 @@ const Search = () => {
           ) : (
             <>
               {trackData.tracks &&
-                trackData.tracks.items.map((res) => (
-                  <div className={Style.search__results__item__track}>
-                    <div className={Style.search__results__item__wrapper}>
-                      <ul>
-                        {res.album.images[1] ? (
-                          <li className={Style.search__results__img}>
-                            <img
-                              className={Style.search__results__img__self}
-                              src={res.album.images[1].url}
-                              alt=''
-                              width={150}
-                            />
-                          </li>
-                        ) : (
-                          <li className={Style.search__results__img}>
-                            <Jdenticon size='140' value={res.name} />
-                          </li>
-                        )}
-                        <li className={Style.search__results__name}>
-                          {res.name}
-                        </li>
-                        <li className={Style.search__results__artists}>
-                          {res.artists.map((elem) => (
-                            <span>
-                              {elem.name}{' '}
-                              {res.artists.length ===
-                              res.artists.indexOf(elem) + 1
-                                ? null
-                                : ', '}
-                            </span>
-                          ))}
-                        </li>
-                        <li className={Style.search__results__spotify__player}>
-                          {/* {console.log(res.uri.split(':'))} */}
-                          <iframe
-                            src={`https://open.spotify.com/embed/${
-                              res.uri.split(':')[1]
-                            }/${res.uri.split(':')[2]}`}
-                            width='240'
-                            title='Spotify'
-                            height='80'
-                            style={{ borderRadius: '5px' }}
-                            frameborder='0'
-                            allowtransparency='true'
-                            allow='encrypted-media'
-                          ></iframe>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                ))}
+                trackData.tracks.items.map((res) => <TrackCard data={res} />)}
               {/* {console.log(trackData)} */}
             </>
           )}
