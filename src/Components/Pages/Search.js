@@ -28,7 +28,7 @@ const Search = () => {
   };
 
   const token =
-    'BQBwDLFk3BJuSnQuf4m_HgPF1lSW0zZDcyffzhb2IMJ2EZ8hUc6GuZTl3i6fchkuBoKyHCNn1PHV77NJt_qDWNl3z8TzIZoA2l-ACHX0l5_E3m3cqFqeFug0exZcqzCqJgHF7tVUQFO8QFdW4z6SQ29tWb3o9x95qr9wR9Hb6JqLUBbq3g';
+    'BQCER-5_nYdCdzwTuvvczhTEIjc82EJXdpQCdJ6C7DCWqpEQjLcxNsBvlJgBI4HOmKbH4cOJeze1WWeJA6lVh5CWqr5z0wMKxHd4pVWR6aU6EX3o0TEBnvsiqDFlKgtQlW0XRgmyPQ0b5xUcnNXtQtd_Z5oJ9ZSQvEooReFzNxQM1Nca2w';
 
   const getDataArtist = async () => {
     const res = await fetch(
@@ -208,7 +208,6 @@ const Search = () => {
                             <Jdenticon size='140' value={res.name} />
                           </li>
                         )}
-
                         <li className={Style.search__results__name}>
                           {res.name}
                         </li>

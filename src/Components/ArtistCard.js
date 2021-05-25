@@ -39,7 +39,7 @@ const ArtistCard = (props) => {
           />
         </div>
       ) : (
-        <li className={Style.search__results__img}>
+        <li className={Style.search__results__img_self}>
           <Jdenticon size='140' value={props.data.name} />
         </li>
       )}
