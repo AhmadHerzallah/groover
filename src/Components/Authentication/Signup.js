@@ -1,11 +1,13 @@
 import React from 'react';
-import signUpStyle from '../../style/signup.module.css';
+import signUpStyle from '../../style/signup.module.scss';
 import { createGlobalStyle } from 'styled-components';
 import { ArrowLeft } from 'react-feather';
 import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+
+import Google from '../../assets/icons/google.svg';
 
 import MobileIllustration from '../../assets/icons/mobile_ill.svg';
 
@@ -26,7 +28,7 @@ const Signup = () => {
 
       <div>
         <Row>
-          <Col md={7}>
+          <Col md={7} className={signUpStyle.column__left}>
             <div className={signUpStyle.backButton}>
               <Link to='/' className={signUpStyle.backButton__Link}>
                 {' '}
@@ -41,6 +43,50 @@ const Signup = () => {
               <button className={signUpStyle.social__google}>
                 Continue with Google
               </button>
+              <button className={signUpStyle.social__github}>
+                Continue with Google
+              </button>
+            </div>
+            <div className={signUpStyle.lineBreaker}>
+              <p>or Sign up with Email</p>
+            </div>
+            <div className={signUpStyle.email__form}>
+              <form>
+                <label htmlFor='name'>Name</label>
+                <br />
+                <input
+                  className={signUpStyle.form__input}
+                  type='text'
+                  id='name'
+                  placeholder='Joe Smith'
+                />
+                <br />
+                <label htmlFor='email'>Email</label>
+                <br />
+                <input
+                  className={signUpStyle.form__input}
+                  type='text'
+                  id='email'
+                  placeholder='mail@mail.com'
+                />
+                <br />
+                <label htmlFor='password'>Password</label>
+                <br />
+                <input
+                  className={signUpStyle.form__input}
+                  type='text'
+                  id='password'
+                  placeholder='Min. 8 character'
+                />
+                <br />
+                <input type='checkbox' name='' id='terms' />
+                <label
+                  htmlFor='terms'
+                  className={signUpStyle.indented__checkbox__text}
+                >
+                  I agree to the terms and conditions
+                </label>
+              </form>
             </div>
           </Col>
           <Col>
