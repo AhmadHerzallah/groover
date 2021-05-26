@@ -19,6 +19,7 @@
     "react-scripts": "4.0.3",
     "react-switch": "^6.0.0",
     "react-tinder-card": "^1.4.0",
+    "sass": "^1.34.0",
     "styled-components": "^5.2.1",
     "web-vitals": "^1.0.1"
   },
