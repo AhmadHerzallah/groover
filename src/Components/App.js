@@ -2,7 +2,7 @@
 // #region import
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../style/App.css';
+import '../style/App.scss';
 
 import React, { useState, useEffect } from 'react';
 

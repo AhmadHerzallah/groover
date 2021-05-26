@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-no-target-blank */
 import React, { useEffect, useState } from 'react';
-import Style from '../../style/search.module.css';
+import Style from '../../style/search.module.scss';
 import Form from 'react-bootstrap/Form';
 import Switch from 'react-switch';
 import Col from 'react-bootstrap/Col';
@@ -33,7 +33,7 @@ const Search = () => {
 
   const getDataArtist = async () => {
     const res = await fetch(
-      `https://api.spotify.com/v1/search?q=${query}&type=artist&limit=10&access_token=${token}`
+      `https://api.spotify.com/v1/search?q=${query}&type=artist&limit=10&access_token=${token}`,
     );
     const data = await res.json();
     // console.log('searching..');
@@ -42,7 +42,7 @@ const Search = () => {
 
   const getDataTrack = async () => {
     const res = await fetch(
-      `https://api.spotify.com/v1/search?q=${query}&type=track&limit=10&access_token=${token}`
+      `https://api.spotify.com/v1/search?q=${query}&type=track&limit=10&access_token=${token}`,
     );
     const data = await res.json();
     // console.log('searching..');

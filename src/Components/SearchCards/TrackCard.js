@@ -1,5 +1,5 @@
 import React from 'react';
-import Style from '../../style/search.module.css';
+import Style from '../../style/search.module.scss';
 import Jdenticon from 'react-jdenticon';
 
 const TrackCard = (props) => {
