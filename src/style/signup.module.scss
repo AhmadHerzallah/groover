@@ -1,0 +1,143 @@
+/*  */
+/*  */
+/*  */
+.backButton {
+  padding-top: 8px;
+}
+.backButton__Link {
+  &:hover {
+    color: white;
+  }
+}
+.backButton__Text {
+  display: inline-block;
+}
+.signUp__Title {
+  padding-top: 30px;
+  h2 {
+    font-weight: bold;
+  }
+}
+.social__google {
+  border: #7f5af0 1px solid;
+  background: none;
+  display: block;
+  color: #7f5af0;
+  text-decoration: none;
+  white-space: nowrap;
+  border-radius: 4px;
+  width: 440px;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px 20px;
+  font-weight: 500 !important;
+  &::before {
+    content: url('../assets/icons/google.svg');
+    float: left;
+    width: 35px;
+    margin-top: 2px;
+    height: 5px;
+    padding-left: 1em;
+  }
+}
+.social__github {
+  margin-top: 15px;
+  border: #7f5af0 1px solid;
+  background: none;
+  display: block;
+  color: #7f5af0;
+  text-decoration: none;
+  white-space: nowrap;
+  border-radius: 4px;
+  width: 440px;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px 20px;
+  font-weight: 500 !important;
+  &::before {
+    content: '';
+    background-image: url('../assets/icons/github.svg');
+    background-size: 100% 100%;
+    // display: inline-block;
+    float: left;
+    height: 20px;
+    width: 35px;
+    margin-top: 2px;
+    padding-left: 1em;
+    position: relative;
+    left: 9px;
+  }
+}
+.right {
+  height: 100vh;
+  background: #16161a;
+}
+.layout {
+  padding-left: 40px;
+  padding-top: 80px;
+  h1 {
+    font-weight: 700;
+  }
+}
+.layout__words {
+  padding-top: 30px;
+  width: 60%;
+  font-weight: 700;
+}
+.layout__illustraion {
+  width: 400px;
+  margin-top: -60px;
+  margin-left: 10px;
+}
+.lineBreaker {
+  margin-top: 10px;
+  width: 430px;
+  margin-left: 5px;
+  margin-right: 5px;
+  p {
+    color: #6f7482;
+    font-size: 18px;
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    grid-column-gap: 1.2rem;
+    align-items: center;
+    font-weight: 500;
+    &::before {
+      content: '';
+      color: #b8bcca;
+      display: block;
+      height: 1px;
+      background-color: currentColor;
+    }
+    &::after {
+      content: '';
+      color: #b8bcca;
+      display: block;
+      height: 1px;
+      background-color: currentColor;
+    }
+  }
+}
+.form__input {
+  width: 440px;
+  height: 48px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  padding-left: 15px;
+  font-weight: 500 !important;
+  &::placeholder {
+    color: #b8bcca;
+    font-weight: 500 !important;
+  }
+}
+input[type='checkbox'] {
+  width: 18px;
+  height: 18px;
+  background: none;
+  border: 2px #b8bcca solid;
+}
+.indented__checkbox__text {
+  display: inline-block;
+}

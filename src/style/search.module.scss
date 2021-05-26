@@ -1,0 +1,185 @@
+//colors
+$color_gallery_approx: #ededed;
+$white: #fff;
+$color_emerald_approx: #66cc75;
+$color_malibu_50_approx: rgba(109, 207, 246, 0.5);
+$color_medium_purple_50_approx: rgba(129, 92, 240, 0.5);
+$black_69: rgba(0, 0, 0, 0.69);
+$color_gray_37_approx: rgba(133, 133, 133, 0.37);
+$color_cinder_approx: #19191d;
+$color_gray_chateau_approx: #94a1b2;
+$black_80: rgba(0, 0, 0, 0.8);
+$color_black_white_approx: #fffffe;
+
+//urls
+$url_0: url(../assets/icons/search.svg);
+
+.search__div {
+  display: grid;
+  justify-content: center;
+}
+.search__title {
+  margin-top: 15px;
+  text-align: center;
+}
+.search__btn {
+  background: $color_gallery_approx $url_0 no-repeat 9px center;
+  padding: 9px 10px 9px 32px;
+  margin-top: 20px;
+  display: block;
+  width: 150px;
+  height: 40px;
+  text-align: center;
+  border: none;
+  outline: none;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 5px;
+  //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+  transition: all 0.5s;
+}
+.search__form {
+  padding-left: 150px;
+}
+@media (min-width: 762px) {
+  .search__btn {
+    background: $color_gallery_approx $url_0 no-repeat 9px center;
+    padding: 9px 10px 9px 32px;
+    margin-top: 20px;
+    display: block;
+    margin-right: 160px;
+    width: 280px;
+    margin-left: -3px;
+    margin-left: 18px;
+    height: 40px;
+    border: none;
+    outline: none;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 5px;
+    //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+    transition: all 0.5s;
+    &:focus {
+      width: 400px;
+      background-color: $white;
+      border-color: $color_emerald_approx;
+      //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+      box-shadow: 0 0 5px $color_malibu_50_approx;
+    }
+    &:hover {
+      width: 400px;
+      background-color: $white;
+      border-color: $color_emerald_approx;
+      //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+      box-shadow: 0 0 5px $color_malibu_50_approx;
+    }
+  }
+  .search__form {
+    padding-left: 150px !important;
+  }
+}
+@media (min-width: 682px) {
+  .search__state {
+    align-self: flex-end;
+    padding-top: 29px;
+    font-size: 19px;
+    width: 100px;
+  }
+}
+.search__state {
+  align-self: flex-end;
+  padding-top: 29px;
+  font-size: 19px;
+  width: 150px;
+}
+.search__swtiches {
+  display: inline-flex;
+  align-items: center;
+}
+.search__current {
+  border-color: $color_emerald_approx;
+  //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  text-shadow: 0 0 5px $color_medium_purple_50_approx;
+}
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-right: 100px;
+  margin-left: 100px;
+  margin-top: 20px;
+  li {
+    list-style: none;
+  }
+}
+.search__results__item {
+  background: $black_69;
+  //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  box-shadow: 0 8px 32px 0 $color_gray_37_approx;
+  backdrop-filter: blur(8px);
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 10px;
+  width: 250px;
+  text-align: center;
+  height: 400px;
+  margin-left: 30px;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.search__results__item__track {
+  background-color: $color_cinder_approx;
+  width: 250px;
+  height: 400px;
+  position: relative;
+  margin-left: 30px;
+  margin-bottom: 20px;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 5px;
+}
+.search__results__item__wrapper {
+  color: $color_gray_chateau_approx;
+}
+.search__results__img__self_artists {
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 50%;
+  filter: drop-shadow(-9px 6px 27px $black_80);
+}
+.search__results__img__self_tracks {
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 50%;
+  //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+  transform: translate(7%);
+  filter: drop-shadow(-9px 6px 27px $black_80);
+}
+.search__results__name {
+  color: $color_black_white_approx !important;
+  text-align: center;
+  padding-top: 10px;
+  //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+  transform: translate(-8%);
+  font-size: 17px;
+  font-weight: 500;
+}
+.search__results__spotify {
+  color: $color_black_white_approx;
+  font-weight: 500;
+}
+.search__results__spotify__player {
+  //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+  transform: translate(-14.3%, 15%);
+  position: absolute;
+  bottom: 15px;
+  iframe {
+    text-align: left;
+  }
+}
+.search__results__artists {
+  height: 50px;
+  font-size: 14px;
+  padding-right: 55px;
+  min-width: 250px;
+  word-wrap: break-word;
+  text-align: center;
+  //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+  transform: translate(-4%);
+}
