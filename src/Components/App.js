@@ -17,7 +17,7 @@ import { lightTheme, darkTheme } from '../style/theme';
 // Import Global Style
 import { GlobalStyles } from '../style/global';
 
-// Import icons
+import { AuthProvider } from './Authentication/Auth';
 
 // Import Nav & Navbar from react-bootstrap
 
@@ -98,16 +98,18 @@ function App({ initialTheme = 'dark' }) {
     <>
       <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
         <GlobalStyles />
-        <Router>
-          <VideoBackground video={nowPlaying} />
-          <NavBar
-            theme={theme}
-            handleClick={handleClick}
-            click={click}
-            toggleTheme={toggleTheme}
-          />
-          <Routes />
-        </Router>
+        <AuthProvider>
+          <Router>
+            <VideoBackground video={nowPlaying} />
+            <NavBar
+              theme={theme}
+              handleClick={handleClick}
+              click={click}
+              toggleTheme={toggleTheme}
+            />
+            <Routes />
+          </Router>
+        </AuthProvider>
         <Cursor />
       </ThemeProvider>
     </>
