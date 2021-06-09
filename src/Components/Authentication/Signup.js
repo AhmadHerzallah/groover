@@ -1,14 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import signUpStyle from '../../style/signup.module.scss';
 import { createGlobalStyle } from 'styled-components';
 import { ArrowLeft } from 'react-feather';
 import { Link } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
-import Google from '../../assets/icons/google.svg';
-
+import { useHistory } from 'react-router-dom';
+import { useAuth } from '../Authentication/Auth';
 import MobileIllustration from '../../assets/icons/mobile_ill.svg';
 
 const GlobalStyle = createGlobalStyle`
@@ -22,6 +20,38 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const Signup = () => {
+  const history = useHistory();
+  const { signUp } = useAuth();
+  const [state, setState] = useState({});
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setState((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+    console.log(state);
+  };
+
+  const submitAction = async (e) => {
+    e.preventDefault();
+    console.log('Executing...');
+    console.log(state);
+    let passwordRule = new RegExp(
+      '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})',
+    );
+    if (state.name === '' || state.name === undefined) {
+      alert('PLEASE FILL OUT THE NAME INPUT');
+    } else if (state.email === '' || state.email === undefined) {
+      alert('PLEASE FILL OUT THE EMAIL INPUT');
+    } else if (password === '' || password === undefined) {
+      alert('PLEASE FILL OUT THE PASSWORD INPUT');
+    }
+    const action = await signUp(state, password);
+    history.push('/profile');
+  };
+
   return (
     <div className='signUpPage'>
       <GlobalStyle />
@@ -51,13 +81,15 @@ const Signup = () => {
               <p>or Sign up with Email</p>
             </div>
             <div className={signUpStyle.email__form}>
-              <form>
+              <form onSubmit={submitAction}>
                 <label htmlFor='name'>Name</label>
                 <br />
                 <input
                   className={signUpStyle.form__input}
                   type='text'
                   id='name'
+                  name='name'
+                  onChange={handleInputChange}
                   placeholder='Joe Smith'
                 />
                 <br />
@@ -67,6 +99,8 @@ const Signup = () => {
                   className={signUpStyle.form__input}
                   type='text'
                   id='email'
+                  name='email'
+                  onChange={handleInputChange}
                   placeholder='mail@mail.com'
                 />
                 <br />
@@ -74,8 +108,12 @@ const Signup = () => {
                 <br />
                 <input
                   className={signUpStyle.form__input}
-                  type='text'
+                  type='password'
                   id='password'
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
                   placeholder='Min. 8 character'
                 />
                 <br />
@@ -86,6 +124,9 @@ const Signup = () => {
                 >
                   I agree to the terms and conditions
                 </label>
+                <br />
+
+                <button>Sign up</button>
               </form>
             </div>
           </Col>
