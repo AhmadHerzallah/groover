@@ -30,6 +30,7 @@
   flex-direction: row;
   align-items: center;
   padding: 12px 20px;
+  transition: 300ms ease-in-out;
   font-weight: 500 !important;
   &::before {
     content: url('../assets/icons/google.svg');
@@ -38,6 +39,14 @@
     margin-top: 2px;
     height: 5px;
     padding-left: 1em;
+    height: 20px;
+    width: 35px;
+    margin-top: 2px;
+  }
+  &:active {
+    background-color: #7f5af0;
+    color: #fff;
+    transition: 300ms ease-in-out;
   }
 }
 
@@ -62,12 +71,13 @@
     background-size: 100% 100%;
     // display: inline-block;
     float: left;
-    height: 20px;
-    width: 35px;
+    height: 21px;
+    width: 32px;
     margin-top: 2px;
     padding-left: 1em;
     position: relative;
     left: 9px;
+    filter: invert(2);
   }
 }
 .right {
