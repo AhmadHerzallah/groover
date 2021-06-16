@@ -29,7 +29,7 @@ const Search = () => {
   };
 
   const token =
-    'BQDDPsnLE3IRbyEURjyQJsUioXJQy2L3iA3uY6zsGnP-CzrSy5S3wclDyY5mDN_k69x3gUATIFvFz6YTixcY1cultFpqhUxXh1VLyF5v-Ffi0moFfVTrMmKzkPq4JrPoXF0ZjOw7zBJyHm5U3Na8JuwoXcJIOnkRYF_24e8HJfU_a7CG_A';
+    'BQADmFq7N8LJO5dVpmmeVSd_bdcZGZIU_oReOHPAAIc738Mx6mLPAUWxHsRfXmkyUZFDfyp-U8nGp-OZQxKkuGivHdkjkkutCFK03up8JHK51dYWXnSuFiWxG58vfITm8dp1XhhK9UO9SmpiIByJW-5N-nqWaJ2eqRHZp8FkL_yhQMUB9g';
 
   const getDataArtist = async () => {
     const res = await fetch(
