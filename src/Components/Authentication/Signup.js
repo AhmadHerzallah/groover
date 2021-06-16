@@ -74,7 +74,7 @@ const Signup = () => {
                 Continue with Google
               </button>
               <button className={signUpStyle.social__github}>
-                Continue with Google
+                Continue with GitHub
               </button>
             </div>
             <div className={signUpStyle.lineBreaker}>
@@ -91,6 +91,7 @@ const Signup = () => {
                   name='name'
                   onChange={handleInputChange}
                   placeholder='Joe Smith'
+                  autoComplete
                 />
                 <br />
                 <label htmlFor='email'>Email</label>
