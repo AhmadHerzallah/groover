@@ -21,34 +21,23 @@ const GlobalStyle = createGlobalStyle`
 
 const LogIn = () => {
   const history = useHistory();
-  const { signUp } = useAuth();
-  const [state, setState] = useState({});
+  const { login } = useAuth();
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setState((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-    console.log(state);
-  };
 
   const submitAction = async (e) => {
     e.preventDefault();
     console.log('Executing...');
-    console.log(state);
     let passwordRule = new RegExp(
       '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})',
     );
-    if (state.name === '' || state.name === undefined) {
-      alert('PLEASE FILL OUT THE NAME INPUT');
-    } else if (state.email === '' || state.email === undefined) {
+    if (email === '' || email === undefined) {
       alert('PLEASE FILL OUT THE EMAIL INPUT');
     } else if (password === '' || password === undefined) {
       alert('PLEASE FILL OUT THE PASSWORD INPUT');
     }
-    const action = await signUp(state, password);
+    const action = await login(email, password);
     history.push('/profile');
   };
 
@@ -82,18 +71,6 @@ const LogIn = () => {
             </div>
             <div className={logInStyle.email__form}>
               <form onSubmit={submitAction}>
-                <label htmlFor='name'>Name</label>
-                <br />
-                <input
-                  className={logInStyle.form__input}
-                  type='text'
-                  id='name'
-                  name='name'
-                  onChange={handleInputChange}
-                  placeholder='Joe Smith'
-                  autoComplete
-                />
-                <br />
                 <label htmlFor='email'>Email</label>
                 <br />
                 <input
@@ -101,7 +78,9 @@ const LogIn = () => {
                   type='text'
                   id='email'
                   name='email'
-                  onChange={handleInputChange}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
                   placeholder='mail@mail.com'
                 />
                 <br />
@@ -127,7 +106,7 @@ const LogIn = () => {
                 </label>
                 <br />
 
-                <button>Sign up</button>
+                <button>Log in</button>
               </form>
             </div>
           </Col>
