@@ -10,15 +10,16 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-  const db = app.database();
-  const users = db.ref('users');
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [bio, setBio] = useState('');
   const [image, setImage] = useState();
-
+  const db = app.database();
+  const storage = app.storage();
+  const users = db.ref('users');
+  const storageRef = storage.ref();
   function signUp(data, password) {
     return auth
       .createUserWithEmailAndPassword(data.email, password)
@@ -44,6 +45,7 @@ export function AuthProvider({ children }) {
         }
       });
   }
+
   // function signUpWithGoogle(email, password) {
   //   return auth
   //     .signInWithPopup(googleProvider)
@@ -81,6 +83,7 @@ export function AuthProvider({ children }) {
     return unsubscribe;
   }, []);
   if (currentUser) {
+    // Get data from db
     users
       .child(currentUser.uid)
       .get()
@@ -99,25 +102,37 @@ export function AuthProvider({ children }) {
         console.error(error);
       });
 
-    // app
-    //   .firestore()
-    //   .collection('users')
-    //   .doc(currentUser.uid)
-    //   .get()
-    //   .then((doc) => {
-    //     setEmail(currentUser.email);
-    //     setBio(doc.data().bio);
-    //     setName(doc.data().firstName + ' ' + doc.data().lastName);
-    //     setImage(doc.data().image);
-    //   });
+    /* Get Image */
+    const imageRef = storageRef.child(`images/${currentUser.uid}/profile.png`);
+    imageRef
+      .getDownloadURL()
+      .then((url) => {
+        setImage(url);
+      })
+      .catch((error) => {
+        switch (error.code) {
+          case 'storage/object-not-found':
+            console.log('object-not-found');
+            console.log(`uid: ${currentUser.uid}`);
+            break;
+          case 'storage/unauthorized':
+            console.log('unauthorized');
+            console.log(`uid: ${currentUser.uid}`);
+
+            break;
+          case 'storage/canceled':
+            console.log('object-not-found');
+            console.log(`uid: ${currentUser.uid}`);
+
+            break;
+          case 'storage/unknown':
+            console.log('object-not-found');
+            console.log(`uid: ${currentUser.uid}`);
+
+            break;
+        }
+      });
   }
-
-  /*
-    signUpWithGoogle,
-    signUpWithGithub,
-
-
-*/
 
   const value = {
     currentUser,
