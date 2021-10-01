@@ -4,33 +4,33 @@
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
 
-import React, { useState, useEffect, useRef } from 'react';
-import { Container } from 'react-bootstrap';
-import fire from '../../fire';
-import Style from '../../style/profile.module.css';
-import { useAuth } from '../Authentication/Auth';
-import { useHistory } from 'react-router-dom';
-import Avatar, { genConfig, AvatarConfig } from 'react-nice-avatar';
+import React, { useState, useEffect, useRef } from "react";
+import { Container } from "react-bootstrap";
+import fire from "../../fire";
+import Style from "../../style/profile.module.css";
+import { useAuth } from "../Authentication/Auth";
+import { useHistory } from "react-router-dom";
+import Avatar, { genConfig, AvatarConfig } from "react-nice-avatar";
 
-import firebase from 'firebase';
+import firebase from "firebase";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
   Redirect,
-} from 'react-router-dom';
+} from "react-router-dom";
 
-import Login from './Login';
+import Login from "./Login";
 
 const Profile = () => {
   // Hooks
   const { currentUser, loading, name, email, image, logOut } = useAuth();
   const [avatarConfig, setAvatarConfig] = useState(null);
   const [data, setData] = useState({});
-  const [phoroUrl, setPhotoUrl] = useState('');
+  const [phoroUrl, setPhotoUrl] = useState("");
   const [uploadProgress, setUploadProgress] = useState(45);
-  const uploadedImage = useRef('');
+  const uploadedImage = useRef("");
   const history = useHistory();
   let config = genConfig();
   const db = firebase.database();
@@ -47,7 +47,7 @@ const Profile = () => {
 
   const signOut = () => {
     logOut();
-    history.push('/');
+    history.push("/");
   };
 
   React.useLayoutEffect(() => {
@@ -57,18 +57,17 @@ const Profile = () => {
 
   function randomAvatar(name) {
     console.log(name);
-    const random = (items: string[]) =>
-      items[Math.floor(Math.random() * items.length)];
-    const calculatedSex = name === 'Bob Smith' ? 'man' : 'woman';
-    const earSize = ['small', 'big'];
-    const hairStyle = ['normal', 'thick', 'mohawk', 'womanLong', 'womanShort'];
-    const eyeStyle = ['circle', 'oval', 'smile'];
-    const glassesStyle = ['round', 'square', 'none'];
-    const noseStyle = ['short', 'long', 'round'];
-    const mouthStyle = ['laugh', 'smile', 'peace'];
-    const shirtStyle = ['hoody', 'short', 'polo'];
+    const random = (items) => items[Math.floor(Math.random() * items.length)];
+    const calculatedSex = name === "Bob Smith" ? "man" : "woman";
+    const earSize = ["small", "big"];
+    const hairStyle = ["normal", "thick", "mohawk", "womanLong", "womanShort"];
+    const eyeStyle = ["circle", "oval", "smile"];
+    const glassesStyle = ["round", "square", "none"];
+    const noseStyle = ["short", "long", "round"];
+    const mouthStyle = ["laugh", "smile", "peace"];
+    const shirtStyle = ["hoody", "short", "polo"];
 
-    let randomAvatarConfig: AvatarConfig = {
+    let randomAvatarConfig = {
       sex: calculatedSex,
     };
     return genConfig(randomAvatarConfig);
@@ -77,11 +76,11 @@ const Profile = () => {
   const hours = new Date().getHours();
   let greet = null;
   if (hours >= 12 && hours <= 17) {
-    greet = 'afternoon';
+    greet = "afternoon";
   } else if (hours >= 17) {
-    greet = 'evening';
+    greet = "evening";
   } else {
-    greet = 'morning';
+    greet = "morning";
   }
   if (loading) {
     return (
@@ -112,36 +111,36 @@ const Profile = () => {
         </p>
         <p>Email: {email}</p>
         <p>
-          photoUrl:{' '}
-          {data && data.photo === '' ? "There's no image" : data.photo}
+          photoUrl:{" "}
+          {data && data.photo === "" ? "There's no image" : data.photo}
         </p>
         <button onClick={signOut}>Signout</button>
         <p>{firebase.auth().currentUser && firebase.auth().currentUser.uid}</p>
         {/* onSubmit={handleSubmit} */}
         <form>
           <input
-            type='file'
+            type="file"
             ref={uploadedImage}
-            accept='image/*'
+            accept="image/*"
             value={image}
           />
-          <input type='submit' value='Upload' />
-          <svg viewBox='0 0 36 36' class='circular-chart'>
+          <input type="submit" value="Upload" />
+          <svg viewBox="0 0 36 36" class="circular-chart">
             <path
-              class='circle'
+              class="circle"
               stroke-dasharray={`${uploadProgress}, 100`}
-              d='M18 2.0845
+              d="M18 2.0845
       a 15.9155 15.9155 0 0 1 0 31.831
-      a 15.9155 15.9155 0 0 1 0 -31.831'
+      a 15.9155 15.9155 0 0 1 0 -31.831"
             />
             <text
-              x='50%'
-              y='50%'
-              text-anchor='middle'
-              fill='white'
-              font-size='5px'
-              font-family='Arial'
-              dy='.3em'
+              x="50%"
+              y="50%"
+              text-anchor="middle"
+              fill="white"
+              font-size="5px"
+              font-family="Arial"
+              dy=".3em"
             >
               {parseInt(uploadProgress)}%
             </text>
@@ -153,7 +152,7 @@ const Profile = () => {
     return (
       <Container>
         <p>
-          Sorry, you have to <a href='/login'>login</a> to see your profile.
+          Sorry, you have to <a href="/login">login</a> to see your profile.
         </p>
       </Container>
     );

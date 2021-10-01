@@ -147,6 +147,7 @@ $url_0: url(../assets/icons/search.svg);
 .search__results__img__self_tracks {
   //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
   border-radius: 50%;
+  padding-top: 0.5em;
   //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
   transform: translate(7%);
   filter: drop-shadow(-9px 6px 27px $black_80);

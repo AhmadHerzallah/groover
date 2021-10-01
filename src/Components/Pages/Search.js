@@ -1,22 +1,22 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-no-target-blank */
-import React, { useEffect, useState } from 'react';
-import Style from '../../style/search.module.scss';
-import Form from 'react-bootstrap/Form';
-import Switch from 'react-switch';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Container from 'react-bootstrap/Container';
-import Jdenticon from 'react-jdenticon';
+import React, { useEffect, useState } from "react";
+import Style from "../../style/search.module.scss";
+import Form from "react-bootstrap/Form";
+import Switch from "react-switch";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
+import Jdenticon from "react-jdenticon";
 
 // Imports
-import ArtistCard from '../SearchCards/ArtistCard';
-import TrackCard from '../SearchCards/TrackCard';
+import ArtistCard from "../SearchCards/ArtistCard";
+import TrackCard from "../SearchCards/TrackCard";
 
 const Search = () => {
   //#region
   const [switcher, setSwitcher] = useState(true);
-  const [query, setQuery] = useState('JuiceWRLD');
+  const [query, setQuery] = useState("JuiceWRLD");
   const [flag, setFlag] = useState(false);
   const [artistData, setArtistData] = useState({});
   const [trackData, setTrackData] = useState({});
@@ -28,12 +28,10 @@ const Search = () => {
     setSwitcher(!switcher);
   };
 
-  const token =
-    'BQCf_TxIUAwzXIP5axVziHiwfQpkd_WF4bifpr2W9WtjK7TxqIIPiItMcvlcVYZhajk750ML3WeMF6jjm4JB71lE8t2Yxbilyjd9iJlV2gkt7n1U-3Q1pF6HlpaGyaclzmVmYbPP91wDI9qopq4of_CBs0RxQvTfL9R-VR3CCAl4bPqbQA';
-
+  const token = "BQD3ulaCCfqD-4wh5SKNOVLdA8DBXa2NDNmz0cb30X8FN2WtsKeIHmOBN_8OfS5XQMkzk8YAmZDV1klx4LKpvhFQpwCTlPR_ETduJOoslN21jROssAdh9t2RpDsIDQuY-UZ7lwCyT2SqvqEUlSvDSae9r6WGa-0NLHakJeOzle3X7w2MJg"
   const getDataArtist = async () => {
     const res = await fetch(
-      `https://api.spotify.com/v1/search?q=${query}&type=artist&limit=10&access_token=${token}`,
+      `https://api.spotify.com/v1/search?q=${query}&type=artist&limit=10&access_token=${token}`
     );
     const data = await res.json();
     // console.log('searching..');
@@ -42,7 +40,7 @@ const Search = () => {
 
   const getDataTrack = async () => {
     const res = await fetch(
-      `https://api.spotify.com/v1/search?q=${query}&type=track&limit=10&access_token=${token}`,
+      `https://api.spotify.com/v1/search?q=${query}&type=track&limit=10&access_token=${token}`
     );
     const data = await res.json();
     // console.log('searching..');
@@ -51,31 +49,31 @@ const Search = () => {
   let artistlist = [];
   let tracklist = [];
   const changeAhistory = () => {
-    if (localStorage.getItem('AH') != null) {
-      if (Array.isArray(JSON.parse(localStorage.getItem('AH')))) {
-        artistlist = JSON.parse([localStorage.getItem('AH')]);
+    if (localStorage.getItem("AH") != null) {
+      if (Array.isArray(JSON.parse(localStorage.getItem("AH")))) {
+        artistlist = JSON.parse([localStorage.getItem("AH")]);
         artistlist.push(query);
       } else {
-        artistlist = [JSON.parse(localStorage.getItem('AH'))];
+        artistlist = [JSON.parse(localStorage.getItem("AH"))];
         artistlist.push(query);
       }
-      localStorage.setItem('AH', JSON.stringify(artistlist));
+      localStorage.setItem("AH", JSON.stringify(artistlist));
     } else {
-      localStorage.setItem('AH', JSON.stringify(query));
+      localStorage.setItem("AH", JSON.stringify(query));
     }
   };
   const changeThistory = () => {
-    if (localStorage.getItem('TH') != null) {
-      if (Array.isArray(JSON.parse(localStorage.getItem('TH')))) {
-        tracklist = JSON.parse([localStorage.getItem('TH')]);
+    if (localStorage.getItem("TH") != null) {
+      if (Array.isArray(JSON.parse(localStorage.getItem("TH")))) {
+        tracklist = JSON.parse([localStorage.getItem("TH")]);
         tracklist.push(query);
       } else {
-        tracklist = [JSON.parse(localStorage.getItem('TH'))];
+        tracklist = [JSON.parse(localStorage.getItem("TH"))];
         tracklist.push(query);
       }
-      localStorage.setItem('TH', JSON.stringify(tracklist));
+      localStorage.setItem("TH", JSON.stringify(tracklist));
     } else {
-      localStorage.setItem('TH', JSON.stringify(query));
+      localStorage.setItem("TH", JSON.stringify(query));
     }
   };
   const handleSubmit = (e) => {
@@ -147,33 +145,33 @@ const Search = () => {
             <Col md={3} sm={12}>
               <div className={Style.search__swtiches}>
                 <p className={Style.search__state}>
-                  Type:{' '}
+                  Type:{" "}
                   <span className={Style.search__current}>
-                    {switcher ? 'Artist' : 'Track'}
+                    {switcher ? "Artist" : "Track"}
                   </span>
                 </p>
                 <Switch
                   onChange={handleSwitchChange}
                   checked={switcher}
-                  className='react-switch'
+                  className="react-switch"
                   uncheckedIcon={``}
-                  onColor='#7f5af0'
+                  onColor="#7f5af0"
                   checkedIcon={``}
                   width={60}
-                  aria-label='switcher'
+                  aria-label="switcher"
                 />
               </div>
             </Col>
             <Col md={9} sm={12}>
               <input
                 placeholder={
-                  switcher ? 'Search for an Artist' : 'Search for Track'
+                  switcher ? "Search for an Artist" : "Search for Track"
                 }
                 className={Style.search__btn}
                 value={query}
                 onChange={handleValueChange}
-                id='search_bar'
-                aria-label='search'
+                id="search_bar"
+                aria-label="search"
               ></input>
               {/*                 onFocus={handleFocus()} */}
             </Col>
