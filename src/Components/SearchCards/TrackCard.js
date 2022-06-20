@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Style from "../../style/search.module.scss";
+import Style from "../../style/search.module.css";
 import Jdenticon from "react-jdenticon";
 import { ColorExtractor } from "react-color-extractor";
 const TrackCard = (props) => {

@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import signUpStyle from '../../style/signup.module.scss';
-import { createGlobalStyle } from 'styled-components';
-import { ArrowLeft } from 'react-feather';
-import { Link } from 'react-router-dom';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import { useHistory } from 'react-router-dom';
-import { useAuth } from '../Authentication/Auth';
-import MobileIllustration from '../../assets/icons/mobile_ill.svg';
+import React, { useState } from "react";
+import signUpStyle from "../../style/signup.module.css";
+import { createGlobalStyle } from "styled-components";
+import { ArrowLeft } from "react-feather";
+import { Link } from "react-router-dom";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import { useHistory } from "react-router-dom";
+import { useAuth } from "../Authentication/Auth";
+import MobileIllustration from "../../assets/icons/mobile_ill.svg";
 
 const GlobalStyle = createGlobalStyle`
   .navbar {
@@ -23,7 +23,7 @@ const Signup = () => {
   const history = useHistory();
   const { signUp } = useAuth();
   const [state, setState] = useState({});
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -36,33 +36,33 @@ const Signup = () => {
 
   const submitAction = async (e) => {
     e.preventDefault();
-    console.log('Executing...');
+    console.log("Executing...");
     console.log(state);
     let passwordRule = new RegExp(
-      '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})',
+      "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})",
     );
-    if (state.name === '' || state.name === undefined) {
-      alert('PLEASE FILL OUT THE NAME INPUT');
-    } else if (state.email === '' || state.email === undefined) {
-      alert('PLEASE FILL OUT THE EMAIL INPUT');
-    } else if (password === '' || password === undefined) {
-      alert('PLEASE FILL OUT THE PASSWORD INPUT');
+    if (state.name === "" || state.name === undefined) {
+      alert("PLEASE FILL OUT THE NAME INPUT");
+    } else if (state.email === "" || state.email === undefined) {
+      alert("PLEASE FILL OUT THE EMAIL INPUT");
+    } else if (password === "" || password === undefined) {
+      alert("PLEASE FILL OUT THE PASSWORD INPUT");
     }
     const action = await signUp(state, password);
-    history.push('/profile');
+    history.push("/profile");
   };
 
   return (
-    <div className='signUpPage'>
+    <div className="signUpPage">
       <GlobalStyle />
 
       <div>
         <Row>
           <Col md={7} className={signUpStyle.column__left}>
             <div className={signUpStyle.backButton}>
-              <Link to='/' className={signUpStyle.backButton__Link}>
-                {' '}
-                <ArrowLeft style={{ marginBottom: '2px' }} />
+              <Link to="/" className={signUpStyle.backButton__Link}>
+                {" "}
+                <ArrowLeft style={{ marginBottom: "2px" }} />
                 <p className={signUpStyle.backButton__Text}>Go back</p>
               </Link>
             </div>
@@ -82,45 +82,45 @@ const Signup = () => {
             </div>
             <div className={signUpStyle.email__form}>
               <form onSubmit={submitAction}>
-                <label htmlFor='name'>Name</label>
+                <label htmlFor="name">Name</label>
                 <br />
                 <input
                   className={signUpStyle.form__input}
-                  type='text'
-                  id='name'
-                  name='name'
+                  type="text"
+                  id="name"
+                  name="name"
                   onChange={handleInputChange}
-                  placeholder='Joe Smith'
+                  placeholder="Joe Smith"
                   autoComplete
                 />
                 <br />
-                <label htmlFor='email'>Email</label>
+                <label htmlFor="email">Email</label>
                 <br />
                 <input
                   className={signUpStyle.form__input}
-                  type='text'
-                  id='email'
-                  name='email'
+                  type="text"
+                  id="email"
+                  name="email"
                   onChange={handleInputChange}
-                  placeholder='mail@mail.com'
+                  placeholder="mail@mail.com"
                 />
                 <br />
-                <label htmlFor='password'>Password</label>
+                <label htmlFor="password">Password</label>
                 <br />
                 <input
                   className={signUpStyle.form__input}
-                  type='password'
-                  id='password'
+                  type="password"
+                  id="password"
                   value={password}
                   onChange={(e) => {
                     setPassword(e.target.value);
                   }}
-                  placeholder='Min. 8 character'
+                  placeholder="Min. 8 character"
                 />
                 <br />
-                <input type='checkbox' name='' id='terms' />
+                <input type="checkbox" name="" id="terms" />
                 <label
-                  htmlFor='terms'
+                  htmlFor="terms"
                   className={signUpStyle.indented__checkbox__text}
                 >
                   I agree to the terms and conditions
@@ -143,7 +143,7 @@ const Signup = () => {
                     className={signUpStyle.layout__illustraion}
                     // width={'380'}
                     src={MobileIllustration}
-                    alt=''
+                    alt=""
                   />
                 </div>
               </div>

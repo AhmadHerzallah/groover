@@ -1,0 +1,153 @@
+.search__div {
+  display: grid;
+  justify-content: center;
+}
+.search__title {
+  margin-top: 15px;
+  text-align: center;
+}
+.search__btn {
+  background: #ededed url(../assets/icons/search.svg) no-repeat 9px center;
+  padding: 9px 10px 9px 32px;
+  margin-top: 20px;
+  display: block;
+  width: 150px;
+  height: 40px;
+  text-align: center;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  transition: all 0.5s;
+}
+.search__form {
+  padding-left: 150px;
+}
+@media (min-width: 762px) {
+  .search__btn {
+    background: #ededed url(../assets/icons/search.svg) no-repeat 9px center;
+    padding: 9px 10px 9px 32px;
+    margin-top: 20px;
+    display: block;
+    margin-right: 160px;
+    width: 280px;
+    margin-left: -3px;
+    margin-left: 18px;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    transition: all 0.5s;
+  }
+  .search__btn:focus {
+    width: 400px;
+    background-color: #fff;
+    border-color: #66cc75;
+    box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
+  }
+  .search__btn:hover {
+    width: 400px;
+    background-color: #fff;
+    border-color: #66cc75;
+    box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
+  }
+  .search__form {
+    padding-left: 150px !important;
+  }
+}
+@media (min-width: 682px) {
+  .search__state {
+    align-self: flex-end;
+    padding-top: 29px;
+    font-size: 19px;
+    width: 100px;
+  }
+}
+.search__state {
+  align-self: flex-end;
+  padding-top: 29px;
+  font-size: 19px;
+  width: 150px;
+}
+.search__swtiches {
+  display: inline-flex;
+  align-items: center;
+}
+.search__current {
+  border-color: #66cc75;
+  text-shadow: 0 0 5px rgba(129, 92, 240, 0.5);
+}
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-right: 100px;
+  margin-left: 100px;
+  margin-top: 20px;
+}
+.results li {
+  list-style: none;
+}
+.search__results__item {
+  background: rgba(0, 0, 0, 0.69);
+  box-shadow: 0 8px 32px 0 rgba(133, 133, 133, 0.37);
+  backdrop-filter: blur(8px);
+  border-radius: 10px;
+  width: 250px;
+  text-align: center;
+  height: 400px;
+  margin-left: 30px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.search__results__item__track {
+  background-color: #19191d;
+  width: 250px;
+  height: 400px;
+  position: relative;
+  margin-left: 30px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+.search__results__item__wrapper {
+  color: #94a1b2;
+}
+.search__results__img__self_artists {
+  border-radius: 50%;
+  filter: drop-shadow(-9px 6px 27px rgba(0, 0, 0, 0.8));
+}
+.search__results__img__self_tracks {
+  border-radius: 50%;
+  padding-top: 0.5em;
+  transform: translate(7%);
+  filter: drop-shadow(-9px 6px 27px rgba(0, 0, 0, 0.8));
+}
+.search__results__name {
+  color: #fffffe !important;
+  text-align: center;
+  padding-top: 10px;
+  transform: translate(-8%);
+  font-size: 17px;
+  font-weight: 500;
+}
+.search__results__spotify {
+  color: #fffffe;
+  font-weight: 500;
+}
+.search__results__spotify__player {
+  transform: translate(-14.3%, 15%);
+  position: absolute;
+  bottom: 15px;
+}
+.search__results__spotify__player iframe {
+  text-align: left;
+}
+.search__results__artists {
+  height: 50px;
+  font-size: 14px;
+  padding-right: 55px;
+  min-width: 250px;
+  word-wrap: break-word;
+  text-align: center;
+  transform: translate(-4%);
+}

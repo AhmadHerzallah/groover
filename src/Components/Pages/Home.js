@@ -8,17 +8,11 @@ const Home = () => {
   const allMoods = [
     {
       moods: ["Hyped"],
-      artist: [
-        "Travis Scott",
-        "Shabjdeed",
-        "Lil Uzi Vert",
-        "DaBaby",
-        "Kanye West",
-      ],
+      artist: ["Travis Scott", "Shabjdeed", "Lil Uzi Vert", "Kanye West"],
     },
     {
       moods: ["Sad", "Depressed"],
-      artist: ["XXXTentacion", "Juice WRLD", "NF", "Joji"],
+      artist: ["XXXTentacion", "Frank Ocean", "NF", "Joji", "Mac DeMarco"],
     },
     {
       moods: ["Calm"],
@@ -26,21 +20,27 @@ const Home = () => {
         "Post Malone",
         "Bad Bunny",
         "Don Toliver",
-        "Boogie wit da hoodie",
+        "TV Girl",
         "The Weeknd",
       ],
     },
     {
       moods: ["Romantic"],
-      artist: ["Lil Tjay", "Juice WRLD", "Ariana Grande", "YNW Melly"],
+      artist: ["Lil Tjay", "Frank Ocean", "Ariana Grande", "YNW Melly"],
     },
     {
       moods: ["Loney"],
-      artist: ["NF", "XXXTentaction", "Juice WRLD"],
+      artist: ["NF", "XXXTentaction", "Juice WRLD", "Joji"],
     },
     {
       moods: ["Fearful"],
-      artist: ["Lucii"],
+      artist: [
+        "Lucii",
+        "Central Cee",
+        "J. Cole",
+        "Kanye West",
+        "Kendrick Lamar",
+      ],
     },
   ];
 

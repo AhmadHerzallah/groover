@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-no-target-blank */
 import React, { useEffect, useState } from "react";
-import Style from "../../style/search.module.scss";
+import Style from "../../style/search.module.css";
 import Form from "react-bootstrap/Form";
 import Switch from "react-switch";
 import Col from "react-bootstrap/Col";
@@ -28,10 +28,10 @@ const Search = () => {
     setSwitcher(!switcher);
   };
 
-  const token = "BQD3ulaCCfqD-4wh5SKNOVLdA8DBXa2NDNmz0cb30X8FN2WtsKeIHmOBN_8OfS5XQMkzk8YAmZDV1klx4LKpvhFQpwCTlPR_ETduJOoslN21jROssAdh9t2RpDsIDQuY-UZ7lwCyT2SqvqEUlSvDSae9r6WGa-0NLHakJeOzle3X7w2MJg"
+  const token ="BQDysdbWjBKmqIEqvHrYIzNvjvqWx2tMRUWm9SRGlsO6_eZqwqVKoNDtwGKp73AUFZDjC0qTxer9oe-5ouJ8FQZtOFhIFzcc2pFBVGZt37BumCL89YLG2dxLN1w96nrY7425ZhA2Bz8pBwYzisn2llWwOYT7HgT9EyxccxebZlZUgDCyhmkGPpjPpKz0oCUTDZvq0vmVyEM4hFNyOnU"
   const getDataArtist = async () => {
     const res = await fetch(
-      `https://api.spotify.com/v1/search?q=${query}&type=artist&limit=10&access_token=${token}`
+      `https://api.spotify.com/v1/search?q=${query}&type=artist&limit=10&access_token=${token}`,
     );
     const data = await res.json();
     // console.log('searching..');
@@ -40,7 +40,7 @@ const Search = () => {
 
   const getDataTrack = async () => {
     const res = await fetch(
-      `https://api.spotify.com/v1/search?q=${query}&type=track&limit=10&access_token=${token}`
+      `https://api.spotify.com/v1/search?q=${query}&type=track&limit=10&access_token=${token}`,
     );
     const data = await res.json();
     // console.log('searching..');

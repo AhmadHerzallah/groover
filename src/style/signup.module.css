@@ -1,21 +1,17 @@
-@import './Sass/rules';
-
 .backButton {
   padding-top: 8px;
 }
-.backButton__Link {
-  &:hover {
-    color: white;
-  }
+.backButton__Link:hover {
+  color: white;
 }
 .backButton__Text {
   display: inline-block;
 }
 .signUp__Title {
   padding-top: 30px;
-  h2 {
-    font-weight: bold;
-  }
+}
+.signUp__Title h2 {
+  font-weight: bold;
 }
 .social__google {
   border: #7f5af0 1px solid;
@@ -32,24 +28,23 @@
   padding: 12px 20px;
   transition: 300ms ease-in-out;
   font-weight: 500 !important;
-  &::before {
-    content: url('../assets/icons/google.svg');
-    float: left;
-    width: 35px;
-    margin-top: 2px;
-    height: 5px;
-    padding-left: 1em;
-    height: 20px;
-    width: 35px;
-    margin-top: 2px;
-  }
-  &:active {
-    background-color: #7f5af0;
-    color: #fff;
-    transition: 300ms ease-in-out;
-  }
 }
-
+.social__google::before {
+  content: url("../assets/icons/google.svg");
+  float: left;
+  width: 35px;
+  margin-top: 2px;
+  height: 5px;
+  padding-left: 1em;
+  height: 20px;
+  width: 35px;
+  margin-top: 2px;
+}
+.social__google:active {
+  background-color: #7f5af0;
+  color: #fff;
+  transition: 300ms ease-in-out;
+}
 .social__github {
   margin-top: 15px;
   border: #7f5af0 1px solid;
@@ -65,20 +60,19 @@
   align-items: center;
   padding: 12px 20px;
   font-weight: 500 !important;
-  &::before {
-    content: '';
-    background-image: url('../assets/icons/github.svg');
-    background-size: 100% 100%;
-    // display: inline-block;
-    float: left;
-    height: 21px;
-    width: 32px;
-    margin-top: 2px;
-    padding-left: 1em;
-    position: relative;
-    left: 9px;
-    filter: invert(2);
-  }
+}
+.social__github::before {
+  content: "";
+  background-image: url("../assets/icons/github.svg");
+  background-size: 100% 100%;
+  float: left;
+  height: 21px;
+  width: 32px;
+  margin-top: 2px;
+  padding-left: 1em;
+  position: relative;
+  left: 9px;
+  filter: invert(2);
 }
 .right {
   height: 100vh;
@@ -87,9 +81,9 @@
 .layout {
   padding-left: 40px;
   padding-top: 80px;
-  h1 {
-    font-weight: 700;
-  }
+}
+.layout h1 {
+  font-weight: 700;
 }
 .layout__words {
   padding-top: 30px;
@@ -106,29 +100,29 @@
   width: 430px;
   margin-left: 5px;
   margin-right: 5px;
-  p {
-    color: #6f7482;
-    font-size: 18px;
-    display: grid;
-    grid-template-columns: 1fr max-content 1fr;
-    grid-column-gap: 1.2rem;
-    align-items: center;
-    font-weight: 500;
-    &::before {
-      content: '';
-      color: #b8bcca;
-      display: block;
-      height: 1px;
-      background-color: currentColor;
-    }
-    &::after {
-      content: '';
-      color: #b8bcca;
-      display: block;
-      height: 1px;
-      background-color: currentColor;
-    }
-  }
+}
+.lineBreaker p {
+  color: #6f7482;
+  font-size: 18px;
+  display: grid;
+  grid-template-columns: 1fr max-content 1fr;
+  grid-column-gap: 1.2rem;
+  align-items: center;
+  font-weight: 500;
+}
+.lineBreaker p::before {
+  content: "";
+  color: #b8bcca;
+  display: block;
+  height: 1px;
+  background-color: currentColor;
+}
+.lineBreaker p::after {
+  content: "";
+  color: #b8bcca;
+  display: block;
+  height: 1px;
+  background-color: currentColor;
 }
 .form__input {
   width: 440px;
@@ -137,12 +131,12 @@
   margin-bottom: 10px;
   padding-left: 15px;
   font-weight: 500 !important;
-  &::placeholder {
-    color: #b8bcca;
-    font-weight: 500 !important;
-  }
 }
-input[type='checkbox'] {
+.form__input::placeholder {
+  color: #b8bcca;
+  font-weight: 500 !important;
+}
+input[type="checkbox"] {
   width: 18px;
   height: 18px;
   background: none;

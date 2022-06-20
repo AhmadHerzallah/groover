@@ -1,11 +1,11 @@
 import React from "react";
-import Style from "../../style/search.module.scss";
+import Style from "../../style/search.module.css";
 import { useState, useEffect } from "react";
 import Jdenticon from "react-jdenticon";
 
 const ArtistCard = (props) => {
   const [backgroundImage1, setbackgroundImage1] = useState(
-    "https://color-hex.org/colors/242629.png"
+    "https://color-hex.org/colors/242629.png",
   );
   useEffect(() => {
     props.data.images[1]
