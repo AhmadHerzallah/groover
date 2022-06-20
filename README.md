@@ -34,7 +34,7 @@
 - [ ] Add dynamic page for each artist.
 - [ ] Add Search History - 60% by Hosny.
 - [ ] Filter search results.
-- [ ] Grinder
+- [ ] The swipe thing
 
 ## Bugs to fix:
 
