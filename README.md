@@ -40,10 +40,3 @@
 
 - [ ] show default profile page and then show user's data.
 
-## 🤝 Contributing
-
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/AhmadHerzallah/groover/issues). You can also take a look at the [contributing guide](https://github.com/AhmadHerzallah/groover/blob/master/CONTRIBUTING.md).
-
-## Show your support
-
-Give a ⭐️ if this project helped you!
