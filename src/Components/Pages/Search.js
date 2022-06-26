@@ -28,7 +28,7 @@ const Search = () => {
     setSwitcher(!switcher);
   };
 
-  const token ="BQDysdbWjBKmqIEqvHrYIzNvjvqWx2tMRUWm9SRGlsO6_eZqwqVKoNDtwGKp73AUFZDjC0qTxer9oe-5ouJ8FQZtOFhIFzcc2pFBVGZt37BumCL89YLG2dxLN1w96nrY7425ZhA2Bz8pBwYzisn2llWwOYT7HgT9EyxccxebZlZUgDCyhmkGPpjPpKz0oCUTDZvq0vmVyEM4hFNyOnU"
+  const token ="BQCMmdttqwfVmwogdzY8ziJiCPFFPRbU51sBEXtgW2f7cBsTnlX8AwUjTVOHZlouQJPJNKZO1sUSIUqRrmd28cqy-S9JFcJR8X-hq5xEQYAtZEtGVkyGmEpMRrfY7mw9Sr9VvnJt3GviR-pJ0apXEbTKy0u1CMYS0QStQQLI3wmBaDN8VweIp4Q282Or3J__BlphxibXXaARhGty6w"
   const getDataArtist = async () => {
     const res = await fetch(
       `https://api.spotify.com/v1/search?q=${query}&type=artist&limit=10&access_token=${token}`,
